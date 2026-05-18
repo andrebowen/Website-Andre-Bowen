@@ -180,36 +180,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Detail panel
+  // Detail panel — tap image area to close on mobile
+  document.querySelector('.dp-right')?.addEventListener('click', () => {
+    if (window.matchMedia('(max-width: 600px)').matches) closeDetailPanel();
+  });
+
   document.getElementById('dp-prev')?.addEventListener('click', () => {
     if (dpIndex > 0) { dpIndex--; renderDetailPanel(); }
   });
   document.getElementById('dp-next')?.addEventListener('click', () => {
     if (dpIndex < dpItems.length - 1) { dpIndex++; renderDetailPanel(); }
   });
-
-  // Touch swipe for detail panel
-  let touchStartX = 0;
-  let touchStartY = 0;
-  if (dp) {
-    dp.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-    dp.addEventListener('touchmove', e => {
-      const dx = Math.abs(touchStartX - e.touches[0].clientX);
-      const dy = Math.abs(touchStartY - e.touches[0].clientY);
-      if (dx > dy && dx > 10) e.preventDefault();
-    }, { passive: false });
-    dp.addEventListener('touchend', e => {
-      const dx = touchStartX - e.changedTouches[0].clientX;
-      const dy = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
-        if (dx > 0 && dpIndex < dpItems.length - 1) { dpIndex++; renderDetailPanel(); }
-        else if (dx < 0 && dpIndex > 0) { dpIndex--; renderDetailPanel(); }
-      }
-    }, { passive: true });
-  }
 
   // Keyboard
   document.addEventListener('keydown', e => {
