@@ -140,23 +140,16 @@ nav {
 
 .mobile-nav a.active { font-weight: 500; }
 
-/* ===== GALLERY ===== */
+/* ===== GALLERY — mobile first (vertical) ===== */
 .h-gallery {
   display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  gap: 40px;
-  padding: 28px 0 64px;
+  flex-direction: column;
+  gap: 32px;
+  padding: 20px 0 48px;
 }
 
-.h-gallery::-webkit-scrollbar { display: none; }
-
 .h-item {
-  flex: 0 0 40vw;
-  scroll-snap-align: start;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -165,9 +158,25 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60vh;
-  min-height: 320px;
-  padding: 40px;
+  height: 60vw;
+  min-height: 200px;
+  padding: 20px;
+}
+
+/* Desktop: horizontal scroll */
+@media (min-width: 768px) {
+  .h-gallery {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 40px;
+    padding: 28px 0 64px;
+  }
+  .h-gallery::-webkit-scrollbar { display: none; }
+  .h-item { flex: 0 0 40vw; width: auto; scroll-snap-align: start; }
+  .h-item-bg { height: 60vh; min-height: 320px; padding: 40px; }
 }
 
 .h-item-bg img {
@@ -206,7 +215,7 @@ nav {
 /* ===== H-GALLERY ARROWS ===== */
 .h-gallery-wrap {
   position: relative;
-  padding: 96px var(--margin-x) 0;
+  padding: 56px var(--margin-x) 0;
 }
 
 .h-arrow {
@@ -614,7 +623,7 @@ nav {
   grid-template-columns: repeat(var(--cols), 1fr);
   column-gap: var(--gutter);
   row-gap: var(--row-gap);
-  padding: 96px var(--margin-x) 80px;
+  padding: 56px var(--margin-x) 80px;
   align-items: start;
 }
 
@@ -675,7 +684,7 @@ nav {
   grid-template-columns: repeat(var(--cols), 1fr);
   column-gap: var(--gutter);
   row-gap: var(--row-gap);
-  padding: 96px var(--margin-x) 100px;
+  padding: 56px var(--margin-x) 100px;
 }
 
 .contact-content {
@@ -843,15 +852,6 @@ footer {
   .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
 
   :root { --margin-x: 16px; }
-  .h-gallery {
-    flex-direction: column;
-    overflow-x: visible;
-    scroll-snap-type: none;
-    gap: 32px;
-    padding: 20px 0 48px;
-  }
-  .h-item { flex: 0 0 auto; width: 100%; scroll-snap-align: none; }
-  .h-item-bg { height: 60vw; min-height: 200px; padding: 20px; }
   .h-arrow { display: none; }
   .dp-nav { display: none; }
   .dp-close { display: none; }
