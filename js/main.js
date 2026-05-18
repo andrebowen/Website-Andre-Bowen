@@ -188,6 +188,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dpIndex < dpItems.length - 1) { dpIndex++; renderDetailPanel(); }
   });
 
+  // Touch swipe for detail panel
+  let touchStartX = 0;
+  let touchStartY = 0;
+  if (dp) {
+    dp.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    dp.addEventListener('touchend', e => {
+      const dx = touchStartX - e.changedTouches[0].clientX;
+      const dy = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx > 0 && dpIndex < dpItems.length - 1) { dpIndex++; renderDetailPanel(); }
+        else if (dx < 0 && dpIndex > 0) { dpIndex--; renderDetailPanel(); }
+      }
+    }, { passive: true });
+  }
+
   // Keyboard
   document.addEventListener('keydown', e => {
     if (lb?.classList.contains('open')) {
