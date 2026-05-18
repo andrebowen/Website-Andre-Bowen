@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landscape — André Bowen</title>
+  <meta name="description" content="Landscape oil paintings by André Bowen — Northern Rivers NSW, New Zealand, and Berlin.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">André Bowen</a>
+    <ul class="nav-links">
+      <li><a href="still-life.html">Still Life</a></li>
+      <li><a href="landscape.html" class="active">Landscape</a></li>
+      <li><a href="figure.html">Figure</a></li>
+      <li><a href="drawings.html">Drawings</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav">
+  <a href="still-life.html">Still Life</a>
+  <a href="landscape.html" class="active">Landscape</a>
+  <a href="figure.html">Figure</a>
+  <a href="drawings.html">Drawings</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="page-intro">
+  <h1>Landscape</h1>
+  <p>Painted on location in Australia, New Zealand, and Germany — 2005–2019</p>
+</div>
+
+<div class="h-gallery-wrap">
+  <button class="h-arrow h-arrow-prev" id="h-arrow-prev" aria-label="Previous">&#8592;</button>
+  <div class="h-gallery" id="gallery"></div>
+  <button class="h-arrow h-arrow-next" id="h-arrow-next" aria-label="Next">&#8594;</button>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>© André Bowen</span>
+  </div>
+</footer>
+
+<div id="detail-panel">
+  <div class="dp-left">
+    <button class="dp-close" onclick="closeDetailPanel()">← Back</button>
+    <div class="dp-title" id="dp-title"></div>
+    <div class="dp-medium" id="dp-medium"></div>
+    <div class="dp-dims" id="dp-dims"></div>
+    <div class="dp-nav">
+      <button class="dp-nav-btn" id="dp-prev">← Prev</button>
+      <button class="dp-nav-btn" id="dp-next">Next →</button>
+    </div>
+  </div>
+  <div class="dp-right">
+    <img id="dp-img" src="" alt="">
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+const ARTWORKS = [
+  { title: 'The Grove',                       year: '2019', medium: 'Oil on linen',  dims: '101 × 137 cm',
+    src: 'images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.png' },
+  { title: 'Lawlers Lane Nightscape I',       year: '2019', medium: 'Oil on panel',  dims: '122 × 122 cm',
+    src: 'images/Landscape/Andre_Bowen_Lawlers Lane Nightscape I_2019_oil-on-panel_122x122cm.png' },
+  { title: 'Lawlers Lane Nightscape II',      year: '2019', medium: 'Oil on panel',  dims: '122 × 122 cm',
+    src: 'images/Landscape/Andre Bowen_Lawlers Lane Nightscape II_2019_oil on panel_122x122cm.png' },
+  { title: 'Orchard Study I',                year: '2019', medium: 'Oil on panel',  dims: '20 × 35.5 cm',
+    src: 'images/Landscape/Andre Bowen_Orchard Study I_2019_oil on panel_20x35.5cm.png' },
+  { title: 'Little Wategos',                 year: '2019', medium: 'Oil on panel',  dims: '13 × 36 cm',
+    src: 'images/Landscape/Andre Bowen_Little Wategos_2019_oil on panel_13x36cm.png' },
+  { title: 'Queenstown Lake I',              year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',
+    src: 'images/Landscape/Andre Bowen_Queenstown Lake I_2019_oil on panel_30.5x30.5cm.png' },
+  { title: 'Queenstown Lake II',             year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',
+    src: 'images/Landscape/Andre Bowen_Queenstown Lake II_2019_oil on panel_30.5x30.5cm.png' },
+  { title: 'Queenstown Lake III',            year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',
+    src: 'images/Landscape/Andre Bowen_Queenstown Lake III_2019_oil on panel_30.5x30.5cm.png' },
+  { title: 'Queenstown Lake IV',             year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',
+    src: 'images/Landscape/Andre Bowen_Queenstown Lake IV_2019_oil on panel_30.5x30.5cm.png' },
+  { title: 'Queenstown Lake V',              year: '',     medium: '',              dims: '',
+    src: 'images/Landscape/Queenstown Lake V.png' },
+  { title: 'Landwehrcanal Rosa Luxemburg',   year: '2017', medium: 'Oil on panel',  dims: '40 × 30 cm',
+    src: 'images/Landscape/Andre Bowen_Landwehrcanal Rosa Luxemburg_2017_oil on panel_40x30cm.png' },
+  { title: 'Landwehrcanal',                  year: '2017', medium: 'Oil on panel',  dims: '40 × 30 cm',
+    src: 'images/Landscape/Andre Bowen_Landwehrcanal_2017_oil on panel_40x30cm.png' },
+  { title: 'Raywards Lane',                  year: '2017', medium: 'Oil on panel',  dims: '26 × 36 cm',
+    src: 'images/Landscape/Andre Bowen_Raywards Lane_2017_oil on panel_26x36cm.png' },
+  { title: 'Schlesische Strasse',            year: '2009', medium: 'Oil on canvas', dims: '28 × 35 cm',
+    src: 'images/Landscape/Andre Bowen_Schlesische Strasse_2009_oil on canvas_28x35cm.png' },
+  { title: 'Beach House',                    year: '2005', medium: 'Oil on panel',  dims: '26 × 30 cm',
+    src: 'images/Landscape/Andre Bowen_Beach House_2005_oil on panel_26x30cm.png' },
+  { title: 'Two Trees',                      year: '2005', medium: 'Oil on panel',  dims: '26 × 29 cm',
+    src: 'images/Landscape/Andre Bowen_Two Trees_2005_oil on panel_26x29cm.png' },
+  { title: 'Lawlers Lane (Unfinished)',      year: '',     medium: '',              dims: '',
+    src: 'images/Landscape/Lawlers Lane (unfinished).png' },
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHGallery('gallery', ARTWORKS);
+  initHGalleryArrows('gallery');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Still Life — André Bowen</title>
+  <meta name="description" content="Still life oil paintings by André Bowen — flowers, vessels, and studio objects.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">André Bowen</a>
+    <ul class="nav-links">
+      <li><a href="still-life.html" class="active">Still Life</a></li>
+      <li><a href="landscape.html">Landscape</a></li>
+      <li><a href="figure.html">Figure</a></li>
+      <li><a href="drawings.html">Drawings</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav">
+  <a href="still-life.html" class="active">Still Life</a>
+  <a href="landscape.html">Landscape</a>
+  <a href="figure.html">Figure</a>
+  <a href="drawings.html">Drawings</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="page-intro">
+  <h1>Still Life</h1>
+  <p>Oil paintings of flowers, vessels, and studio objects — 2005–2019</p>
+</div>
+
+<div class="h-gallery-wrap">
+  <button class="h-arrow h-arrow-prev" id="h-arrow-prev" aria-label="Previous">&#8592;</button>
+  <div class="h-gallery" id="gallery"></div>
+  <button class="h-arrow h-arrow-next" id="h-arrow-next" aria-label="Next">&#8594;</button>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>© André Bowen</span>
+  </div>
+</footer>
+
+<div id="detail-panel">
+  <div class="dp-left">
+    <button class="dp-close" onclick="closeDetailPanel()">← Back</button>
+    <div class="dp-title" id="dp-title"></div>
+    <div class="dp-medium" id="dp-medium"></div>
+    <div class="dp-dims" id="dp-dims"></div>
+    <div class="dp-nav">
+      <button class="dp-nav-btn" id="dp-prev">← Prev</button>
+      <button class="dp-nav-btn" id="dp-next">Next →</button>
+    </div>
+  </div>
+  <div class="dp-right">
+    <img id="dp-img" src="" alt="">
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+const ARTWORKS = [
+  { title: 'Abyssinian Roses',          year: '2016', medium: 'Oil on linen panel',  dims: '35 × 28 cm',
+    src: 'images/Still life/Andre Bowen_Abyssinian Roses_2016_oil on linen panel_35x28cm.png' },
+  { title: 'Flowers in a Striped Vase', year: '2019', medium: 'Oil on panel',        dims: '41 × 50 cm',
+    src: 'images/Still life/Andre Bowen_Flowers in a Striped Vase_2019_oil on panel_41x50cm.png' },
+  { title: 'Flowers in Two Bottles',    year: '2018', medium: 'Oil on linen',         dims: '40 × 50 cm',
+    src: 'images/Still life/Andre Bowen_Flowers in Two Bottles_2018_oil on linen_40x50cm.png' },
+  { title: 'Skull and Sketchbooks',     year: '2018', medium: 'Oil on panel',        dims: '30.5 × 40.5 cm',
+    src: 'images/Still life/Andre Bowen_Skull and Sketchbooks_2018_oil on panel_30.5x40.5cm.png' },
+  { title: 'Sneakers',                  year: '2019', medium: 'Oil on panel',        dims: '40 × 50 cm',
+    src: 'images/Still life/Andre Bowen_Sneakers_2019_oil on panel_40x50cm.png' },
+  { title: 'Queenstown Flowers',        year: '2019', medium: 'Oil on panel',        dims: '30 × 31 cm',
+    src: 'images/Still life/Andre Bowen_Queenstown Flowers_2019_oil on panel_30x31cm.png' },
+  { title: 'Roses (Graefestrasse)',     year: '2016', medium: 'Oil on panel',        dims: '40 × 30 cm',
+    src: 'images/Still life/Andre Bowen_Roses (Graefestrasse)_2016_oil on panel_40x30cm.png' },
+  { title: 'Roses',                     year: '2014', medium: 'Oil on canvas',       dims: '50 × 40 cm',
+    src: 'images/Still life/Andre Bowen_Roses_2014_oil on canvas_50x40cm.png' },
+  { title: 'Roses (Floating)',          year: '2018', medium: 'Oil on panel',        dims: '31 × 41 cm',
+    src: 'images/Still life/Roses (floating)_2018_oil on panel_31x41cm copy.png' },
+  { title: 'Madrid Silver',             year: '2017', medium: 'Oil on panel',        dims: '40 × 30 cm',
+    src: 'images/Still life/Andre Bowen_Madrid Silver_2017_oil on panel_40x30cm.png' },
+  { title: 'Flowers in a Mason Jar',    year: '2016', medium: 'Oil on linen panel',  dims: '35 × 28 cm',
+    src: 'images/Still life/Andre Bowen_Flowers in a mason jar_2016_oil on linen panel_35x28cm.png' },
+  { title: 'Jar for Joko (Turps)',      year: '2016', medium: 'Oil on panel',        dims: '40 × 30 cm',
+    src: 'images/Still life/Andre Bowen_Jar for Joko (Turps)_2016_oil on panel_40x30cm.png' },
+  { title: 'Jar for Mike (Oil)',        year: '2016', medium: 'Oil on panel',        dims: '40 × 30 cm',
+    src: 'images/Still life/Andre Bowen_Jar for Mike (Oil)_2016_oil on panel_40x30cm.png' },
+  { title: 'Outdoor Still Life',        year: '2016', medium: 'Oil on linen panel',  dims: '40 × 30 cm',
+    src: 'images/Still life/Andre Bowen_Outdoor Still Life_2016_oil on linen panel_40x30cm.png' },
+  { title: 'Leipzig Studio',            year: '2009', medium: 'Oil on canvas',       dims: '70 × 50 cm',
+    src: 'images/Still life/Andre Bowen_Leipzig Studio_2009_oil on canvas_70x50cm.png' },
+  { title: 'Leipzig Studio (Blue Chair)', year: '2009', medium: 'Oil on canvas',     dims: '35 × 28 cm',
+    src: 'images/Still life/Andre Bowen_Leipzig Studio (Blue Chair)_2009_oil on canvas_35x28cm.png' },
+  { title: 'Flowers',                   year: '2009', medium: 'Oil on canvas',       dims: '35 × 25 cm',
+    src: 'images/Still life/Andre Bowen_Flowers_2009_oil on canvas_35x25cm.png' },
+  { title: 'Chair (Shuttle)',           year: '2005', medium: 'Tempera on linen panel', dims: '60 × 75 cm',
+    src: 'images/Still life/Andre Bowen_Chair (Shuttle)_2005_tempera on linen panel_60x75cm.png' },
+  { title: 'Studio Corner IV',          year: '',     medium: '',                    dims: '',
+    src: 'images/Still life/Studio Corner IV.png' },
+  { title: 'Studio Window',             year: '',     medium: '',                    dims: '',
+    src: 'images/Still life/Studio Window.png' },
+  { title: 'Studio Table Leipzig',      year: '',     medium: '',                    dims: '',
+    src: 'images/Still life/Studio Table Leipzig.png' },
+  { title: 'Studio Table (Unfinished)', year: '',     medium: '',                    dims: '',
+    src: 'images/Still life/Studio Table (unfinished) .png' },
+  { title: 'Queenstown Flowers',        year: '',     medium: '',                    dims: '',
+    src: 'images/Still life/Queenstown Flowers.png' },
+  { title: 'Roses',                     year: '',     medium: '',                    dims: '',
+    src: 'images/Still life/Roses.png' },
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHGallery('gallery', ARTWORKS);
+  initHGalleryArrows('gallery');
+});
+</script>
+</body>
+</html>

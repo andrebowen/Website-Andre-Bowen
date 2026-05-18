@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figure — André Bowen</title>
+  <meta name="description" content="Figure paintings and master studies by André Bowen, including self portrait and Velázquez studies.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">André Bowen</a>
+    <ul class="nav-links">
+      <li><a href="still-life.html">Still Life</a></li>
+      <li><a href="landscape.html">Landscape</a></li>
+      <li><a href="figure.html" class="active">Figure</a></li>
+      <li><a href="drawings.html">Drawings</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav">
+  <a href="still-life.html">Still Life</a>
+  <a href="landscape.html">Landscape</a>
+  <a href="figure.html" class="active">Figure</a>
+  <a href="drawings.html">Drawings</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="page-intro">
+  <h1>Figure</h1>
+  <p>Self portrait and master studies after Velázquez — oil on linen and panel</p>
+</div>
+
+<div class="h-gallery-wrap">
+  <button class="h-arrow h-arrow-prev" id="h-arrow-prev" aria-label="Previous">&#8592;</button>
+  <div class="h-gallery" id="gallery"></div>
+  <button class="h-arrow h-arrow-next" id="h-arrow-next" aria-label="Next">&#8594;</button>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>© André Bowen</span>
+  </div>
+</footer>
+
+<div id="detail-panel">
+  <div class="dp-left">
+    <button class="dp-close" onclick="closeDetailPanel()">← Back</button>
+    <div class="dp-title" id="dp-title"></div>
+    <div class="dp-medium" id="dp-medium"></div>
+    <div class="dp-dims" id="dp-dims"></div>
+    <div class="dp-nav">
+      <button class="dp-nav-btn" id="dp-prev">← Prev</button>
+      <button class="dp-nav-btn" id="dp-next">Next →</button>
+    </div>
+  </div>
+  <div class="dp-right">
+    <img id="dp-img" src="" alt="">
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+const ARTWORKS = [
+  { title: 'Self Portrait',          year: '2013', medium: 'Oil on panel',  dims: '35 × 30 cm',
+    src: 'images/Figure/Andre Bowen_Self Portrait_2013_oil on panel_35x30cm.png' },
+  { title: 'Velázquez Study I',      year: '2009', medium: 'Oil on linen',  dims: '32 × 26 cm',
+    src: 'images/Figure/Andre Bowen_Velazquez Study I_2009_oil on linen_32x26cm.png' },
+  { title: 'Velázquez Study II',     year: '2009', medium: 'Oil on linen',  dims: '32 × 26 cm',
+    src: 'images/Figure/Andre Bowen_Velazquez Study II_2009_oil on linen_32x26cm.png' },
+  { title: 'Velázquez Study III',    year: '2009', medium: 'Oil on linen',  dims: '32 × 26 cm',
+    src: 'images/Figure/Andre Bowen_Velazquez Study III_2009_oil on linen_32x26cm.png' },
+  { title: 'Velázquez Study IV',     year: '2009', medium: 'Oil on linen',  dims: '32 × 26 cm',
+    src: 'images/Figure/Andre Bowen_Velazquez Study IV_2009_oil on linen_32x26cm.png' },
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHGallery('gallery', ARTWORKS);
+  initHGalleryArrows('gallery');
+});
+</script>
+</body>
+</html>

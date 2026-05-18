@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawings — André Bowen</title>
+  <meta name="description" content="Drawings and studies by André Bowen — portraits, figures, and plein-air sketches.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">André Bowen</a>
+    <ul class="nav-links">
+      <li><a href="still-life.html">Still Life</a></li>
+      <li><a href="landscape.html">Landscape</a></li>
+      <li><a href="figure.html">Figure</a></li>
+      <li><a href="drawings.html" class="active">Drawings</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav">
+  <a href="still-life.html">Still Life</a>
+  <a href="landscape.html">Landscape</a>
+  <a href="figure.html">Figure</a>
+  <a href="drawings.html" class="active">Drawings</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="page-intro">
+  <h1>Drawings</h1>
+  <p>Life drawings, portraits, and studies on paper</p>
+</div>
+
+<div class="h-gallery-wrap">
+  <button class="h-arrow h-arrow-prev" id="h-arrow-prev" aria-label="Previous">&#8592;</button>
+  <div class="h-gallery" id="gallery"></div>
+  <button class="h-arrow h-arrow-next" id="h-arrow-next" aria-label="Next">&#8594;</button>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>© André Bowen</span>
+  </div>
+</footer>
+
+<div id="detail-panel">
+  <div class="dp-left">
+    <button class="dp-close" onclick="closeDetailPanel()">← Back</button>
+    <div class="dp-title" id="dp-title"></div>
+    <div class="dp-medium" id="dp-medium"></div>
+    <div class="dp-dims" id="dp-dims"></div>
+    <div class="dp-nav">
+      <button class="dp-nav-btn" id="dp-prev">← Prev</button>
+      <button class="dp-nav-btn" id="dp-next">Next →</button>
+    </div>
+  </div>
+  <div class="dp-right">
+    <img id="dp-img" src="" alt="">
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+const ARTWORKS = [
+  { title: 'Nathalie',              year: '', medium: '', dims: '', src: 'images/Drawings/Nathalie.png' },
+  { title: 'Frankie',               year: '', medium: '', dims: '', src: 'images/Drawings/Frankie.png' },
+  { title: 'Luca after the Snow',   year: '', medium: '', dims: '', src: 'images/Drawings/Luca after the snow.png' },
+  { title: 'Dei Kopf',              year: '', medium: '', dims: '', src: 'images/Drawings/Dei Kopf.png' },
+  { title: 'Dei Eating an Apple',   year: '', medium: '', dims: '', src: 'images/Drawings/Dei eating an apple.png' },
+  { title: 'Landwehrkanal',         year: '', medium: '', dims: '', src: 'images/Drawings/Landwehrkanal.png' },
+  { title: 'Figure Study 1',        year: '', medium: '', dims: '', src: 'images/Drawings/Figure 1.png' },
+  { title: 'Figure Study 2',        year: '', medium: '', dims: '', src: 'images/Drawings/Figure 2.png' },
+  { title: 'Figure Study 3',        year: '', medium: '', dims: '', src: 'images/Drawings/Figure 3.png' },
+  { title: 'Figure Study 4',        year: '', medium: '', dims: '', src: 'images/Drawings/Figure 4.png' },
+  { title: 'Figure Study 5',        year: '', medium: '', dims: '', src: 'images/Drawings/Figure 5.png' },
+  { title: 'Figure Study 6',        year: '', medium: '', dims: '', src: 'images/Drawings/Figure 6.png' },
+  { title: 'Figure Study 7',        year: '', medium: '', dims: '', src: 'images/Drawings/Figure 7.png' },
+  { title: 'Figure Study 8',        year: '', medium: '', dims: '', src: 'images/Drawings/Figure 8.png' },
+  { title: 'Figure Study 9',        year: '', medium: '', dims: '', src: 'images/Drawings/Figure 9.png' },
+  { title: 'Figure Study 10',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 10.png' },
+  { title: 'Figure Study 11',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 11.png' },
+  { title: 'Figure Study 12',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 12.png' },
+  { title: 'Figure Study 13',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 13.png' },
+  { title: 'Figure Study 14',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 14.png' },
+  { title: 'Figure Study 15',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 15.png' },
+  { title: 'Figure Study 16',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 16.png' },
+  { title: 'Figure Study 17',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 17.png' },
+  { title: 'Figure Study 18',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 18.png' },
+  { title: 'Figure Study 19',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 19.png' },
+  { title: 'Figure Study 20',       year: '', medium: '', dims: '', src: 'images/Drawings/Figure 20.png' },
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHGallery('gallery', ARTWORKS);
+  initHGalleryArrows('gallery');
+});
+</script>
+</body>
+</html>

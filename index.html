@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>André Bowen — Oil Painter</title>
+  <meta name="description" content="André Bowen is an Australian oil painter working in still life, landscape, and figurative studies. Based in the Northern Rivers, NSW.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">André Bowen</a>
+    <ul class="nav-links">
+      <li><a href="still-life.html">Still Life</a></li>
+      <li><a href="landscape.html">Landscape</a></li>
+      <li><a href="figure.html">Figure</a></li>
+      <li><a href="drawings.html">Drawings</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav">
+  <a href="still-life.html">Still Life</a>
+  <a href="landscape.html">Landscape</a>
+  <a href="figure.html">Figure</a>
+  <a href="drawings.html">Drawings</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- Hero -->
+<div class="hero" id="hero-img" onclick="openLightbox(heroArt, 0)">
+  <img
+    src="images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.png"
+    alt="The Grove, 2019">
+  <div class="hero-info">
+    <h2>The Grove</h2>
+    <p>2019 · Oil on linen · 101 × 137 cm</p>
+  </div>
+</div>
+
+<!-- Still Life -->
+<div class="home-section">
+  <div class="home-section-hdr">
+    <h2>Still Life</h2>
+    <a href="still-life.html">View all →</a>
+  </div>
+  <div class="featured-grid" id="grid-still"></div>
+</div>
+
+<!-- Landscape -->
+<div class="home-section">
+  <div class="home-section-hdr">
+    <h2>Landscape</h2>
+    <a href="landscape.html">View all →</a>
+  </div>
+  <div class="featured-grid" id="grid-land"></div>
+</div>
+
+<!-- Figure & Drawings -->
+<div class="home-section">
+  <div class="home-section-hdr">
+    <h2>Figure &amp; Drawings</h2>
+    <a href="figure.html">View all →</a>
+  </div>
+  <div class="featured-grid" id="grid-fig"></div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>© André Bowen</span>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-prev" id="lb-prev">&#8249;</button>
+  <div class="lb-content">
+    <img id="lb-img" src="" alt="">
+    <div class="lb-info">
+      <div class="lb-title" id="lb-title"></div>
+      <div class="lb-meta" id="lb-meta"></div>
+    </div>
+  </div>
+  <button class="lb-next" id="lb-next">&#8250;</button>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+const heroArt = [
+  { title: 'The Grove', year: '2019', medium: 'Oil on linen', dims: '101 × 137 cm',
+    src: 'images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.png' }
+];
+
+const stillFeatured = [
+  { title: 'Sneakers', year: '2019', medium: 'Oil on panel', dims: '40 × 50 cm',
+    src: 'images/Still life/Andre Bowen_Sneakers_2019_oil on panel_40x50cm.png' },
+  { title: 'Abyssinian Roses', year: '2016', medium: 'Oil on linen panel', dims: '35 × 28 cm',
+    src: 'images/Still life/Andre Bowen_Abyssinian Roses_2016_oil on linen panel_35x28cm.png' },
+  { title: 'Flowers in a Striped Vase', year: '2019', medium: 'Oil on panel', dims: '41 × 50 cm',
+    src: 'images/Still life/Andre Bowen_Flowers in a Striped Vase_2019_oil on panel_41x50cm.png' },
+];
+
+const landFeatured = [
+  { title: 'Lawlers Lane Nightscape I', year: '2019', medium: 'Oil on panel', dims: '122 × 122 cm',
+    src: 'images/Landscape/Andre_Bowen_Lawlers Lane Nightscape I_2019_oil-on-panel_122x122cm.png' },
+  { title: 'Queenstown Lake I', year: '2019', medium: 'Oil on panel', dims: '30.5 × 30.5 cm',
+    src: 'images/Landscape/Andre Bowen_Queenstown Lake I_2019_oil on panel_30.5x30.5cm.png' },
+  { title: 'Orchard Study I', year: '2019', medium: 'Oil on panel', dims: '20 × 35.5 cm',
+    src: 'images/Landscape/Andre Bowen_Orchard Study I_2019_oil on panel_20x35.5cm.png' },
+];
+
+const figFeatured = [
+  { title: 'Self Portrait', year: '2013', medium: 'Oil on panel', dims: '35 × 30 cm',
+    src: 'images/Figure/Andre Bowen_Self Portrait_2013_oil on panel_35x30cm.png' },
+  { title: 'Velázquez Study I', year: '2009', medium: 'Oil on linen', dims: '32 × 26 cm',
+    src: 'images/Figure/Andre Bowen_Velazquez Study I_2009_oil on linen_32x26cm.png' },
+  { title: 'Luca after the Snow', year: '', medium: '', dims: '',
+    src: 'images/Drawings/Luca after the snow.png' },
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+  function renderFeatured(containerId, items) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    items.forEach((art, i) => {
+      const el = document.createElement('div');
+      el.className = 'featured-item';
+      const metaParts = [art.year, art.medium, art.dims].filter(Boolean);
+      el.innerHTML = `
+        <div class="artwork-img">
+          <img src="${art.src}" alt="${art.title}" loading="lazy">
+        </div>
+        <div class="featured-caption">
+          <div class="caption-title">${art.title}</div>
+          ${metaParts.length ? `<div class="caption-meta">${metaParts.join(', ')}</div>` : ''}
+        </div>`;
+      el.addEventListener('click', () => openLightbox(items, i));
+      container.appendChild(el);
+    });
+  }
+
+  renderFeatured('grid-still', stillFeatured);
+  renderFeatured('grid-land', landFeatured);
+  renderFeatured('grid-fig', figFeatured);
+});
+</script>
+</body>
+</html>

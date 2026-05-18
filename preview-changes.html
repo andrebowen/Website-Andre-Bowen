@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Preview — Proposed Changes</title>
+  <style>
+    :root {
+      --font: 'Avenir Next Pro', 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --bg: #ffffff;
+      --ink: #1d1d1f;
+      --ink-2: #3c3c43;
+      --ink-3: #8e8e93;
+      --sep: #d1d1d6;
+      --sep-light: #e5e5ea;
+      --nav-h: 72px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); background: #f0f0f0; color: var(--ink); }
+
+    /* ===== PREVIEW SCAFFOLDING ===== */
+    .preview-page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .preview-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 48px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .section {
+      margin-bottom: 72px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 20px;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .compare-col {
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .col-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      background: #e8e8e8;
+      color: #666;
+    }
+
+    .col-label.after { background: #1d1d1f; color: #fff; }
+
+    .col-content {
+      padding: 0;
+      background: #fff;
+    }
+
+    /* ===== BEFORE nav ===== */
+    .nav-before {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+      padding: 0 24px;
+      background: #fff;
+    }
+
+    .logo-before {
+      font-family: var(--font);
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .nav-links-before {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links-before a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink-2);
+      text-decoration: none;
+    }
+
+    .nav-links-before a.active-before {
+      color: var(--ink);
+    }
+
+    /* ===== AFTER nav ===== */
+    .nav-after {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+      padding: 0 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--sep-light);
+    }
+
+    .logo-after {
+      font-family: var(--font);
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .nav-links-after {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links-after a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink-2);
+      text-decoration: none;
+    }
+
+    .nav-links-after a.active-after {
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 1px;
+    }
+
+    /* ===== BEFORE hero ===== */
+    .hero-before {
+      position: relative;
+      padding: 3px 24px 0;
+      cursor: pointer;
+    }
+
+    .hero-before img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-info-before {
+      position: absolute;
+      bottom: 0;
+      left: 24px;
+      right: 24px;
+      padding: 60px 24px 24px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.55));
+      color: #fff;
+    }
+
+    .hero-info-before h2 {
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 400;
+      margin-bottom: 3px;
+    }
+
+    .hero-info-before p {
+      font-size: 12px;
+      opacity: 0.72;
+    }
+
+    /* ===== AFTER hero ===== */
+    .hero-after {
+      position: relative;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .hero-after img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-info-after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 60px 24px 24px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.55));
+      color: #fff;
+    }
+
+    .hero-info-after h2 {
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 3px;
+    }
+
+    .hero-info-after p {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    /* ===== FEATURED GRID ===== */
+    .grid-demo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 24px;
+    }
+
+    .featured-item {
+      cursor: pointer;
+    }
+
+    /* BEFORE: 3/4 cover — portrait crop */
+    .artwork-img-before {
+      overflow: hidden;
+      background: #f5f5f7;
+    }
+
+    .artwork-img-before img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* AFTER: 4/5 contain — no crop */
+    .artwork-img-after {
+      overflow: hidden;
+      background: #f5f5f7;
+    }
+
+    .artwork-img-after img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: contain;
+      display: block;
+    }
+
+    .featured-caption {
+      padding: 10px 0 0;
+    }
+
+    .caption-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .caption-meta {
+      font-size: 12px;
+      color: var(--ink-3);
+      margin-top: 3px;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lb-demo {
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 32px;
+      min-height: 400px;
+    }
+
+    /* BEFORE */
+    .lb-content-before {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lb-content-before img {
+      max-width: 100%;
+      max-height: 240px;
+      object-fit: contain;
+    }
+
+    .lb-info-before {
+      text-align: center;
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    .lb-title-before {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      margin-bottom: 6px;
+    }
+
+    .lb-meta-before {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.02em;
+    }
+
+    /* AFTER */
+    .lb-content-after {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lb-content-after img {
+      max-width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+    }
+
+    .lb-info-after {
+      text-align: center;
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    .lb-title-after {
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      margin-bottom: 6px;
+    }
+
+    .lb-meta-after {
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.02em;
+    }
+
+    /* annotation callouts */
+    .changes-list {
+      font-size: 12px;
+      color: #555;
+      background: #fff8e1;
+      border-left: 3px solid #f0b429;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    .changes-list strong { color: #1d1d1f; }
+  </style>
+</head>
+<body>
+<div class="preview-page">
+
+  <p class="preview-title">Visual Preview — Proposed Changes</p>
+
+  <!-- ===== 1. NAVIGATION ===== -->
+  <div class="section">
+    <p class="section-label">1. Navigation</p>
+    <div class="changes-list">
+      <strong>Before:</strong> Logo 30px · Active link: color only<br>
+      <strong>After:</strong> Logo 26px · Header border-bottom · Active link: color + underline
+    </div>
+    <div class="compare">
+      <div class="compare-col">
+        <div class="col-label">Before</div>
+        <div class="col-content">
+          <nav class="nav-before">
+            <span class="logo-before">André Bowen</span>
+            <ul class="nav-links-before">
+              <li><a href="#">Still Life</a></li>
+              <li><a href="#" class="active-before">Landscape</a></li>
+              <li><a href="#">Figure</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="col-label after">After</div>
+        <div class="col-content">
+          <nav class="nav-after">
+            <span class="logo-after">André Bowen</span>
+            <ul class="nav-links-after">
+              <li><a href="#">Still Life</a></li>
+              <li><a href="#" class="active-after">Landscape</a></li>
+              <li><a href="#">Figure</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 2. HERO ===== -->
+  <div class="section">
+    <p class="section-label">2. Hero Section</p>
+    <div class="changes-list">
+      <strong>Before:</strong> 24px side margins (contained) · Overlay text 13px/12px, opacity 0.72<br>
+      <strong>After:</strong> Full-bleed edge-to-edge · Overlay text 15px/13px, opacity 0.8
+    </div>
+    <div class="compare">
+      <div class="compare-col">
+        <div class="col-label">Before</div>
+        <div class="col-content">
+          <div class="hero-before">
+            <img src="images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.png" alt="The Grove">
+            <div class="hero-info-before">
+              <h2>The Grove</h2>
+              <p>2019 · Oil on linen · 101 × 137 cm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="col-label after">After</div>
+        <div class="col-content">
+          <div class="hero-after">
+            <img src="images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.png" alt="The Grove">
+            <div class="hero-info-after">
+              <h2>The Grove</h2>
+              <p>2019 · Oil on linen · 101 × 137 cm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 3. FEATURED GRID ===== -->
+  <div class="section">
+    <p class="section-label">3. Featured Grid — Image Treatment</p>
+    <div class="changes-list">
+      <strong>Before:</strong> aspect-ratio 3/4 + cover → landscape/square paintings are cropped<br>
+      <strong>After:</strong> aspect-ratio 4/5 + contain → full artwork shown, neutral bg fills remainder
+    </div>
+    <div class="compare">
+      <div class="compare-col">
+        <div class="col-label">Before — landscape painting cropped to portrait frame</div>
+        <div class="col-content">
+          <div class="grid-demo">
+            <div class="featured-item">
+              <div class="artwork-img-before">
+                <img src="images/Landscape/Andre_Bowen_Lawlers Lane Nightscape I_2019_oil-on-panel_122x122cm.png" alt="Lawlers Lane Nightscape I">
+              </div>
+              <div class="featured-caption">
+                <div class="caption-title">Lawlers Lane Nightscape I</div>
+                <div class="caption-meta">2019, Oil on panel, 122 × 122 cm</div>
+              </div>
+            </div>
+            <div class="featured-item">
+              <div class="artwork-img-before">
+                <img src="images/Landscape/Andre Bowen_Queenstown Lake I_2019_oil on panel_30.5x30.5cm.png" alt="Queenstown Lake I">
+              </div>
+              <div class="featured-caption">
+                <div class="caption-title">Queenstown Lake I</div>
+                <div class="caption-meta">2019, Oil on panel, 30.5 × 30.5 cm</div>
+              </div>
+            </div>
+            <div class="featured-item">
+              <div class="artwork-img-before">
+                <img src="images/Landscape/Andre Bowen_Orchard Study I_2019_oil on panel_20x35.5cm.png" alt="Orchard Study I">
+              </div>
+              <div class="featured-caption">
+                <div class="caption-title">Orchard Study I</div>
+                <div class="caption-meta">2019, Oil on panel, 20 × 35.5 cm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="col-label after">After — full paintings, contained</div>
+        <div class="col-content">
+          <div class="grid-demo">
+            <div class="featured-item">
+              <div class="artwork-img-after">
+                <img src="images/Landscape/Andre_Bowen_Lawlers Lane Nightscape I_2019_oil-on-panel_122x122cm.png" alt="Lawlers Lane Nightscape I">
+              </div>
+              <div class="featured-caption">
+                <div class="caption-title">Lawlers Lane Nightscape I</div>
+                <div class="caption-meta">2019, Oil on panel, 122 × 122 cm</div>
+              </div>
+            </div>
+            <div class="featured-item">
+              <div class="artwork-img-after">
+                <img src="images/Landscape/Andre Bowen_Queenstown Lake I_2019_oil on panel_30.5x30.5cm.png" alt="Queenstown Lake I">
+              </div>
+              <div class="featured-caption">
+                <div class="caption-title">Queenstown Lake I</div>
+                <div class="caption-meta">2019, Oil on panel, 30.5 × 30.5 cm</div>
+              </div>
+            </div>
+            <div class="featured-item">
+              <div class="artwork-img-after">
+                <img src="images/Landscape/Andre Bowen_Orchard Study I_2019_oil on panel_20x35.5cm.png" alt="Orchard Study I">
+              </div>
+              <div class="featured-caption">
+                <div class="caption-title">Orchard Study I</div>
+                <div class="caption-meta">2019, Oil on panel, 20 × 35.5 cm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 4. LIGHTBOX ===== -->
+  <div class="section">
+    <p class="section-label">4. Lightbox</p>
+    <div class="changes-list">
+      <strong>Before:</strong> max-height 72vh · title weight 300 · meta opacity 0.5<br>
+      <strong>After:</strong> max-height 80vh (more image) · title weight 400 · meta opacity 0.65
+    </div>
+    <div class="compare">
+      <div class="compare-col">
+        <div class="col-label">Before</div>
+        <div class="col-content">
+          <div class="lb-demo">
+            <div class="lb-content-before">
+              <img src="images/Still life/Andre Bowen_Sneakers_2019_oil on panel_40x50cm.png" alt="Sneakers">
+              <div class="lb-info-before">
+                <div class="lb-title-before">Sneakers</div>
+                <div class="lb-meta-before">2019  ·  Oil on panel  ·  40 × 50 cm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="col-label after">After</div>
+        <div class="col-content">
+          <div class="lb-demo">
+            <div class="lb-content-after">
+              <img src="images/Still life/Andre Bowen_Sneakers_2019_oil on panel_40x50cm.png" alt="Sneakers">
+              <div class="lb-info-after">
+                <div class="lb-title-after">Sneakers</div>
+                <div class="lb-meta-after">2019  ·  Oil on panel  ·  40 × 50 cm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
