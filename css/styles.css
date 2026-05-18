@@ -32,6 +32,7 @@ body {
 
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 /* ===== HEADER ===== */
 header {
@@ -70,7 +71,7 @@ nav {
 .nav-links a {
   font-size: 16px;
   font-weight: 500;
-  color: var(--ink-2);
+  color: var(--ink);
   letter-spacing: 0;
   transition: color 0.15s;
   white-space: nowrap;
@@ -130,7 +131,7 @@ nav {
 .mobile-nav a {
   font-family: var(--font);
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0;
   color: var(--ink);
   padding: 18px 0;
@@ -205,7 +206,7 @@ nav {
 /* ===== H-GALLERY ARROWS ===== */
 .h-gallery-wrap {
   position: relative;
-  padding: 0 var(--margin-x);
+  padding: 96px var(--margin-x) 0;
 }
 
 .h-arrow {
@@ -613,33 +614,31 @@ nav {
   grid-template-columns: repeat(var(--cols), 1fr);
   column-gap: var(--gutter);
   row-gap: var(--row-gap);
-  padding: 56px var(--margin-x) 80px;
+  padding: 96px var(--margin-x) 80px;
   align-items: start;
 }
 
 .about-portrait {
-  grid-column: 1 / 3;
+  grid-column: 1 / 4;
   grid-row: 1;
 }
 
 .about-portrait img { width: 100%; }
 
-.about-text {
-  grid-column: 5 / 10;
+.about-main {
+  grid-column: 7 / 13;
   grid-row: 1;
 }
 
 .about-text p {
   font-size: 15px;
+  font-weight: 500;
   line-height: 1.8;
   color: var(--ink-2);
   margin-bottom: 16px;
 }
 
-.cv-wrap {
-  grid-column: 5 / 10;
-  grid-row: 2;
-}
+.cv-wrap { margin-top: 54px; }
 
 .cv-section { margin-bottom: 48px; }
 
@@ -676,11 +675,11 @@ nav {
   grid-template-columns: repeat(var(--cols), 1fr);
   column-gap: var(--gutter);
   row-gap: var(--row-gap);
-  padding: 56px var(--margin-x) 100px;
+  padding: 96px var(--margin-x) 100px;
 }
 
 .contact-content {
-  grid-column: 5 / 10;
+  grid-column: 7 / 13;
 }
 
 .contact-wrap h1 {
@@ -801,10 +800,9 @@ footer {
   .home-section-hdr h2 { grid-column: 1 / 8; }
   .home-section-hdr a { grid-column: 10 / 13; }
 
-  .about-portrait { grid-column: 1 / 3; }
+  .about-portrait { grid-column: 1 / 4; }
   .about-portrait img { max-width: 200px; }
-  .about-text { grid-column: 5 / 10; }
-  .cv-wrap { grid-column: 5 / 10; }
+  .about-main { grid-column: 7 / 13; }
   .hero img { height: 55vw; }
 
   #detail-panel { flex-direction: column; }
@@ -834,8 +832,7 @@ footer {
   .about-wrap { padding: 36px 16px 60px; column-gap: 16px; }
   .about-portrait { grid-column: 1 / 13; margin-bottom: 24px; }
   .about-portrait img { max-width: 160px; }
-  .about-text { grid-column: 1 / 13; grid-row: 2; }
-  .cv-wrap { grid-column: 1 / 13; grid-row: 3; }
+  .about-main { grid-column: 1 / 13; grid-row: 2; }
   .contact-wrap { padding: 36px 16px 80px; column-gap: 16px; }
   .contact-content { grid-column: 1 / 13; }
 
