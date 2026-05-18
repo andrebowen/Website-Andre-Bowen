@@ -814,7 +814,7 @@ footer {
   .about-main { grid-column: 7 / 13; }
   .hero img { height: 55vw; }
 
-  #detail-panel { flex-direction: column; }
+  #detail-panel { flex-direction: column; overflow-y: auto; }
   .dp-right { order: -1; }
   .dp-left {
     width: 100%;
