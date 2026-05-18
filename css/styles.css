@@ -138,23 +138,16 @@ nav {
 
 .mobile-nav a.active { font-weight: 500; }
 
-/* ===== HORIZONTAL SCROLL GALLERY ===== */
+/* ===== GALLERY ===== */
 .h-gallery {
   display: flex;
-  overflow-x: auto;
+  flex-direction: column;
   gap: 48px;
   padding: 28px 0 64px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
 }
 
-.h-gallery::-webkit-scrollbar { display: none; }
-
 .h-item {
-  flex: 0 0 44vw;
-  flex-shrink: 0;
-  scroll-snap-align: start;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -163,8 +156,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 62vh;
-  min-height: 320px;
+  height: 80vh;
+  min-height: 400px;
   padding: 40px;
 }
 
@@ -208,36 +201,9 @@ nav {
 }
 
 .h-arrow {
-  position: absolute;
-  top: calc(28px + 31vh);
-  transform: translateY(-50%);
-  z-index: 10;
-  width: 44px;
-  height: 44px;
-  background: #fff;
-  border: 1px solid var(--sep-light);
-  border-radius: 50%;
-  color: var(--ink);
-  cursor: pointer;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.15s;
-  padding: 0;
-  line-height: 1;
+  display: none;
 }
 
-.h-arrow:hover { border-color: var(--sep); }
-
-.h-arrow:disabled {
-  opacity: 0.2;
-  cursor: default;
-  pointer-events: none;
-}
-
-.h-arrow-prev { left: calc(var(--margin-x) + 16px); }
-.h-arrow-next { right: calc(var(--margin-x) + 16px); }
 
 /* ===== ARTWORK DETAIL PANEL ===== */
 #detail-panel {
@@ -804,12 +770,6 @@ footer {
   .cv-wrap { grid-column: 3 / 13; }
   .hero img { height: 55vw; }
 
-  .h-item { flex: 0 0 70vw; }
-  .h-item-bg { height: 50vw; min-height: 260px; padding: 28px; }
-  .h-arrow { top: calc(28px + 25vw); }
-  .h-arrow-prev { left: calc(var(--margin-x) + 12px); }
-  .h-arrow-next { right: calc(var(--margin-x) + 12px); }
-
   #detail-panel { flex-direction: column; }
   .dp-right { order: -1; }
   .dp-left {
@@ -862,6 +822,5 @@ footer {
     scroll-snap-align: none;
   }
   .h-item-bg { height: 60vw; min-height: 200px; padding: 20px; }
-  .h-arrow { display: none; }
   .dp-nav { display: none; }
 }
