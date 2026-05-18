@@ -72,7 +72,7 @@ function renderDetailPanel() {
   document.getElementById('dp-img').src = art.src;
   document.getElementById('dp-img').alt = art.title;
   const yearStr = art.year ? `, ${art.year}` : '';
-  document.getElementById('dp-title').innerHTML = `<em>${art.title}</em>${yearStr}`;
+  document.getElementById('dp-title').textContent = art.title + yearStr;
   document.getElementById('dp-medium').textContent = art.medium || '';
   document.getElementById('dp-dims').textContent = art.dims || '';
   document.getElementById('dp-prev').disabled = dpIndex === 0;
@@ -91,9 +91,12 @@ window.closeDetailPanel = closeDetailPanel;
 /* ===== H-GALLERY ARROWS ===== */
 function initHGalleryArrows(galleryId) {
   const gallery = document.getElementById(galleryId);
-  const prev = document.getElementById('h-arrow-prev');
-  const next = document.getElementById('h-arrow-next');
-  if (!gallery || !prev || !next) return;
+  if (!gallery) return;
+  const wrapper = gallery.closest('.h-gallery-wrap');
+  if (!wrapper) return;
+  const prev = wrapper.querySelector('.h-arrow-prev');
+  const next = wrapper.querySelector('.h-arrow-next');
+  if (!prev || !next) return;
 
   function getScrollAmount() {
     const item = gallery.querySelector('.h-item');
@@ -127,7 +130,7 @@ function renderHGallery(containerId, artworks) {
         <img src="${art.src}" alt="${art.title}" loading="lazy">
       </div>
       <div class="h-caption">
-        <div class="h-title"><em>${art.title}</em>${yearStr}</div>
+        <div class="h-title">${art.title}${yearStr}</div>
         ${art.medium ? `<div class="h-medium">${art.medium}</div>` : ''}
         ${art.dims ? `<div class="h-dims">${art.dims}</div>` : ''}
       </div>`;

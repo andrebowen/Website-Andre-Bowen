@@ -36,7 +36,7 @@
 </div>
 
 <!-- Hero -->
-<div class="hero" id="hero-img" onclick="openLightbox(heroArt, 0)">
+<div class="hero" id="hero-img" onclick="openDetailPanel(heroArt, 0)">
   <img
     src="images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.png"
     alt="The Grove, 2019">
@@ -52,7 +52,11 @@
     <h2>Still Life</h2>
     <a href="still-life.html">View all →</a>
   </div>
-  <div class="featured-grid" id="grid-still"></div>
+  <div class="h-gallery-wrap">
+    <button class="h-arrow h-arrow-prev" aria-label="Previous">&#8592;</button>
+    <div class="h-gallery" id="grid-still"></div>
+    <button class="h-arrow h-arrow-next" aria-label="Next">&#8594;</button>
+  </div>
 </div>
 
 <!-- Landscape -->
@@ -61,7 +65,11 @@
     <h2>Landscape</h2>
     <a href="landscape.html">View all →</a>
   </div>
-  <div class="featured-grid" id="grid-land"></div>
+  <div class="h-gallery-wrap">
+    <button class="h-arrow h-arrow-prev" aria-label="Previous">&#8592;</button>
+    <div class="h-gallery" id="grid-land"></div>
+    <button class="h-arrow h-arrow-next" aria-label="Next">&#8594;</button>
+  </div>
 </div>
 
 <!-- Figure & Drawings -->
@@ -70,7 +78,11 @@
     <h2>Figure &amp; Drawings</h2>
     <a href="figure.html">View all →</a>
   </div>
-  <div class="featured-grid" id="grid-fig"></div>
+  <div class="h-gallery-wrap">
+    <button class="h-arrow h-arrow-prev" aria-label="Previous">&#8592;</button>
+    <div class="h-gallery" id="grid-fig"></div>
+    <button class="h-arrow h-arrow-next" aria-label="Next">&#8594;</button>
+  </div>
 </div>
 
 <footer>
@@ -79,18 +91,20 @@
   </div>
 </footer>
 
-<!-- Lightbox -->
-<div id="lightbox">
-  <button class="lb-close" onclick="closeLightbox()">✕</button>
-  <button class="lb-prev" id="lb-prev">&#8249;</button>
-  <div class="lb-content">
-    <img id="lb-img" src="" alt="">
-    <div class="lb-info">
-      <div class="lb-title" id="lb-title"></div>
-      <div class="lb-meta" id="lb-meta"></div>
+<div id="detail-panel">
+  <div class="dp-left">
+    <button class="dp-close" onclick="closeDetailPanel()">← Back</button>
+    <div class="dp-title" id="dp-title"></div>
+    <div class="dp-medium" id="dp-medium"></div>
+    <div class="dp-dims" id="dp-dims"></div>
+    <div class="dp-nav">
+      <button class="dp-nav-btn" id="dp-prev">← Prev</button>
+      <button class="dp-nav-btn" id="dp-next">Next →</button>
     </div>
   </div>
-  <button class="lb-next" id="lb-next">&#8250;</button>
+  <div class="dp-right">
+    <img id="dp-img" src="" alt="">
+  </div>
 </div>
 
 <script src="js/main.js"></script>
@@ -128,29 +142,12 @@ const figFeatured = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-  function renderFeatured(containerId, items) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    items.forEach((art, i) => {
-      const el = document.createElement('div');
-      el.className = 'featured-item';
-      const metaParts = [art.year, art.medium, art.dims].filter(Boolean);
-      el.innerHTML = `
-        <div class="artwork-img">
-          <img src="${art.src}" alt="${art.title}" loading="lazy">
-        </div>
-        <div class="featured-caption">
-          <div class="caption-title">${art.title}</div>
-          ${metaParts.length ? `<div class="caption-meta">${metaParts.join(', ')}</div>` : ''}
-        </div>`;
-      el.addEventListener('click', () => openLightbox(items, i));
-      container.appendChild(el);
-    });
-  }
-
-  renderFeatured('grid-still', stillFeatured);
-  renderFeatured('grid-land', landFeatured);
-  renderFeatured('grid-fig', figFeatured);
+  renderHGallery('grid-still', stillFeatured);
+  initHGalleryArrows('grid-still');
+  renderHGallery('grid-land', landFeatured);
+  initHGalleryArrows('grid-land');
+  renderHGallery('grid-fig', figFeatured);
+  initHGalleryArrows('grid-fig');
 });
 </script>
 </body>

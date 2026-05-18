@@ -123,7 +123,7 @@ nav {
 
 .mobile-nav a {
   font-family: var(--font);
-  font-size: 28px;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: 0;
   color: var(--ink);
@@ -172,12 +172,12 @@ nav {
 }
 
 .h-caption {
-  padding: 14px 0 0;
+  padding: 19px 0 0;
 }
 
 .h-title {
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--ink);
   line-height: 1.4;
 }
@@ -185,14 +185,14 @@ nav {
 .h-title em { font-style: italic; }
 
 .h-medium {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--ink-2);
   margin-top: 4px;
 }
 
 .h-dims {
-  font-size: 13px;
-  color: var(--ink-3);
+  font-size: 15px;
+  color: var(--ink-2);
   margin-top: 2px;
 }
 
@@ -276,8 +276,8 @@ nav {
 
 .dp-title {
   font-family: var(--font);
-  font-size: 17px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
   line-height: 1.5;
   color: var(--ink);
   margin-bottom: 16px;
@@ -286,14 +286,14 @@ nav {
 .dp-title em { font-style: italic; }
 
 .dp-medium {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--ink-2);
   line-height: 1.6;
 }
 
 .dp-dims {
-  font-size: 13px;
-  color: var(--ink-3);
+  font-size: 15px;
+  color: var(--ink-2);
   line-height: 1.6;
   margin-top: 2px;
 }
@@ -347,7 +347,7 @@ nav {
 
 .page-intro h1 {
   font-family: var(--font);
-  font-size: clamp(36px, 5vw, 56px);
+  font-size: 16px;
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1.05;
@@ -518,7 +518,7 @@ nav {
 }
 
 .home-section {
-  padding: 80px 24px 0;
+  padding: 80px 0 0;
 }
 
 .home-section-hdr {
@@ -526,11 +526,12 @@ nav {
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: 28px;
+  padding: 0 var(--margin-x);
 }
 
 .home-section-hdr h2 {
   font-family: var(--font);
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: 26px;
   font-weight: 500;
   letter-spacing: 0;
   color: var(--ink);
@@ -629,7 +630,7 @@ nav {
 
 .cv-section h2 {
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -755,14 +756,11 @@ nav {
 
 /* ===== FOOTER ===== */
 footer {
-  border-top: 1px solid var(--sep);
-  padding: 40px 24px;
+  padding: 40px var(--margin-x);
   margin-top: 40px;
 }
 
 .footer-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
   display: flex;
   align-items: center;
   font-size: 12px;
@@ -796,6 +794,7 @@ footer {
   .h-arrow-next { right: calc(var(--margin-x) + 12px); }
 
   #detail-panel { flex-direction: column; }
+  .dp-right { order: -1; }
   .dp-left {
     width: 100%;
     padding: 24px 20px;
@@ -813,7 +812,7 @@ footer {
 
   .hero img { height: 68vw; }
   .page-intro { padding: 36px 16px 28px; }
-  .home-section { padding: 48px 16px 0; }
+  .home-section { padding: 48px 0 0; }
   .gallery { padding: 32px 16px 60px; }
   .about-wrap { padding: 36px 16px 60px; }
   .contact-wrap { padding: 36px 16px 80px; }
@@ -825,8 +824,18 @@ footer {
   .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
 
   :root { --margin-x: 16px; }
-  .h-item { flex: 0 0 86vw; }
-  .h-gallery { gap: 24px; padding: 20px 0 48px; }
-  .h-item-bg { padding: 20px; }
+  .h-gallery {
+    flex-direction: column;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    gap: 32px;
+    padding: 20px 0 48px;
+  }
+  .h-item {
+    flex: 0 0 auto;
+    width: 100%;
+    scroll-snap-align: none;
+  }
+  .h-item-bg { height: 60vw; min-height: 200px; padding: 20px; }
   .h-arrow { display: none; }
 }
