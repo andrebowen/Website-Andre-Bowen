@@ -799,6 +799,14 @@ footer {
 .footer-inner a { transition: color 0.15s; }
 .footer-inner a:hover { color: var(--ink); }
 
+.footer-instagram {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  color: var(--ink-3);
+}
+.footer-instagram svg { display: block; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .nav-links { display: none; }
