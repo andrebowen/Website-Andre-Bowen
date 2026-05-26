@@ -219,6 +219,67 @@ function renderHGallery(containerId, artworks) {
     container.appendChild(item);
     attachRipple(item);
   });
+
+  const wrap = container.closest('.h-gallery-wrap');
+  if (!wrap) return;
+
+  // Dot indicators
+  const dotsEl = document.createElement('div');
+  dotsEl.className = 'h-dots';
+  artworks.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'h-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to painting ${i + 1}`);
+    dot.addEventListener('click', () => scrollToItem(i));
+    dotsEl.appendChild(dot);
+  });
+  wrap.appendChild(dotsEl);
+
+  // Arrow buttons
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'h-prev';
+  prevBtn.setAttribute('aria-label', 'Previous');
+  prevBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'h-next';
+  nextBtn.setAttribute('aria-label', 'Next');
+  nextBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+
+  wrap.appendChild(prevBtn);
+  wrap.appendChild(nextBtn);
+  attachRipple(prevBtn);
+  attachRipple(nextBtn);
+
+  let activeIndex = 0;
+
+  function scrollToItem(idx) {
+    const items = container.querySelectorAll('.h-item');
+    const item = items[idx];
+    if (!item) return;
+    const scrollLeft = item.offsetLeft - (container.offsetWidth - item.offsetWidth) / 2;
+    container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+  }
+
+  function updateNav() {
+    const atStart = container.scrollLeft <= 4;
+    const atEnd = container.scrollLeft + container.offsetWidth >= container.scrollWidth - 4;
+    prevBtn.disabled = atStart;
+    nextBtn.disabled = atEnd;
+
+    const center = container.scrollLeft + container.offsetWidth / 2;
+    let minDist = Infinity;
+    container.querySelectorAll('.h-item').forEach((item, i) => {
+      const dist = Math.abs(item.offsetLeft + item.offsetWidth / 2 - center);
+      if (dist < minDist) { minDist = dist; activeIndex = i; }
+    });
+    dotsEl.querySelectorAll('.h-dot').forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+  }
+
+  prevBtn.addEventListener('click', () => scrollToItem(Math.max(0, activeIndex - 1)));
+  nextBtn.addEventListener('click', () => scrollToItem(Math.min(artworks.length - 1, activeIndex + 1)));
+  container.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
 }
 
 /* ===== GALLERY RENDERER ===== */
