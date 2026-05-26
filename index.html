@@ -16,6 +16,7 @@
   <meta name="twitter:title" content="André Bowen — Oil Painter">
   <meta name="twitter:description" content="André Bowen is an Australian oil painter working in still life, landscape, and figurative studies. Based in the Northern Rivers, NSW.">
   <meta name="twitter:image" content="https://andrebowen.com/images/Landscape/Andre%20Bowen_The%20Grove_2019_oil%20on%20linen_101x137cm.png">
+  <meta name="color-scheme" content="light dark">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
@@ -29,8 +30,10 @@
     "address": { "@type": "PostalAddress", "addressRegion": "Northern Rivers, New South Wales", "addressCountry": "AU" }
   }
   </script>
+  <script>(function(){var t=localStorage.getItem('md-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header>
   <nav>
@@ -45,6 +48,10 @@
     </ul>
     <button class="hamburger" aria-label="Open menu">
       <span></span><span></span>
+    </button>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
   </nav>
 </header>
@@ -61,7 +68,7 @@
 <h1 class="sr-only">André Bowen — Oil Painter</h1>
 
 <!-- Hero -->
-<div class="hero" id="hero-img" onclick="openDetailPanel(heroArt, 0)">
+<div id="main-content" class="hero" onclick="openDetailPanel(heroArt, 0)">
   <img
     src="images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.png"
     alt="The Grove, 2019">
@@ -72,43 +79,52 @@
 </div>
 
 <!-- Still Life -->
-<div class="home-section">
-  <div class="home-section-hdr">
+<section class="home-feature">
+  <div class="home-feature-hdr">
     <h2>Still Life</h2>
     <a href="still-life.html">View all →</a>
   </div>
-  <div class="h-gallery-wrap">
-    <button class="h-arrow h-arrow-prev" aria-label="Previous">&#8592;</button>
-    <div class="h-gallery" id="grid-still"></div>
-    <button class="h-arrow h-arrow-next" aria-label="Next">&#8594;</button>
+  <div class="home-feature-img" onclick="openDetailPanel(stillFeatured, 0, this.querySelector('img'))">
+    <img src="images/Still life/Andre Bowen_Sneakers_2019_oil on panel_40x50cm.png"
+         alt="Sneakers, 2019" loading="lazy">
   </div>
-</div>
+  <div class="home-feature-caption">
+    <span class="home-feature-title">Sneakers</span>
+    <span class="home-feature-meta">2019 · Oil on panel · 40 × 50 cm</span>
+  </div>
+</section>
 
 <!-- Landscape -->
-<div class="home-section">
-  <div class="home-section-hdr">
+<section class="home-feature">
+  <div class="home-feature-hdr">
     <h2>Landscape</h2>
     <a href="landscape.html">View all →</a>
   </div>
-  <div class="h-gallery-wrap">
-    <button class="h-arrow h-arrow-prev" aria-label="Previous">&#8592;</button>
-    <div class="h-gallery" id="grid-land"></div>
-    <button class="h-arrow h-arrow-next" aria-label="Next">&#8594;</button>
+  <div class="home-feature-img" onclick="openDetailPanel(landFeatured, 0, this.querySelector('img'))">
+    <img src="images/Landscape/Andre_Bowen_Lawlers Lane Nightscape I_2019_oil-on-panel_122x122cm.png"
+         alt="Lawlers Lane Nightscape I, 2019" loading="lazy">
   </div>
-</div>
+  <div class="home-feature-caption">
+    <span class="home-feature-title">Lawlers Lane Nightscape I</span>
+    <span class="home-feature-meta">2019 · Oil on panel · 122 × 122 cm</span>
+  </div>
+</section>
 
 <!-- Figure & Drawings -->
-<div class="home-section">
-  <div class="home-section-hdr">
+<section class="home-feature">
+  <div class="home-feature-hdr">
     <h2>Figure &amp; Drawings</h2>
     <a href="figure.html">View all →</a>
   </div>
-  <div class="h-gallery-wrap">
-    <button class="h-arrow h-arrow-prev" aria-label="Previous">&#8592;</button>
-    <div class="h-gallery" id="grid-fig"></div>
-    <button class="h-arrow h-arrow-next" aria-label="Next">&#8594;</button>
+  <div class="home-feature-img" onclick="openDetailPanel(figFeatured, 0, this.querySelector('img'))">
+    <img src="images/Figure/Andre Bowen_Self Portrait_2013_oil on panel_35x30cm.png"
+         alt="Self Portrait, 2013" loading="lazy">
   </div>
-</div>
+  <div class="home-feature-caption">
+    <span class="home-feature-title">Self Portrait</span>
+    <span class="home-feature-meta">2013 · Oil on panel · 35 × 30 cm</span>
+  </div>
+</section>
 
 <footer>
   <div class="footer-inner">
@@ -125,13 +141,13 @@
 
 <div id="detail-panel">
   <div class="dp-left">
-    <button class="dp-close" onclick="closeDetailPanel()">← Back</button>
+    <button class="dp-close" onclick="closeDetailPanel()">Back</button>
     <div class="dp-title" id="dp-title"></div>
     <div class="dp-medium" id="dp-medium"></div>
     <div class="dp-dims" id="dp-dims"></div>
     <div class="dp-nav">
-      <button class="dp-nav-btn" id="dp-prev">← Prev</button>
-      <button class="dp-nav-btn" id="dp-next">Next →</button>
+      <button class="dp-nav-btn" id="dp-prev">Prev</button>
+      <button class="dp-nav-btn" id="dp-next">Next</button>
     </div>
   </div>
   <div class="dp-right">
@@ -174,12 +190,7 @@ const figFeatured = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderHGallery('grid-still', stillFeatured);
-  initHGalleryArrows('grid-still');
-  renderHGallery('grid-land', landFeatured);
-  initHGalleryArrows('grid-land');
-  renderHGallery('grid-fig', figFeatured);
-  initHGalleryArrows('grid-fig');
+  document.querySelectorAll('.home-feature-img').forEach(attachRipple);
 });
 </script>
 </body>

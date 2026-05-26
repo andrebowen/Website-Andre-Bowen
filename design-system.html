@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — André Bowen MD3</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ── Page layout ── */
+    .ds-wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--margin-x) 120px; }
+
+    .ds-intro { padding: 72px 0 56px; border-bottom: 1px solid var(--md-sys-color-outline-variant); }
+    .ds-intro-eyebrow { font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--md-sys-color-outline); margin-bottom: 16px; }
+    .ds-intro h1 { font-size: 32px; font-weight: 500; margin-bottom: 16px; }
+    .ds-intro p { font-size: 15px; color: var(--md-sys-color-on-surface-variant); line-height: 1.7; max-width: 540px; }
+
+    .ds-section { padding: 72px 0 0; }
+    .ds-section + .ds-section { border-top: 1px solid var(--md-sys-color-outline-variant); margin-top: 72px; }
+
+    .ds-section-eyebrow { font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--md-sys-color-outline); margin-bottom: 12px; }
+    .ds-section-title { font-size: 22px; font-weight: 500; margin-bottom: 8px; }
+    .ds-section-desc { font-size: 15px; color: var(--md-sys-color-on-surface-variant); line-height: 1.6; max-width: 560px; margin-bottom: 48px; }
+    .ds-section-desc code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 14px; background: var(--md-sys-color-surface-container); padding: 1px 5px; border-radius: 3px; }
+
+    .ds-subsection-title { font-size: 14px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--md-sys-color-outline); margin: 40px 0 16px; }
+
+    /* ── Color ── */
+    .color-group { margin-bottom: 4px; }
+    .color-group-label { font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--md-sys-color-outline); margin-bottom: 8px; }
+    .color-row { display: flex; gap: 2px; margin-bottom: 2px; }
+    .swatch {
+      flex: 1; min-width: 0; height: 80px; padding: 10px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      border-radius: 3px;
+    }
+    .swatch-name { font-size: 14px; font-weight: 500; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .swatch-hex  { font-size: 14px; opacity: 0.65; margin-top: 2px; font-family: 'SF Mono', monospace; }
+
+    .dark-band { background: #1c1c1e; border-radius: 8px; padding: 28px 28px 12px; margin-top: 32px; }
+    .dark-band .color-group-label { color: #636366; }
+
+    /* ── Type ── */
+    .type-row {
+      display: grid; grid-template-columns: 180px 1fr 100px;
+      align-items: baseline; gap: 24px;
+      padding: 18px 0; border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    }
+    .type-row:first-child { border-top: 1px solid var(--md-sys-color-outline-variant); }
+    .type-role { font-size: 14px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--md-sys-color-outline); }
+    .type-spec { font-size: 14px; color: var(--md-sys-color-outline); text-align: right; font-family: 'SF Mono', monospace; }
+
+    /* ── Shape ── */
+    .shape-row { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end; }
+    .shape-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .shape-swatch {
+      background: var(--md-sys-color-primary-container);
+      border: 1px solid var(--md-sys-color-outline-variant);
+    }
+    .shape-name { font-size: 14px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--md-sys-color-outline); }
+    .shape-val  { font-size: 14px; color: var(--md-sys-color-on-surface-variant); margin-top: -8px; font-family: 'SF Mono', monospace; }
+    .shape-use  { font-size: 14px; color: var(--md-sys-color-outline); }
+
+    /* ── Elevation ── */
+    .elevation-row { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end; background: var(--md-sys-color-surface-container-low); padding: 32px; border-radius: 8px; }
+    .elevation-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .elevation-card {
+      width: 110px; height: 72px; background: var(--md-sys-color-surface);
+      border-radius: var(--md-sys-shape-corner-medium);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .elevation-name { font-size: 14px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--md-sys-color-outline); }
+    .elevation-use  { font-size: 14px; color: var(--md-sys-color-on-surface-variant); margin-top: -8px; }
+
+    /* ── Motion ── */
+    .motion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .motion-table { width: 100%; border-collapse: collapse; }
+    .motion-table th { font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--md-sys-color-outline); padding: 0 12px 10px 0; border-bottom: 1px solid var(--md-sys-color-outline-variant); text-align: left; }
+    .motion-table td { font-size: 14px; color: var(--md-sys-color-on-surface-variant); padding: 10px 12px 10px 0; border-bottom: 1px solid var(--md-sys-color-outline-variant); vertical-align: middle; }
+    .motion-table td:first-child { color: var(--md-sys-color-on-surface); font-weight: 500; font-family: 'SF Mono', monospace; font-size: 14px; white-space: nowrap; }
+    .dur-bar { height: 3px; background: var(--md-sys-color-primary); border-radius: 2px; opacity: 0.4; }
+    .motion-table td .use { font-size: 14px; color: var(--md-sys-color-outline); margin-top: 2px; }
+
+    /* ── State layers ── */
+    .state-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .state-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .state-box {
+      width: 112px; height: 48px;
+      background: var(--md-sys-color-primary-container);
+      border-radius: var(--md-sys-shape-corner-small);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: var(--md-sys-color-on-primary-container);
+    }
+    .state-box::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--md-sys-color-on-surface); pointer-events: none;
+    }
+    .state-rest::before    { opacity: 0; }
+    .state-hover::before   { opacity: 0.08; }
+    .state-focus::before   { opacity: 0.12; }
+    .state-pressed::before { opacity: 0.12; }
+    .state-dragged::before { opacity: 0.16; }
+    .state-name  { font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--md-sys-color-outline); }
+    .state-pct   { font-size: 14px; color: var(--md-sys-color-on-surface-variant); margin-top: -6px; font-family: 'SF Mono', monospace; }
+
+    /* ── Components ── */
+    .comp-row {
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: 40px; padding: 32px 0; border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      align-items: start;
+    }
+    .comp-row:first-child { border-top: 1px solid var(--md-sys-color-outline-variant); }
+    .comp-name  { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+    .comp-tokens { font-size: 14px; color: var(--md-sys-color-outline); font-family: 'SF Mono', monospace; line-height: 1.9; }
+    .comp-demo  { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .comp-dark  { background: #1c1c1e; padding: 20px 24px; border-radius: 8px; margin-top: 12px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+    /* Text Button — standalone */
+    .ds-text-btn {
+      font-size: var(--md-sys-typescale-label-large-size); font-weight: 500;
+      color: var(--md-sys-color-secondary); padding: 4px 10px;
+      border-radius: var(--md-sys-shape-corner-full); position: relative; overflow: hidden;
+    }
+    .ds-text-btn::before {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      background: var(--md-sys-color-on-surface); opacity: 0;
+      transition: opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+      pointer-events: none;
+    }
+    .ds-text-btn:hover::before { opacity: var(--md-sys-state-hover-opacity); }
+
+    /* Focus demo */
+    .focus-btn {
+      padding: 8px 16px; background: var(--md-sys-color-surface-container);
+      border: none; font-family: var(--font); font-size: 14px; cursor: pointer;
+      border-radius: var(--md-sys-shape-corner-small); color: var(--md-sys-color-on-surface);
+    }
+    .focus-simulated {
+      outline: 3px solid var(--md-sys-color-primary) !important;
+      outline-offset: 2px !important;
+    }
+
+    /* Gallery demo */
+    .demo-art-item { width: 180px; cursor: pointer; position: relative; overflow: hidden; }
+    .demo-art-item .artwork-img {
+      background: var(--md-sys-color-surface-container-high);
+      height: 150px; display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .demo-art-item .artwork-img img {
+      max-width: 100%; max-height: 130px; object-fit: contain;
+    }
+
+    @media (max-width: 700px) {
+      .type-row { grid-template-columns: 1fr; gap: 6px; }
+      .type-spec { text-align: left; }
+      .comp-row { grid-template-columns: 1fr; gap: 20px; }
+      .motion-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+  <script>(function(){var t=localStorage.getItem('md-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">André Bowen</a>
+    <ul class="nav-links">
+      <li><a href="still-life.html">Still Life</a></li>
+      <li><a href="landscape.html">Landscape</a></li>
+      <li><a href="figure.html">Figure</a></li>
+      <li><a href="drawings.html">Drawings</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu"><span></span><span></span></button>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav">
+  <a href="still-life.html">Still Life</a>
+  <a href="landscape.html">Landscape</a>
+  <a href="figure.html">Figure</a>
+  <a href="drawings.html">Drawings</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div id="main-content" class="ds-wrap">
+
+  <!-- INTRO -->
+  <div class="ds-intro">
+    <div class="ds-intro-eyebrow">Design System</div>
+    <h1>André Bowen — MD3</h1>
+    <p>Material Design 3 applied to a painting portfolio. Neutral monochrome scheme. Artwork images always render with square corners regardless of component context. All tokens, components, and interactive states documented below.</p>
+  </div>
+
+
+  <!-- 1. COLOR -->
+  <div class="ds-section" id="color">
+    <div class="ds-section-eyebrow">01</div>
+    <div class="ds-section-title">Color</div>
+    <div class="ds-section-desc">28-role MD3 color system. Full dark scheme auto-activates via <code>prefers-color-scheme: dark</code>. Primary is #1d1d1f — near-black — mapping cleanly to a neutral monochrome palette.</div>
+
+    <div class="ds-subsection-title">Light Scheme</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Primary</div>
+      <div class="color-row">
+        <div class="swatch" style="background:#1d1d1f;color:#fff;"><div class="swatch-name">primary</div><div class="swatch-hex">#1d1d1f</div></div>
+        <div class="swatch" style="background:#fff;color:#1d1d1f;border:1px solid #e5e5ea;"><div class="swatch-name">on-primary</div><div class="swatch-hex">#ffffff</div></div>
+        <div class="swatch" style="background:#e0e0e4;color:#1a1a1c;"><div class="swatch-name">primary-container</div><div class="swatch-hex">#e0e0e4</div></div>
+        <div class="swatch" style="background:#1a1a1c;color:#e0e0e4;"><div class="swatch-name">on-primary-container</div><div class="swatch-hex">#1a1a1c</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Secondary</div>
+      <div class="color-row">
+        <div class="swatch" style="background:#5c5c60;color:#fff;"><div class="swatch-name">secondary</div><div class="swatch-hex">#5c5c60</div></div>
+        <div class="swatch" style="background:#fff;color:#5c5c60;border:1px solid #e5e5ea;"><div class="swatch-name">on-secondary</div><div class="swatch-hex">#ffffff</div></div>
+        <div class="swatch" style="background:#e0e0e4;color:#191b1c;"><div class="swatch-name">secondary-container</div><div class="swatch-hex">#e0e0e4</div></div>
+        <div class="swatch" style="background:#191b1c;color:#e0e0e4;"><div class="swatch-name">on-secondary-container</div><div class="swatch-hex">#191b1c</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Surface scale</div>
+      <div class="color-row">
+        <div class="swatch" style="background:#fff;color:#1d1d1f;border:1px solid #e5e5ea;"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div>
+        <div class="swatch" style="background:#f5f5f7;color:#1d1d1f;"><div class="swatch-name">container-low</div><div class="swatch-hex">#f5f5f7</div></div>
+        <div class="swatch" style="background:#eeeeee;color:#1d1d1f;"><div class="swatch-name">container</div><div class="swatch-hex">#eeeeee</div></div>
+        <div class="swatch" style="background:#e8e8e8;color:#1d1d1f;"><div class="swatch-name">container-high</div><div class="swatch-hex">#e8e8e8</div></div>
+        <div class="swatch" style="background:#e2e2e2;color:#1d1d1f;"><div class="swatch-name">container-highest</div><div class="swatch-hex">#e2e2e2</div></div>
+        <div class="swatch" style="background:#dadada;color:#1d1d1f;"><div class="swatch-name">surface-dim</div><div class="swatch-hex">#dadada</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">On Surface / Outline</div>
+      <div class="color-row">
+        <div class="swatch" style="background:#1d1d1f;color:#fff;"><div class="swatch-name">on-surface</div><div class="swatch-hex">#1d1d1f</div></div>
+        <div class="swatch" style="background:#3c3c43;color:#fff;"><div class="swatch-name">on-surface-variant</div><div class="swatch-hex">#3c3c43</div></div>
+        <div class="swatch" style="background:#8e8e93;color:#fff;"><div class="swatch-name">outline</div><div class="swatch-hex">#8e8e93</div></div>
+        <div class="swatch" style="background:#d1d1d6;color:#1d1d1f;"><div class="swatch-name">outline-variant</div><div class="swatch-hex">#d1d1d6</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Error</div>
+      <div class="color-row">
+        <div class="swatch" style="background:#b3261e;color:#fff;"><div class="swatch-name">error</div><div class="swatch-hex">#b3261e</div></div>
+        <div class="swatch" style="background:#fff;color:#b3261e;border:1px solid #e5e5ea;"><div class="swatch-name">on-error</div><div class="swatch-hex">#ffffff</div></div>
+        <div class="swatch" style="background:#f9dedc;color:#410e0b;"><div class="swatch-name">error-container</div><div class="swatch-hex">#f9dedc</div></div>
+        <div class="swatch" style="background:#410e0b;color:#f9dedc;"><div class="swatch-name">on-error-container</div><div class="swatch-hex">#410e0b</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Inverse</div>
+      <div class="color-row">
+        <div class="swatch" style="background:#313135;color:#f0f0f4;"><div class="swatch-name">inverse-surface</div><div class="swatch-hex">#313135</div></div>
+        <div class="swatch" style="background:#f0f0f4;color:#313135;"><div class="swatch-name">inverse-on-surface</div><div class="swatch-hex">#f0f0f4</div></div>
+        <div class="swatch" style="background:#c7c7cc;color:#1d1d1f;"><div class="swatch-name">inverse-primary</div><div class="swatch-hex">#c7c7cc</div></div>
+        <div class="swatch" style="background:#000000;color:#fff;"><div class="swatch-name">scrim</div><div class="swatch-hex">#000000</div></div>
+      </div>
+    </div>
+
+    <div class="dark-band">
+      <div class="color-group-label" style="color:#636366;margin-bottom:20px;">Dark Scheme</div>
+      <div class="color-group">
+        <div class="color-group-label" style="color:#636366;">Primary</div>
+        <div class="color-row">
+          <div class="swatch" style="background:#c7c7cc;color:#2e2e32;"><div class="swatch-name">primary</div><div class="swatch-hex">#c7c7cc</div></div>
+          <div class="swatch" style="background:#2e2e32;color:#c7c7cc;"><div class="swatch-name">on-primary</div><div class="swatch-hex">#2e2e32</div></div>
+          <div class="swatch" style="background:#44444a;color:#e3e3e8;"><div class="swatch-name">primary-container</div><div class="swatch-hex">#44444a</div></div>
+          <div class="swatch" style="background:#e3e3e8;color:#44444a;"><div class="swatch-name">on-primary-container</div><div class="swatch-hex">#e3e3e8</div></div>
+        </div>
+      </div>
+      <div class="color-group" style="margin-top:8px;">
+        <div class="color-group-label" style="color:#636366;">Surface scale</div>
+        <div class="color-row">
+          <div class="swatch" style="background:#0f0f10;color:#e5e5ea;border:1px solid #3a3a3c;"><div class="swatch-name">container-lowest</div><div class="swatch-hex">#0f0f10</div></div>
+          <div class="swatch" style="background:#1c1c1e;color:#e5e5ea;border:1px solid #3a3a3c;"><div class="swatch-name">surface</div><div class="swatch-hex">#1c1c1e</div></div>
+          <div class="swatch" style="background:#2c2c2e;color:#e5e5ea;"><div class="swatch-name">container</div><div class="swatch-hex">#2c2c2e</div></div>
+          <div class="swatch" style="background:#3a3a3c;color:#e5e5ea;"><div class="swatch-name">container-high</div><div class="swatch-hex">#3a3a3c</div></div>
+          <div class="swatch" style="background:#48484a;color:#e5e5ea;"><div class="swatch-name">container-highest</div><div class="swatch-hex">#48484a</div></div>
+        </div>
+      </div>
+      <div class="color-group" style="margin-top:8px;">
+        <div class="color-group-label" style="color:#636366;">On Surface / Outline</div>
+        <div class="color-row">
+          <div class="swatch" style="background:#e5e5ea;color:#1c1c1e;"><div class="swatch-name">on-surface</div><div class="swatch-hex">#e5e5ea</div></div>
+          <div class="swatch" style="background:#c7c7cc;color:#1c1c1e;"><div class="swatch-name">on-surface-variant</div><div class="swatch-hex">#c7c7cc</div></div>
+          <div class="swatch" style="background:#8e8e93;color:#fff;"><div class="swatch-name">outline</div><div class="swatch-hex">#8e8e93</div></div>
+          <div class="swatch" style="background:#3a3a3c;color:#e5e5ea;"><div class="swatch-name">outline-variant</div><div class="swatch-hex">#3a3a3c</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 2. TYPOGRAPHY -->
+  <div class="ds-section" id="typography">
+    <div class="ds-section-eyebrow">02</div>
+    <div class="ds-section-title">Typography</div>
+    <div class="ds-section-desc">MD3 type scale mapped to Avenir Next Pro. The site uses headline, title, body, and label roles. Display roles are defined but unused at this scale.</div>
+
+    <div class="type-row">
+      <div class="type-role">Headline Large</div>
+      <div style="font-size:32px;font-weight:500;line-height:1.25;">André Bowen</div>
+      <div class="type-spec">32 / 500</div>
+    </div>
+    <div class="type-row">
+      <div class="type-role">Headline Medium</div>
+      <div style="font-size:28px;font-weight:500;line-height:1.3;">Still Life</div>
+      <div class="type-spec">28 / 500</div>
+    </div>
+    <div class="type-row">
+      <div class="type-role">Headline Small</div>
+      <div style="font-size:24px;font-weight:500;line-height:1.35;">Landscape</div>
+      <div class="type-spec">24 / 500</div>
+    </div>
+    <div class="type-row">
+      <div class="type-role">Title Large</div>
+      <div style="font-size:22px;font-weight:500;line-height:1.4;">Figure &amp; Drawings</div>
+      <div class="type-spec">22 / 500</div>
+    </div>
+    <div class="type-row">
+      <div class="type-role">Title Medium</div>
+      <div style="font-size:16px;font-weight:500;line-height:1.5;">Flowers in a Striped Vase</div>
+      <div class="type-spec">16 / 500</div>
+    </div>
+    <div class="type-row">
+      <div class="type-role">Body Large</div>
+      <div style="font-size:16px;font-weight:400;line-height:1.65;color:var(--md-sys-color-on-surface-variant);">André Bowen is an Australian oil painter working in still life, landscape, and figurative studies. Based in the Northern Rivers, NSW.</div>
+      <div class="type-spec">16 / 400</div>
+    </div>
+    <div class="type-row">
+      <div class="type-role">Label Large</div>
+      <div style="font-size:16px;font-weight:500;letter-spacing:0.1px;">View all →</div>
+      <div class="type-spec">16 / 500</div>
+    </div>
+    <div class="type-row">
+      <div class="type-role">Label Medium</div>
+      <div style="font-size:14px;font-weight:500;letter-spacing:0.5px;color:var(--md-sys-color-outline);">2019 · Oil on linen · 101 × 137 cm</div>
+      <div class="type-spec">14 / 500</div>
+    </div>
+    <div class="type-row">
+      <div class="type-role">Label Small</div>
+      <div style="font-size:14px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;color:var(--md-sys-color-outline);">Still Life</div>
+      <div class="type-spec">14 / 500 UC</div>
+    </div>
+  </div>
+
+
+  <!-- 3. SHAPE -->
+  <div class="ds-section" id="shape">
+    <div class="ds-section-eyebrow">03</div>
+    <div class="ds-section-title">Shape</div>
+    <div class="ds-section-desc">Six-step corner radius scale. Artwork images are locked to <code>border-radius: 0 !important</code> — paintings must never be clipped. Image cards use <code>corner-small (8px)</code>. Buttons and UI chrome use <code>corner-extra-small (4px)</code>.</div>
+
+    <div class="shape-row">
+      <div class="shape-item">
+        <div class="shape-swatch" style="width:80px;height:80px;border-radius:0;"></div>
+        <div class="shape-name">None</div>
+        <div class="shape-val">0px</div>
+        <div class="shape-use">artwork</div>
+      </div>
+      <div class="shape-item">
+        <div class="shape-swatch" style="width:80px;height:80px;border-radius:4px;"></div>
+        <div class="shape-name">XSmall</div>
+        <div class="shape-val">4px</div>
+        <div class="shape-use">nav links</div>
+      </div>
+      <div class="shape-item">
+        <div class="shape-swatch" style="width:80px;height:80px;border-radius:8px;"></div>
+        <div class="shape-name">Small</div>
+        <div class="shape-val">8px</div>
+        <div class="shape-use">alerts</div>
+      </div>
+      <div class="shape-item">
+        <div class="shape-swatch" style="width:80px;height:80px;border-radius:12px;"></div>
+        <div class="shape-name">Medium</div>
+        <div class="shape-val">12px</div>
+        <div class="shape-use">cards</div>
+      </div>
+      <div class="shape-item">
+        <div class="shape-swatch" style="width:80px;height:80px;border-radius:16px;"></div>
+        <div class="shape-name">Large</div>
+        <div class="shape-val">16px</div>
+        <div class="shape-use">sheets</div>
+      </div>
+      <div class="shape-item">
+        <div class="shape-swatch" style="width:80px;height:40px;border-radius:9999px;"></div>
+        <div class="shape-name">Full</div>
+        <div class="shape-val">9999px</div>
+        <div class="shape-use">buttons, FAB</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 4. ELEVATION -->
+  <div class="ds-section" id="elevation">
+    <div class="ds-section-eyebrow">04</div>
+    <div class="ds-section-title">Elevation</div>
+    <div class="ds-section-desc">MD3 tonal elevation — no shadows. Depth is expressed through surface container color steps. Applied: header on scroll → level 2, detail panel → level 2, navigation drawer → level 2.</div>
+
+    <div class="elevation-row">
+      <div class="elevation-item">
+        <div class="elevation-card" style="background:var(--md-sys-color-surface);"></div>
+        <div class="elevation-name">Level 0</div>
+        <div class="elevation-use">surface · page bg</div>
+      </div>
+      <div class="elevation-item">
+        <div class="elevation-card" style="background:var(--md-sys-color-surface-container-lowest);"></div>
+        <div class="elevation-name">Level 1</div>
+        <div class="elevation-use">surface-container-lowest</div>
+      </div>
+      <div class="elevation-item">
+        <div class="elevation-card" style="background:var(--md-sys-color-surface-container-low);"></div>
+        <div class="elevation-name">Level 2</div>
+        <div class="elevation-use">header · arrows · panel</div>
+      </div>
+      <div class="elevation-item">
+        <div class="elevation-card" style="background:var(--md-sys-color-surface-container);"></div>
+        <div class="elevation-name">Level 3</div>
+        <div class="elevation-use">arrows hover</div>
+      </div>
+      <div class="elevation-item">
+        <div class="elevation-card" style="background:var(--md-sys-color-surface-container-high);"></div>
+        <div class="elevation-name">Level 4</div>
+        <div class="elevation-use">surface-container-high</div>
+      </div>
+      <div class="elevation-item">
+        <div class="elevation-card" style="background:var(--md-sys-color-surface-container-highest);"></div>
+        <div class="elevation-name">Level 5</div>
+        <div class="elevation-use">surface-container-highest</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 5. MOTION -->
+  <div class="ds-section" id="motion">
+    <div class="ds-section-eyebrow">05</div>
+    <div class="ds-section-title">Motion</div>
+    <div class="ds-section-desc">10 duration steps and 6 easing curves. UI hover/focus uses short3 + standard. Image hovers use medium2 + emphasized. The ripple animation uses long2 + standard-decelerate.</div>
+
+    <div class="motion-grid">
+      <div>
+        <div class="ds-subsection-title" style="margin-top:0;">Duration</div>
+        <table class="motion-table">
+          <thead><tr><th>Token</th><th>ms</th><th style="width:100px;">Scale</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td>short1</td><td>50</td><td><div class="dur-bar" style="width:5%;min-width:4px;"></div></td><td><span class="use">micro</span></td></tr>
+            <tr><td>short2</td><td>100</td><td><div class="dur-bar" style="width:10%;"></div></td><td><span class="use">—</span></td></tr>
+            <tr><td>short3</td><td>150</td><td><div class="dur-bar" style="width:15%;"></div></td><td><span class="use">hover / focus</span></td></tr>
+            <tr><td>short4</td><td>200</td><td><div class="dur-bar" style="width:20%;"></div></td><td><span class="use">hamburger</span></td></tr>
+            <tr><td>medium1</td><td>250</td><td><div class="dur-bar" style="width:25%;"></div></td><td><span class="use">—</span></td></tr>
+            <tr><td>medium2</td><td>300</td><td><div class="dur-bar" style="width:30%;"></div></td><td><span class="use">image hover</span></td></tr>
+            <tr><td>medium3</td><td>350</td><td><div class="dur-bar" style="width:35%;"></div></td><td><span class="use">—</span></td></tr>
+            <tr><td>medium4</td><td>400</td><td><div class="dur-bar" style="width:40%;"></div></td><td><span class="use">—</span></td></tr>
+            <tr><td>long1</td><td>450</td><td><div class="dur-bar" style="width:45%;"></div></td><td><span class="use">—</span></td></tr>
+            <tr><td>long2</td><td>500</td><td><div class="dur-bar" style="width:50%;"></div></td><td><span class="use">ripple</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="ds-subsection-title" style="margin-top:0;">Easing</div>
+        <table class="motion-table">
+          <thead><tr><th>Token</th><th>Bezier</th></tr></thead>
+          <tbody>
+            <tr><td>standard</td><td style="font-family:monospace;font-size:14px;">0.2, 0, 0, 1.0</td></tr>
+            <tr><td>standard-decel</td><td style="font-family:monospace;font-size:14px;">0, 0, 0, 1.0</td></tr>
+            <tr><td>standard-accel</td><td style="font-family:monospace;font-size:14px;">0.3, 0, 1, 1</td></tr>
+            <tr><td>emphasized</td><td style="font-family:monospace;font-size:14px;">0.2, 0, 0, 1.0</td></tr>
+            <tr><td>emph-decel</td><td style="font-family:monospace;font-size:14px;">0.05, 0.7, 0.1, 1.0</td></tr>
+            <tr><td>emph-accel</td><td style="font-family:monospace;font-size:14px;">0.3, 0, 0.8, 0.15</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 6. STATE LAYERS -->
+  <div class="ds-section" id="states">
+    <div class="ds-section-eyebrow">06</div>
+    <div class="ds-section-title">State Layers</div>
+    <div class="ds-section-desc">MD3 interaction states use a <code>::before</code> overlay of the content colour at a specified opacity, rather than changing the base colour. This keeps the surface colour stable across states.</div>
+
+    <div class="state-row">
+      <div class="state-item">
+        <div class="state-box state-rest">Surface</div>
+        <div class="state-name">Rest</div>
+        <div class="state-pct">0%</div>
+      </div>
+      <div class="state-item">
+        <div class="state-box state-hover">Surface</div>
+        <div class="state-name">Hovered</div>
+        <div class="state-pct">8%</div>
+      </div>
+      <div class="state-item">
+        <div class="state-box state-focus">Surface</div>
+        <div class="state-name">Focused</div>
+        <div class="state-pct">12%</div>
+      </div>
+      <div class="state-item">
+        <div class="state-box state-pressed">Surface</div>
+        <div class="state-name">Pressed</div>
+        <div class="state-pct">12%</div>
+      </div>
+      <div class="state-item">
+        <div class="state-box state-dragged">Surface</div>
+        <div class="state-name">Dragged</div>
+        <div class="state-pct">16%</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 7. COMPONENTS -->
+  <div class="ds-section" id="components">
+    <div class="ds-section-eyebrow">07</div>
+    <div class="ds-section-title">Components</div>
+    <div class="ds-section-desc">All interactive components as implemented. Hover to see state layers. Click to see the ripple. Tab through to see focus rings.</div>
+
+    <!-- Filled Button -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Filled Button</div>
+        <div class="comp-tokens">
+          shape: corner-full<br>
+          bg: color-primary<br>
+          fg: color-on-primary<br>
+          elev: 0 → 1 on hover<br>
+          ripple: on-primary
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo">
+          <button class="btn-submit" style="width:auto;margin-top:0;padding:12px 28px;">Send Enquiry</button>
+          <button class="btn-submit" style="width:auto;margin-top:0;padding:12px 28px;opacity:0.38;pointer-events:none;" disabled>Disabled</button>
+        </div>
+        <div class="comp-dark">
+          <button class="btn-submit" style="width:auto;margin-top:0;padding:12px 28px;background:#c7c7cc;color:#2e2e32;">Send Enquiry</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Home Feature Section -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Home Feature Section</div>
+        <div class="comp-tokens">
+          .home-feature · padding: 80px margin-x 0<br>
+          .home-feature-hdr · flex, space-between<br>
+          .home-feature-img · surface-container bg<br>
+          height: 62vh · min-height: 320px<br>
+          padding: 40px · object-fit: contain<br>
+          hover state layer: on-surface 8%<br>
+          ripple: attachRipple() on DOMContentLoaded<br>
+          caption: title (500) left · meta (14px) right<br>
+          mobile &lt;600px: height 56vw · caption stacks
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo" style="align-items:flex-start;flex-direction:column;gap:12px;width:280px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;width:100%;">
+            <span style="font-size:15px;font-weight:500;color:var(--ink);">Still Life</span>
+            <span style="font-size:13px;color:var(--md-sys-color-secondary);">View all →</span>
+          </div>
+          <div style="width:100%;height:100px;background:var(--md-sys-color-surface-container);display:flex;align-items:center;justify-content:center;">
+            <img src="images/Still life/Andre Bowen_Sneakers_2019_oil on panel_40x50cm.png" alt="Sneakers" style="max-height:84px;max-width:100%;object-fit:contain;">
+          </div>
+          <div style="display:flex;justify-content:space-between;width:100%;">
+            <span style="font-size:14px;font-weight:500;color:var(--ink);">Sneakers</span>
+            <span style="font-size:13px;color:var(--ink-2);">2019 · Oil on panel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View Transitions -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">View Transitions — Painting Morph</div>
+        <div class="comp-tokens">
+          document.startViewTransition()<br>
+          source img: view-transition-name: painting<br>
+          dp-img: view-transition-name: painting<br>
+          duration: medium2 (300ms)<br>
+          easing: emphasized<br>
+          fallback: instant open (no VT support)
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo" style="font-size:14px;color:var(--md-sys-color-on-surface-variant);line-height:1.7;">
+          Clicking a gallery card morphs the painting into the detail panel. Panel prev/next also uses <code style="font-family:monospace;font-size:13px;background:var(--md-sys-color-surface-container);padding:1px 5px;border-radius:3px;">startViewTransition()</code> for image crossfades.
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Button -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Text Button</div>
+        <div class="comp-tokens">
+          shape: corner-full<br>
+          label: color-secondary<br>
+          state layer: on-surface 8%<br>
+          no elevation
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo">
+          <a href="#" onclick="return false;" class="ds-text-btn">View all →</a>
+          <button class="dp-nav-btn">← Prev</button>
+          <button class="dp-nav-btn">Next →</button>
+          <button class="dp-nav-btn" disabled style="opacity:0.2;">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Field -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Text Field — Underline</div>
+        <div class="comp-tokens">
+          border-bottom: outline-variant<br>
+          focus: primary · 2px<br>
+          transition: short3 · standard<br>
+          border-radius: none
+        </div>
+      </div>
+      <div style="max-width:300px;">
+        <div class="field"><label>Name</label><input type="text" placeholder="André Bowen"></div>
+        <div class="field"><label>Message</label><textarea placeholder="Write something…" style="min-height:64px;"></textarea></div>
+      </div>
+    </div>
+
+    <!-- Focus Ring -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Focus Ring</div>
+        <div class="comp-tokens">
+          outline: 3px solid primary<br>
+          outline-offset: 2px<br>
+          :focus-visible only<br>
+          (not on mouse click)
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+            <button class="focus-btn">Tab to focus me</button>
+            <div class="state-name">keyboard only</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+            <button class="focus-btn focus-simulated">Focused state</button>
+            <div class="state-name">3px · primary</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+            <button class="btn-submit focus-simulated" style="width:auto;margin-top:0;padding:10px 20px;" tabindex="0">Button</button>
+            <div class="state-name">filled button</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Item -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Gallery Item</div>
+        <div class="comp-tokens">
+          img border-radius: 0 !important<br>
+          bg: surface-container-high<br>
+          hover scale: 1.025<br>
+          transition: medium2 · emphasized<br>
+          ripple: on-surface
+        </div>
+      </div>
+      <div class="comp-demo" style="align-items:flex-start;">
+        <div class="demo-art-item gallery-item">
+          <div class="artwork-img" style="height:150px;background:var(--md-sys-color-surface-container-high);">
+            <img src="images/Still life/Andre Bowen_Abyssinian Roses_2016_oil on linen panel_35x28cm.png" alt="Abyssinian Roses">
+          </div>
+          <div class="gallery-caption">
+            <div class="caption-title">Abyssinian Roses</div>
+            <div class="caption-meta">2016 · Oil on linen panel</div>
+          </div>
+        </div>
+        <div class="demo-art-item gallery-item">
+          <div class="artwork-img" style="height:150px;background:var(--md-sys-color-surface-container-high);">
+            <img src="images/Landscape/Andre Bowen_Orchard Study I_2019_oil on panel_20x35.5cm.png" alt="Orchard Study I">
+          </div>
+          <div class="gallery-caption">
+            <div class="caption-title">Orchard Study I</div>
+            <div class="caption-meta">2019 · Oil on panel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nav Link -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Navigation Link — Tab Indicator</div>
+        <div class="comp-tokens">
+          rest: on-surface-variant<br>
+          hover: on-surface + state layer 8%<br>
+          active: primary + 1px indicator bar<br>
+          indicator: scaleX(0→1) short3/standard<br>
+          label: typescale-label-large
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo">
+          <ul class="nav-links" style="position:static;list-style:none;">
+            <li><a href="#" onclick="return false;">Still Life</a></li>
+            <li><a href="#" onclick="return false;" class="active">Landscape</a></li>
+            <li><a href="#" onclick="return false;">Figure</a></li>
+          </ul>
+        </div>
+        <div class="comp-dark">
+          <ul class="nav-links" style="position:static;list-style:none;">
+            <li><a href="#" onclick="return false;">Still Life</a></li>
+            <li><a href="#" onclick="return false;" class="active">Landscape</a></li>
+            <li><a href="#" onclick="return false;">Figure</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Page — Bio Card -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">About — Bio Card</div>
+        <div class="comp-tokens">
+          .about-bio-card · surface-container bg<br>
+          border-radius: corner-small (8px)<br>
+          padding: 40px · gap: 40px · flex row<br>
+          portrait: 200px wide · corner-small radius<br>
+          bio text: 15px · weight 400 · line-height 1.8<br>
+          mobile: stacks, portrait 140px
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo" style="padding:0;overflow:hidden;border-radius:var(--md-sys-shape-corner-small);background:var(--md-sys-color-surface-container);display:flex;gap:20px;align-items:flex-start;padding:20px;min-width:280px;">
+          <div style="flex-shrink:0;width:56px;height:72px;background:var(--md-sys-color-surface-container-highest);border-radius:var(--md-sys-shape-corner-small);"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+            <div style="height:10px;background:var(--md-sys-color-outline-variant);border-radius:4px;width:100%;"></div>
+            <div style="height:10px;background:var(--md-sys-color-outline-variant);border-radius:4px;width:90%;"></div>
+            <div style="height:10px;background:var(--md-sys-color-outline-variant);border-radius:4px;width:95%;"></div>
+            <div style="height:10px;background:var(--md-sys-color-outline-variant);border-radius:4px;width:75%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Page — CV Card -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">About — CV Card</div>
+        <div class="comp-tokens">
+          .about-cv-card · surface-container bg<br>
+          border-radius: corner-small · overflow: hidden<br>
+          header: surface-container-high · 13px 24px pad<br>
+          label: 11px · uppercase · weight 600 · 0.08em tracking<br>
+          label color: on-surface-variant<br>
+          body: padding 20px 24px<br>
+          .wide → grid-column: span 2<br>
+          .about-cv-body-cols → CSS columns: 2<br>
+          cv-row: grid 72px 1fr · 15px · line-height 1.5<br>
+          year: ink-3 · detail strong: ink · detail em: ink-2<br>
+          grid: 2-col with 16px gap · collapses 1-col at 600px
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo" style="padding:0;overflow:hidden;border-radius:var(--md-sys-shape-corner-small);min-width:220px;">
+          <div style="background:var(--md-sys-color-surface-container-high);padding:13px 20px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--md-sys-color-on-surface-variant);">Studies</div>
+          <div style="background:var(--md-sys-color-surface-container);padding:16px 20px;display:flex;flex-direction:column;gap:12px;">
+            <div style="display:grid;grid-template-columns:52px 1fr;gap:10px;font-size:14px;">
+              <span style="color:var(--ink-3);">2006</span>
+              <span style="color:var(--ink);font-weight:500;">BFA Honours <span style="color:var(--ink-2);font-weight:400;">· UNSW</span></span>
+            </div>
+            <div style="display:grid;grid-template-columns:52px 1fr;gap:10px;font-size:14px;">
+              <span style="color:var(--ink-3);">2003</span>
+              <span style="color:var(--ink);font-weight:500;">BFA Painting <span style="color:var(--ink-2);font-weight:400;">· NAS</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Card -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Contact Card — Split</div>
+        <div class="comp-tokens">
+          bg: surface-container-low<br>
+          shape: corner-small (8px)<br>
+          left: surface-container-high · artwork<br>
+          right: heading + tagline + divider + email<br>
+          mobile: stacks vertically
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo" style="padding:0;overflow:hidden;border-radius:var(--md-sys-shape-corner-small);">
+          <div style="display:flex;background:var(--md-sys-color-surface-container-low);border-radius:var(--md-sys-shape-corner-small);overflow:hidden;min-height:160px;">
+            <div style="flex:0 0 40%;background:var(--md-sys-color-surface-container-high);display:flex;align-items:center;justify-content:center;padding:20px;">
+              <div style="width:60px;height:80px;background:var(--md-sys-color-outline-variant);border-radius:0;"></div>
+            </div>
+            <div style="flex:1;padding:24px 28px;display:flex;flex-direction:column;justify-content:center;gap:8px;">
+              <div style="font-size:15px;font-weight:500;color:var(--md-sys-color-on-surface);">Contact</div>
+              <div style="font-size:14px;color:var(--md-sys-color-on-surface-variant);line-height:1.5;">Enquiries regarding available works, exhibitions, or commissions.</div>
+              <div style="height:1px;background:var(--md-sys-color-outline-variant);margin:4px 0;"></div>
+              <div style="font-size:14px;font-weight:500;color:var(--md-sys-color-on-surface);">andrebowen@me.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Drawer -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Navigation Drawer — Mobile</div>
+        <div class="comp-tokens">
+          bg: surface-container-low<br>
+          width: 280px · slides from left<br>
+          enter: medium2 / emph-decelerate<br>
+          scrim: #000 32% opacity<br>
+          active: on-secondary-container bg<br>
+          active text: on-secondary-container<br>
+          items: full-radius pill (corner-full)
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo">
+          <div style="background:var(--md-sys-color-surface-container-low);border-radius:8px;padding:16px 12px;width:220px;display:flex;flex-direction:column;gap:4px;">
+            <a href="#" onclick="return false;" style="padding:14px 20px;border-radius:9999px;font-size:16px;font-weight:500;color:var(--md-sys-color-on-surface-variant);">Still Life</a>
+            <a href="#" onclick="return false;" style="padding:14px 20px;border-radius:9999px;font-size:16px;font-weight:500;color:var(--md-sys-color-on-secondary-container);background:var(--md-sys-color-secondary-container);">Landscape</a>
+            <a href="#" onclick="return false;" style="padding:14px 20px;border-radius:9999px;font-size:16px;font-weight:500;color:var(--md-sys-color-on-surface-variant);">Figure</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skip Link -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Skip Link</div>
+        <div class="comp-tokens">
+          hidden off-screen by default<br>
+          visible on :focus (keyboard only)<br>
+          bg: primary · color: on-primary<br>
+          shape: corner-small (8px)<br>
+          position: fixed top-left on focus
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo">
+          <a href="#" onclick="return false;" class="skip-link" style="position:static;top:auto;">Skip to main content</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Transitions -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">Page Transitions</div>
+        <div class="comp-tokens">
+          enter: page-enter keyframe · short3<br>
+          easing: standard-decelerate<br>
+          exit: body.page-exit · opacity 0<br>
+          easing: standard-accelerate<br>
+          disabled by prefers-reduced-motion
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo" style="font-size:14px;color:var(--md-sys-color-on-surface-variant);line-height:1.7;">
+          All internal page navigations fade out (150ms) before loading the next page,
+          which fades in on arrival. Respects <code style="font-family:monospace;font-size:13px;background:var(--md-sys-color-surface-container);padding:1px 5px;border-radius:3px;">prefers-reduced-motion</code>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Ripple -->
+    <div class="comp-row">
+      <div>
+        <div class="comp-name">MD3 Ripple</div>
+        <div class="comp-tokens">
+          animates from pointer position<br>
+          scale(0) → scale(4)<br>
+          duration: long2 (500ms)<br>
+          easing: standard-decelerate<br>
+          opacity: state-pressed (12%)
+        </div>
+      </div>
+      <div>
+        <div class="comp-demo">
+          <button class="btn-submit" style="width:auto;margin-top:0;padding:12px 28px;">Click for ripple</button>
+          <div class="demo-art-item gallery-item" style="cursor:pointer;">
+            <div class="artwork-img" style="height:80px;background:var(--md-sys-color-surface-container-high);"></div>
+            <div class="gallery-caption"><div class="caption-title">Gallery item</div></div>
+          </div>
+        </div>
+        <p style="font-size:14px;color:var(--md-sys-color-outline);margin-top:12px;">Click any element above — the ripple expands from the exact pointer position.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /ds-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <span>© André Bowen — MD3 Design System</span>
+    <a href="https://www.instagram.com/andrebowen" target="_blank" rel="noopener" class="footer-instagram" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4.5"/>
+        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Attach ripple to static demo elements not covered by main.js
+    document.querySelectorAll(
+      '.demo-art-item, .ds-text-btn, .focus-btn'
+    ).forEach(attachRipple);
+  });
+</script>
+</body>
+</html>

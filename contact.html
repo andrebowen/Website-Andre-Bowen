@@ -16,10 +16,13 @@
   <meta name="twitter:title" content="Contact — André Bowen">
   <meta name="twitter:description" content="Get in touch with André Bowen regarding available works, exhibitions, or commissions.">
   <meta name="twitter:image" content="https://andrebowen.com/images/Landscape/Andre%20Bowen_The%20Grove_2019_oil%20on%20linen_101x137cm.png">
+  <meta name="color-scheme" content="light dark">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
+  <script>(function(){var t=localStorage.getItem('md-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header>
   <nav>
@@ -30,10 +33,14 @@
       <li><a href="figure.html">Figure</a></li>
       <li><a href="drawings.html">Drawings</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <button class="hamburger" aria-label="Open menu">
       <span></span><span></span>
+    </button>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
   </nav>
 </header>
@@ -44,14 +51,20 @@
   <a href="figure.html">Figure</a>
   <a href="drawings.html">Drawings</a>
   <a href="about.html">About</a>
-  <a href="contact.html" class="active">Contact</a>
+  <a href="contact.html">Contact</a>
 </div>
 
-<div class="contact-wrap">
-  <div class="contact-content">
-    <h1>Contact</h1>
-    <p class="tagline">Enquiries regarding available works, exhibitions, or commissions are welcome.</p>
-    <a href="mailto:andrebowen@me.com" class="contact-email">andrebowen@me.com</a>
+<div id="main-content" class="contact-wrap">
+  <div class="contact-card">
+    <div class="contact-card-img">
+      <img src="images/Still life/Andre Bowen_Flowers in a Striped Vase_2019_oil on panel_41x50cm.png" alt="Flowers in a Striped Vase, 2019">
+    </div>
+    <div class="contact-card-body">
+      <h1>Contact</h1>
+      <p class="tagline">Enquiries regarding available works, exhibitions, or commissions are welcome.</p>
+      <div class="contact-divider"></div>
+      <a href="mailto:andrebowen@me.com" class="contact-email">andrebowen@me.com</a>
+    </div>
   </div>
 </div>
 
