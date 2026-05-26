@@ -290,43 +290,33 @@ nav {
   white-space: nowrap;
   position: relative;
   padding: 4px 6px 8px;
-  border-radius: var(--md-sys-shape-corner-extra-small);
 }
 
-/* State layer */
-.nav-links a::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 3px;
-  border-radius: var(--md-sys-shape-corner-extra-small);
-  background: var(--md-sys-color-on-surface);
-  opacity: 0;
-  transition: opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
-  pointer-events: none;
-}
-
-/* Tab indicator */
+/* Underline indicator */
 .nav-links a::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--md-sys-color-primary);
-  border-radius: 3px 3px 0 0;
+  left: 6px;
+  right: 6px;
+  height: 1.5px;
+  background: var(--md-sys-color-on-surface-variant);
+  border-radius: 1.5px;
   transform: scaleX(0);
-  transition: transform var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+  transition: transform var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard),
+              background var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
 }
 
-.nav-links a:hover::before { opacity: var(--md-sys-state-hover-opacity); }
 .nav-links a:hover { color: var(--md-sys-color-on-surface); }
-
-.nav-links a.active {
-  color: var(--md-sys-color-primary);
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  background: var(--md-sys-color-on-surface-variant);
 }
+
+.nav-links a.active { color: var(--md-sys-color-on-surface); }
 .nav-links a.active::after {
   transform: scaleX(1);
+  background: var(--md-sys-color-on-surface);
 }
 
 /* ===== HAMBURGER ===== */
