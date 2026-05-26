@@ -289,7 +289,7 @@ nav {
   letter-spacing: 0;
   white-space: nowrap;
   position: relative;
-  padding: 4px 6px 12px;
+  padding: 4px 6px 8px;
   border-radius: var(--md-sys-shape-corner-extra-small);
 }
 
@@ -297,7 +297,7 @@ nav {
 .nav-links a::before {
   content: '';
   position: absolute;
-  inset: 0 0 8px;
+  inset: 0 0 3px;
   border-radius: var(--md-sys-shape-corner-extra-small);
   background: var(--md-sys-color-on-surface);
   opacity: 0;
@@ -309,12 +309,12 @@ nav {
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: 4px;
-  left: 6px;
-  right: 6px;
-  height: 1px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
   background: var(--md-sys-color-primary);
-  border-radius: 1px 1px 0 0;
+  border-radius: 3px 3px 0 0;
   transform: scaleX(0);
   transition: transform var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
 }
