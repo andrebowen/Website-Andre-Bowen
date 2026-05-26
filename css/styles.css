@@ -575,7 +575,7 @@ nav {
 /* ===== H-GALLERY WRAP — edge fade ===== */
 .h-gallery-wrap {
   position: relative;
-  padding: 0 var(--margin-x);
+  padding: 40px var(--margin-x) 0;
 }
 
 
@@ -793,7 +793,7 @@ nav {
   display: grid;
   grid-template-columns: repeat(var(--cols), 1fr);
   column-gap: var(--gutter);
-  padding: 56px var(--margin-x) 0;
+  padding: 80px var(--margin-x) 0;
 }
 
 .page-intro h1 {
@@ -1468,7 +1468,7 @@ footer {
   .gallery { column-count: 1; }
 
   .hero img { height: 68vw; }
-  .page-intro { padding: 36px var(--margin-x) 28px; }
+  .page-intro { padding: 56px var(--margin-x) 28px; }
   .home-feature { padding-top: 56px; }
   .home-feature-img { aspect-ratio: 1 / 1; }
   .home-feature-caption { flex-direction: column; gap: 4px; }
