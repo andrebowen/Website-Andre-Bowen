@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JE27G4EEVR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JE27G4EEVR');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive — André Bowen</title>
+  <meta name="description" content="Complete archive of oil paintings and drawings by André Bowen — still life, landscape, figure, and drawings.">
+  <link rel="canonical" href="https://andrebowen.com/archive.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="André Bowen">
+  <meta property="og:title" content="Archive — André Bowen">
+  <meta property="og:description" content="Complete archive of oil paintings and drawings by André Bowen.">
+  <meta property="og:url" content="https://andrebowen.com/archive.html">
+  <meta property="og:image" content="https://andrebowen.com/images/Landscape/Andre%20Bowen_The%20Grove_2019_oil%20on%20linen_101x137cm.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Archive — André Bowen">
+  <meta name="twitter:description" content="Complete archive of oil paintings and drawings by André Bowen.">
+  <meta name="twitter:image" content="https://andrebowen.com/images/Landscape/Andre%20Bowen_The%20Grove_2019_oil%20on%20linen_101x137cm.png">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ===== ARCHIVE PAGE ===== */
+    .archive-page {
+      flex: 1;
+      padding: 40px var(--margin-x) 80px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .archive-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .archive-title {
+      font-size: var(--md-sys-typescale-headline-small-size);
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      color: var(--ink);
+    }
+
+    .archive-count {
+      font-size: var(--md-sys-typescale-body-medium-size);
+      color: var(--ink-3);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ===== FILTER CHIPS ===== */
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .chip-row::-webkit-scrollbar { display: none; }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 32px;
+      padding: 0 16px;
+      border-radius: var(--md-sys-shape-corner-full);
+      border: 1px solid var(--sep);
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: var(--md-sys-typescale-label-medium-size);
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      transition:
+        background var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard),
+        border-color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard),
+        color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+    }
+
+    .chip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--md-sys-color-on-surface);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+    }
+    .chip:hover::before  { opacity: 0.08; }
+    .chip:active::before { opacity: 0.12; }
+
+    .chip.active {
+      background: var(--md-sys-color-primary-container);
+      border-color: transparent;
+      color: var(--md-sys-color-on-primary-container);
+    }
+
+    .chip-check {
+      display: none;
+      flex-shrink: 0;
+    }
+    .chip.active .chip-check { display: block; }
+
+    /* ===== TOOLBAR (chips + sort) ===== */
+    .archive-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .archive-toolbar .chip-row {
+      margin-bottom: 0;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .sort-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .sort-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      border: none;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-3);
+      cursor: pointer;
+      padding: 4px 18px 4px 0;
+      outline: none;
+      transition: color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+    }
+
+    .sort-select:hover { color: var(--ink); }
+
+    .sort-wrap::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 6px;
+      background: currentColor;
+      color: var(--ink-3);
+      pointer-events: none;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+
+    /* ===== GRID ===== */
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 40px 24px;
+    }
+
+    .archive-item {
+      cursor: pointer;
+    }
+
+    .archive-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 200ms var(--md-sys-motion-easing-standard);
+    }
+
+    .archive-item:hover img {
+      opacity: 0.88;
+    }
+
+    .archive-caption {
+      margin-top: 12px;
+    }
+
+    .archive-caption-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .archive-caption-meta {
+      font-size: 12px;
+      color: var(--ink-3);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .archive-grid { grid-template-columns: repeat(4, 1fr); gap: 32px 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .archive-page { padding: 24px 16px 60px; }
+      .archive-grid { grid-template-columns: repeat(3, 1fr); gap: 28px 12px; }
+    }
+  </style>
+  <script>(function(){var t=localStorage.getItem('md-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">André Bowen</a>
+    <ul class="nav-links">
+      <li><a href="still-life.html">Still Life</a></li>
+      <li><a href="landscape.html">Landscape</a></li>
+      <li><a href="figure.html">Figure</a></li>
+      <li><a href="drawings.html">Drawings</a></li>
+      <li><a href="archive.html">Archive</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav">
+  <a href="still-life.html">Still Life</a>
+  <a href="landscape.html">Landscape</a>
+  <a href="figure.html">Figure</a>
+  <a href="drawings.html">Drawings</a>
+  <a href="archive.html">Archive</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main id="main-content" class="archive-page">
+  <div class="archive-header">
+    <h1 class="archive-title">Archive</h1>
+    <span class="archive-count" id="archive-count" aria-live="polite"></span>
+  </div>
+
+  <div class="archive-toolbar">
+    <div class="chip-row" role="group" aria-label="Filter by category">
+      <button class="chip active" data-filter="all">
+        <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        All
+      </button>
+      <button class="chip" data-filter="still-life">
+        <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Still Life
+      </button>
+      <button class="chip" data-filter="landscape">
+        <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Landscape
+      </button>
+      <button class="chip" data-filter="figure">
+        <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Figure
+      </button>
+      <button class="chip" data-filter="drawings">
+        <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Drawings
+      </button>
+    </div>
+    <div class="sort-wrap">
+      <select class="sort-select" id="sort-select" aria-label="Sort by year">
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="archive-grid" id="archive-grid"></div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© André Bowen</span>
+    <a href="https://www.instagram.com/andrebowen" target="_blank" rel="noopener" class="footer-instagram" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4.5"/>
+        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+<div id="detail-panel">
+  <div class="dp-left">
+    <button class="dp-close" onclick="closeDetailPanel()">Back</button>
+    <div class="dp-title" id="dp-title"></div>
+    <div class="dp-medium" id="dp-medium"></div>
+    <div class="dp-dims" id="dp-dims"></div>
+    <div class="dp-nav">
+      <button class="dp-nav-btn" id="dp-prev">Prev</button>
+      <button class="dp-nav-btn" id="dp-next">Next</button>
+    </div>
+  </div>
+  <div class="dp-right">
+    <img id="dp-img" src="" alt="">
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+const ALL_WORKS = [
+  // Still Life
+  { cat: 'still-life', title: 'Abyssinian Roses',            year: '2016', medium: 'Oil on linen panel',      dims: '35 × 28 cm',    src: 'images/Still life/Andre Bowen_Abyssinian Roses_2016_oil on linen panel_35x28cm.png' },
+  { cat: 'still-life', title: 'Flowers in a Striped Vase',   year: '2019', medium: 'Oil on panel',            dims: '41 × 50 cm',    src: 'images/Still life/Andre Bowen_Flowers in a Striped Vase_2019_oil on panel_41x50cm.png' },
+  { cat: 'still-life', title: 'Flowers in Two Bottles',       year: '2018', medium: 'Oil on linen',            dims: '40 × 50 cm',    src: 'images/Still life/Andre Bowen_Flowers in Two Bottles_2018_oil on linen_40x50cm.png' },
+  { cat: 'still-life', title: 'Skull and Sketchbooks',        year: '2018', medium: 'Oil on panel',            dims: '30.5 × 40.5 cm',src: 'images/Still life/Andre Bowen_Skull and Sketchbooks_2018_oil on panel_30.5x40.5cm.png' },
+  { cat: 'still-life', title: 'Sneakers',                     year: '2019', medium: 'Oil on panel',            dims: '40 × 50 cm',    src: 'images/Still life/Andre Bowen_Sneakers_2019_oil on panel_40x50cm.png' },
+  { cat: 'still-life', title: 'Queenstown Flowers',           year: '2019', medium: 'Oil on panel',            dims: '30 × 31 cm',    src: 'images/Still life/Andre Bowen_Queenstown Flowers_2019_oil on panel_30x31cm.png' },
+  { cat: 'still-life', title: 'Roses (Graefestrasse)',        year: '2016', medium: 'Oil on panel',            dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Roses (Graefestrasse)_2016_oil on panel_40x30cm.png' },
+  { cat: 'still-life', title: 'Roses',                        year: '2014', medium: 'Oil on canvas',           dims: '50 × 40 cm',    src: 'images/Still life/Andre Bowen_Roses_2014_oil on canvas_50x40cm.png' },
+  { cat: 'still-life', title: 'Roses (Floating)',             year: '2018', medium: 'Oil on panel',            dims: '31 × 41 cm',    src: 'images/Still life/Roses (floating)_2018_oil on panel_31x41cm copy.png' },
+  { cat: 'still-life', title: 'Madrid Silver',                year: '2017', medium: 'Oil on panel',            dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Madrid Silver_2017_oil on panel_40x30cm.png' },
+  { cat: 'still-life', title: 'Flowers in a Mason Jar',       year: '2016', medium: 'Oil on linen panel',      dims: '35 × 28 cm',    src: 'images/Still life/Andre Bowen_Flowers in a mason jar_2016_oil on linen panel_35x28cm.png' },
+  { cat: 'still-life', title: 'Jar for Joko (Turps)',         year: '2016', medium: 'Oil on panel',            dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Jar for Joko (Turps)_2016_oil on panel_40x30cm.png' },
+  { cat: 'still-life', title: 'Jar for Mike (Oil)',           year: '2016', medium: 'Oil on panel',            dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Jar for Mike (Oil)_2016_oil on panel_40x30cm.png' },
+  { cat: 'still-life', title: 'Outdoor Still Life',           year: '2016', medium: 'Oil on linen panel',      dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Outdoor Still Life_2016_oil on linen panel_40x30cm.png' },
+  { cat: 'still-life', title: 'Leipzig Studio',               year: '2009', medium: 'Oil on canvas',           dims: '70 × 50 cm',    src: 'images/Still life/Andre Bowen_Leipzig Studio_2009_oil on canvas_70x50cm.png' },
+  { cat: 'still-life', title: 'Leipzig Studio (Blue Chair)',  year: '2009', medium: 'Oil on canvas',           dims: '35 × 28 cm',    src: 'images/Still life/Andre Bowen_Leipzig Studio (Blue Chair)_2009_oil on canvas_35x28cm.png' },
+  { cat: 'still-life', title: 'Flowers',                      year: '2009', medium: 'Oil on canvas',           dims: '35 × 25 cm',    src: 'images/Still life/Andre Bowen_Flowers_2009_oil on canvas_35x25cm.png' },
+  { cat: 'still-life', title: 'Chair (Shuttle)',              year: '2005', medium: 'Tempera on linen panel',  dims: '60 × 75 cm',    src: 'images/Still life/Andre Bowen_Chair (Shuttle)_2005_tempera on linen panel_60x75cm.png' },
+  { cat: 'still-life', title: 'Studio Corner IV',             year: '2025', medium: 'Oil on canvas',           dims: '70 × 50 cm',    src: 'images/Still life/Studio Corner IV.png' },
+  { cat: 'still-life', title: 'Studio Window',                year: '2025', medium: 'Oil on panel',            dims: '50 × 70 cm',    src: 'images/Still life/Studio Window.png' },
+  { cat: 'still-life', title: 'Studio Table Leipzig',         year: '2010', medium: 'Oil on canvas',           dims: '50 × 75 cm',    src: 'images/Still life/Studio Table Leipzig.png' },
+  { cat: 'still-life', title: 'Studio Table (Unfinished)',    year: '2019', medium: 'Oil on canvas',           dims: '70 × 90 cm',    src: 'images/Still life/Studio Table (unfinished) .png' },
+
+  // Landscape
+  { cat: 'landscape', title: 'The Grove',                      year: '2019', medium: 'Oil on linen',  dims: '101 × 137 cm',     src: 'images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.png' },
+  { cat: 'landscape', title: 'Lawlers Lane Nightscape I',      year: '2019', medium: 'Oil on panel',  dims: '122 × 122 cm',     src: 'images/Landscape/Andre_Bowen_Lawlers Lane Nightscape I_2019_oil-on-panel_122x122cm.png' },
+  { cat: 'landscape', title: 'Lawlers Lane Nightscape II',     year: '2019', medium: 'Oil on panel',  dims: '122 × 122 cm',     src: 'images/Landscape/Andre Bowen_Lawlers Lane Nightscape II_2019_oil on panel_122x122cm.png' },
+  { cat: 'landscape', title: 'Orchard Study I',               year: '2019', medium: 'Oil on panel',  dims: '20 × 35.5 cm',     src: 'images/Landscape/Andre Bowen_Orchard Study I_2019_oil on panel_20x35.5cm.png' },
+  { cat: 'landscape', title: 'Little Wategos',                year: '2019', medium: 'Oil on panel',  dims: '13 × 36 cm',       src: 'images/Landscape/Andre Bowen_Little Wategos_2019_oil on panel_13x36cm.png' },
+  { cat: 'landscape', title: 'Queenstown Lake I',             year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Andre Bowen_Queenstown Lake I_2019_oil on panel_30.5x30.5cm.png' },
+  { cat: 'landscape', title: 'Queenstown Lake II',            year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Andre Bowen_Queenstown Lake II_2019_oil on panel_30.5x30.5cm.png' },
+  { cat: 'landscape', title: 'Queenstown Lake III',           year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Andre Bowen_Queenstown Lake III_2019_oil on panel_30.5x30.5cm.png' },
+  { cat: 'landscape', title: 'Queenstown Lake IV',            year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Andre Bowen_Queenstown Lake IV_2019_oil on panel_30.5x30.5cm.png' },
+  { cat: 'landscape', title: 'Queenstown Lake V',             year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Queenstown Lake V.png' },
+  { cat: 'landscape', title: 'Landwehrcanal Rosa Luxemburg',  year: '2017', medium: 'Oil on panel',  dims: '40 × 30 cm',       src: 'images/Landscape/Andre Bowen_Landwehrcanal Rosa Luxemburg_2017_oil on panel_40x30cm.png' },
+  { cat: 'landscape', title: 'Landwehrcanal',                 year: '2017', medium: 'Oil on panel',  dims: '40 × 30 cm',       src: 'images/Landscape/Andre Bowen_Landwehrcanal_2017_oil on panel_40x30cm.png' },
+  { cat: 'landscape', title: 'Raywards Lane',                 year: '2017', medium: 'Oil on panel',  dims: '26 × 36 cm',       src: 'images/Landscape/Andre Bowen_Raywards Lane_2017_oil on panel_26x36cm.png' },
+  { cat: 'landscape', title: 'Schlesische Strasse',           year: '2009', medium: 'Oil on canvas', dims: '28 × 35 cm',       src: 'images/Landscape/Andre Bowen_Schlesische Strasse_2009_oil on canvas_28x35cm.png' },
+  { cat: 'landscape', title: 'Beach House',                   year: '2005', medium: 'Oil on panel',  dims: '26 × 30 cm',       src: 'images/Landscape/Andre Bowen_Beach House_2005_oil on panel_26x30cm.png' },
+  { cat: 'landscape', title: 'Two Trees',                     year: '2005', medium: 'Oil on panel',  dims: '26 × 29 cm',       src: 'images/Landscape/Andre Bowen_Two Trees_2005_oil on panel_26x29cm.png' },
+  { cat: 'landscape', title: 'Lawlers Lane (Unfinished)',     year: '2019', medium: 'Oil on canvas', dims: '120 × 120 cm',     src: 'images/Landscape/Lawlers Lane (unfinished).png' },
+
+  // Figure
+  { cat: 'figure', title: 'Self Portrait',       year: '2013', medium: 'Oil on panel', dims: '35 × 30 cm', src: 'images/Figure/Andre Bowen_Self Portrait_2013_oil on panel_35x30cm.png' },
+  { cat: 'figure', title: 'Velázquez Study I',   year: '2009', medium: 'Oil on linen', dims: '32 × 26 cm', src: 'images/Figure/Andre Bowen_Velazquez Study I_2009_oil on linen_32x26cm.png' },
+  { cat: 'figure', title: 'Velázquez Study II',  year: '2009', medium: 'Oil on linen', dims: '32 × 26 cm', src: 'images/Figure/Andre Bowen_Velazquez Study II_2009_oil on linen_32x26cm.png' },
+  { cat: 'figure', title: 'Velázquez Study III', year: '2009', medium: 'Oil on linen', dims: '32 × 26 cm', src: 'images/Figure/Andre Bowen_Velazquez Study III_2009_oil on linen_32x26cm.png' },
+  { cat: 'figure', title: 'Velázquez Study IV',  year: '2009', medium: 'Oil on linen', dims: '32 × 26 cm', src: 'images/Figure/Andre Bowen_Velazquez Study IV_2009_oil on linen_32x26cm.png' },
+
+  // Drawings
+  { cat: 'drawings', title: 'Nathalie',           year: '', medium: '', dims: '', src: 'images/Drawings/Nathalie.png' },
+  { cat: 'drawings', title: 'Frankie',            year: '', medium: '', dims: '', src: 'images/Drawings/Frankie.png' },
+  { cat: 'drawings', title: 'Luca after the Snow',year: '', medium: '', dims: '', src: 'images/Drawings/Luca after the snow.png' },
+  { cat: 'drawings', title: 'Dei Kopf',           year: '', medium: '', dims: '', src: 'images/Drawings/Dei Kopf.png' },
+  { cat: 'drawings', title: 'Dei Eating an Apple',year: '', medium: '', dims: '', src: 'images/Drawings/Dei eating an apple.png' },
+  { cat: 'drawings', title: 'Landwehrkanal',      year: '', medium: '', dims: '', src: 'images/Drawings/Landwehrkanal.png' },
+  { cat: 'drawings', title: 'Figure Study 1',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 1.png' },
+  { cat: 'drawings', title: 'Figure Study 2',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 2.png' },
+  { cat: 'drawings', title: 'Figure Study 3',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 3.png' },
+  { cat: 'drawings', title: 'Figure Study 4',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 4.png' },
+  { cat: 'drawings', title: 'Figure Study 5',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 5.png' },
+  { cat: 'drawings', title: 'Figure Study 6',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 6.png' },
+  { cat: 'drawings', title: 'Figure Study 7',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 7.png' },
+  { cat: 'drawings', title: 'Figure Study 8',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 8.png' },
+  { cat: 'drawings', title: 'Figure Study 9',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 9.png' },
+  { cat: 'drawings', title: 'Figure Study 10',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 10.png' },
+  { cat: 'drawings', title: 'Figure Study 11',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 11.png' },
+  { cat: 'drawings', title: 'Figure Study 12',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 12.png' },
+  { cat: 'drawings', title: 'Figure Study 13',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 13.png' },
+  { cat: 'drawings', title: 'Figure Study 14',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 14.png' },
+  { cat: 'drawings', title: 'Figure Study 15',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 15.png' },
+  { cat: 'drawings', title: 'Figure Study 16',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 16.png' },
+  { cat: 'drawings', title: 'Figure Study 17',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 17.png' },
+  { cat: 'drawings', title: 'Figure Study 18',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 18.png' },
+  { cat: 'drawings', title: 'Figure Study 19',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 19.png' },
+  { cat: 'drawings', title: 'Figure Study 20',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 20.png' },
+];
+
+let activeFilter = 'all';
+let activeSort = 'newest';
+
+function sortedWorks(works) {
+  return [...works].sort((a, b) => {
+    const ya = parseInt(a.year) || (activeSort === 'newest' ? 0 : 9999);
+    const yb = parseInt(b.year) || (activeSort === 'newest' ? 0 : 9999);
+    return activeSort === 'newest' ? yb - ya : ya - yb;
+  });
+}
+
+function renderArchive() {
+  const grid = document.getElementById('archive-grid');
+  const countEl = document.getElementById('archive-count');
+  const filtered = activeFilter === 'all' ? ALL_WORKS : ALL_WORKS.filter(w => w.cat === activeFilter);
+  const works = sortedWorks(filtered);
+
+  grid.innerHTML = '';
+
+  works.forEach((art, i) => {
+    const item = document.createElement('div');
+    item.className = 'archive-item';
+    const yearStr = art.year ? `, ${art.year}` : '';
+    const metaParts = [art.medium, art.dims].filter(Boolean).join(' · ');
+    item.innerHTML = `
+      <img src="${art.src}" alt="${art.title}${yearStr}" loading="lazy">
+      <div class="archive-caption">
+        <div class="archive-caption-title">${art.title}${yearStr}</div>
+        ${metaParts ? `<div class="archive-caption-meta">${metaParts}</div>` : ''}
+      </div>`;
+    item.addEventListener('click', () => {
+      openDetailPanel(works, i, item.querySelector('img'));
+    });
+    grid.appendChild(item);
+  });
+
+  const n = works.length;
+  countEl.textContent = `${n} work${n !== 1 ? 's' : ''}`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderArchive();
+
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      if (filter === activeFilter) return;
+      activeFilter = filter;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      renderArchive();
+    });
+  });
+
+  document.getElementById('sort-select').addEventListener('change', e => {
+    activeSort = e.target.value;
+    renderArchive();
+  });
+});
+</script>
+</body>
+</html>
