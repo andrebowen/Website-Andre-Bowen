@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+._*
+
+# Editor / tooling
+.vscode/
+.idea/
+*.swp
+
+# Dependencies and build output
+node_modules/
+dist/
+.cache/
+
+# Local dev
+*.log
+.env
+.env.local
+
+# ---------------------------------------------------------------------------
+# Image masters
+#
+# The site serves the .webp derivatives (max 1600px, q82) generated from the
+# full-resolution masters. The masters are ~413 MB and are the reason .git is
+# over 400 MB.
+#
+# They are still TRACKED, so this file does not exclude them. Untracking them
+# (git rm --cached) would leave them on disk but unbacked-up, and would not
+# shrink history without a rewrite. Decide deliberately before changing this.
+#
+#   images/**/*.png
+#   images/**/*.jpg
+# ---------------------------------------------------------------------------
