@@ -1,0 +1,2350 @@
+{
+ "images/Drawings/Dei Kopf.webp": {
+  "slug": "dei-kopf",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 35698,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 463,
+    "file": "images/drawings/dei-kopf-400.webp",
+    "bytes": 16396,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Dei eating an apple.webp": {
+  "slug": "dei-eating-an-apple",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 172754,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 533,
+    "file": "images/drawings/dei-eating-an-apple-400.webp",
+    "bytes": 24516,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1067,
+    "file": "images/drawings/dei-eating-an-apple-800.webp",
+    "bytes": 81424,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1600,
+    "file": "images/drawings/dei-eating-an-apple-1200.webp",
+    "bytes": 155562,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2133,
+    "file": "images/drawings/dei-eating-an-apple-1600.webp",
+    "bytes": 180220,
+    "q": 72
+   }
+  ]
+ },
+ "images/Drawings/Figure 1.webp": {
+  "slug": "figure-1",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 113492,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 500,
+    "file": "images/drawings/figure-1-400.webp",
+    "bytes": 18618,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 999,
+    "file": "images/drawings/figure-1-800.webp",
+    "bytes": 58292,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 10.webp": {
+  "slug": "figure-10",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 167680,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 533,
+    "file": "images/drawings/figure-10-400.webp",
+    "bytes": 17194,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1067,
+    "file": "images/drawings/figure-10-800.webp",
+    "bytes": 59494,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1600,
+    "file": "images/drawings/figure-10-1200.webp",
+    "bytes": 137196,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2133,
+    "file": "images/drawings/figure-10-1600.webp",
+    "bytes": 184462,
+    "q": 76
+   }
+  ]
+ },
+ "images/Drawings/Figure 11.webp": {
+  "slug": "figure-11",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 71932,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 547,
+    "file": "images/drawings/figure-11-400.webp",
+    "bytes": 10018,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1094,
+    "file": "images/drawings/figure-11-800.webp",
+    "bytes": 31198,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1641,
+    "file": "images/drawings/figure-11-1200.webp",
+    "bytes": 66704,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2188,
+    "file": "images/drawings/figure-11-1600.webp",
+    "bytes": 111566,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 12.webp": {
+  "slug": "figure-12",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 63122,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 400,
+    "file": "images/drawings/figure-12-400.webp",
+    "bytes": 5740,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 800,
+    "file": "images/drawings/figure-12-800.webp",
+    "bytes": 15940,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1200,
+    "file": "images/drawings/figure-12-1200.webp",
+    "bytes": 31200,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1600,
+    "file": "images/drawings/figure-12-1600.webp",
+    "bytes": 54634,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 13.webp": {
+  "slug": "figure-13",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 96328,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 399,
+    "file": "images/drawings/figure-13-400.webp",
+    "bytes": 7684,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 799,
+    "file": "images/drawings/figure-13-800.webp",
+    "bytes": 24540,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1198,
+    "file": "images/drawings/figure-13-1200.webp",
+    "bytes": 55512,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 14.webp": {
+  "slug": "figure-14",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 86036,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 302,
+    "file": "images/drawings/figure-14-400.webp",
+    "bytes": 8372,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 605,
+    "file": "images/drawings/figure-14-800.webp",
+    "bytes": 24476,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 907,
+    "file": "images/drawings/figure-14-1200.webp",
+    "bytes": 47354,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1209,
+    "file": "images/drawings/figure-14-1600.webp",
+    "bytes": 77122,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 15.webp": {
+  "slug": "figure-15",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 275566,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 491,
+    "file": "images/drawings/figure-15-400.webp",
+    "bytes": 26628,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 983,
+    "file": "images/drawings/figure-15-800.webp",
+    "bytes": 105960,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1474,
+    "file": "images/drawings/figure-15-1200.webp",
+    "bytes": 225254,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1965,
+    "file": "images/drawings/figure-15-1600.webp",
+    "bytes": 256114,
+    "q": 60
+   }
+  ]
+ },
+ "images/Drawings/Figure 16.webp": {
+  "slug": "figure-16",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 87196,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 413,
+    "file": "images/drawings/figure-16-400.webp",
+    "bytes": 7742,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 825,
+    "file": "images/drawings/figure-16-800.webp",
+    "bytes": 23744,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1238,
+    "file": "images/drawings/figure-16-1200.webp",
+    "bytes": 51934,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 17.webp": {
+  "slug": "figure-17",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 95706,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 533,
+    "file": "images/drawings/figure-17-400.webp",
+    "bytes": 13552,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1067,
+    "file": "images/drawings/figure-17-800.webp",
+    "bytes": 43114,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1600,
+    "file": "images/drawings/figure-17-1200.webp",
+    "bytes": 86700,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2133,
+    "file": "images/drawings/figure-17-1600.webp",
+    "bytes": 146260,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 18.webp": {
+  "slug": "figure-18",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 105032,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 400,
+    "file": "images/drawings/figure-18-400.webp",
+    "bytes": 7466,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 800,
+    "file": "images/drawings/figure-18-800.webp",
+    "bytes": 25852,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1200,
+    "file": "images/drawings/figure-18-1200.webp",
+    "bytes": 62138,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 19.webp": {
+  "slug": "figure-19",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 132532,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 533,
+    "file": "images/drawings/figure-19-400.webp",
+    "bytes": 16742,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1067,
+    "file": "images/drawings/figure-19-800.webp",
+    "bytes": 55080,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1600,
+    "file": "images/drawings/figure-19-1200.webp",
+    "bytes": 115656,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2133,
+    "file": "images/drawings/figure-19-1600.webp",
+    "bytes": 199970,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 2.webp": {
+  "slug": "figure-2",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 64716,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 289,
+    "file": "images/drawings/figure-2-400.webp",
+    "bytes": 5914,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 578,
+    "file": "images/drawings/figure-2-800.webp",
+    "bytes": 17678,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 866,
+    "file": "images/drawings/figure-2-1200.webp",
+    "bytes": 35216,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1155,
+    "file": "images/drawings/figure-2-1600.webp",
+    "bytes": 57962,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 20.webp": {
+  "slug": "figure-20",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 90486,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 300,
+    "file": "images/drawings/figure-20-400.webp",
+    "bytes": 6952,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 600,
+    "file": "images/drawings/figure-20-800.webp",
+    "bytes": 22202,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 900,
+    "file": "images/drawings/figure-20-1200.webp",
+    "bytes": 47114,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1200,
+    "file": "images/drawings/figure-20-1600.webp",
+    "bytes": 77832,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 3.webp": {
+  "slug": "figure-3",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 123240,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 327,
+    "file": "images/drawings/figure-3-400.webp",
+    "bytes": 10394,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 653,
+    "file": "images/drawings/figure-3-800.webp",
+    "bytes": 33192,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 980,
+    "file": "images/drawings/figure-3-1200.webp",
+    "bytes": 67964,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1307,
+    "file": "images/drawings/figure-3-1600.webp",
+    "bytes": 110196,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 4.webp": {
+  "slug": "figure-4",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 140260,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 500,
+    "file": "images/drawings/figure-4-400.webp",
+    "bytes": 21160,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1000,
+    "file": "images/drawings/figure-4-800.webp",
+    "bytes": 69678,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 5.webp": {
+  "slug": "figure-5",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 149346,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 533,
+    "file": "images/drawings/figure-5-400.webp",
+    "bytes": 17796,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1067,
+    "file": "images/drawings/figure-5-800.webp",
+    "bytes": 65052,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1600,
+    "file": "images/drawings/figure-5-1200.webp",
+    "bytes": 135290,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2133,
+    "file": "images/drawings/figure-5-1600.webp",
+    "bytes": 179354,
+    "q": 76
+   }
+  ]
+ },
+ "images/Drawings/Figure 6.webp": {
+  "slug": "figure-6",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 90830,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 325,
+    "file": "images/drawings/figure-6-400.webp",
+    "bytes": 6342,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 649,
+    "file": "images/drawings/figure-6-800.webp",
+    "bytes": 22158,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 974,
+    "file": "images/drawings/figure-6-1200.webp",
+    "bytes": 47186,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1298,
+    "file": "images/drawings/figure-6-1600.webp",
+    "bytes": 80256,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 7.webp": {
+  "slug": "figure-7",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 91836,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 500,
+    "file": "images/drawings/figure-7-400.webp",
+    "bytes": 12994,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1000,
+    "file": "images/drawings/figure-7-800.webp",
+    "bytes": 39228,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1500,
+    "file": "images/drawings/figure-7-1200.webp",
+    "bytes": 74012,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2000,
+    "file": "images/drawings/figure-7-1600.webp",
+    "bytes": 116034,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 8.webp": {
+  "slug": "figure-8",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 111488,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 400,
+    "file": "images/drawings/figure-8-400.webp",
+    "bytes": 7290,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 800,
+    "file": "images/drawings/figure-8-800.webp",
+    "bytes": 23780,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1200,
+    "file": "images/drawings/figure-8-1200.webp",
+    "bytes": 54800,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1600,
+    "file": "images/drawings/figure-8-1600.webp",
+    "bytes": 98174,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Figure 9.webp": {
+  "slug": "figure-9",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 90048,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 544,
+    "file": "images/drawings/figure-9-400.webp",
+    "bytes": 13430,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1089,
+    "file": "images/drawings/figure-9-800.webp",
+    "bytes": 39886,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1633,
+    "file": "images/drawings/figure-9-1200.webp",
+    "bytes": 80510,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2178,
+    "file": "images/drawings/figure-9-1600.webp",
+    "bytes": 134594,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Frankie.webp": {
+  "slug": "frankie",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 218212,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 400,
+    "file": "images/drawings/frankie-400.webp",
+    "bytes": 19638,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 800,
+    "file": "images/drawings/frankie-800.webp",
+    "bytes": 63178,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1200,
+    "file": "images/drawings/frankie-1200.webp",
+    "bytes": 125584,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1600,
+    "file": "images/drawings/frankie-1600.webp",
+    "bytes": 193528,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Landwehrkanal.webp": {
+  "slug": "landwehrkanal",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 288234,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 500,
+    "file": "images/drawings/landwehrkanal-400.webp",
+    "bytes": 36850,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1000,
+    "file": "images/drawings/landwehrkanal-800.webp",
+    "bytes": 123646,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1500,
+    "file": "images/drawings/landwehrkanal-1200.webp",
+    "bytes": 235652,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Luca after the snow.webp": {
+  "slug": "luca-after-the-snow",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 144488,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 304,
+    "file": "images/drawings/luca-after-the-snow-400.webp",
+    "bytes": 10574,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 608,
+    "file": "images/drawings/luca-after-the-snow-800.webp",
+    "bytes": 34988,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 912,
+    "file": "images/drawings/luca-after-the-snow-1200.webp",
+    "bytes": 74828,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1216,
+    "file": "images/drawings/luca-after-the-snow-1600.webp",
+    "bytes": 128726,
+    "q": 80
+   }
+  ]
+ },
+ "images/Drawings/Nathalie.webp": {
+  "slug": "nathalie",
+  "cat": "drawings",
+  "source": "master",
+  "orig_bytes": 248826,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 400,
+    "file": "images/drawings/nathalie-400.webp",
+    "bytes": 20158,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 800,
+    "file": "images/drawings/nathalie-800.webp",
+    "bytes": 56878,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1200,
+    "file": "images/drawings/nathalie-1200.webp",
+    "bytes": 136574,
+    "q": 80
+   }
+  ]
+ },
+ "images/Figure/Andre Bowen_Self Portrait_2013_oil on panel_35x30cm.webp": {
+  "slug": "self-portrait-2013-oil-on-panel-35x30cm",
+  "cat": "figure",
+  "source": "master",
+  "orig_bytes": 192302,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 485,
+    "file": "images/figure/self-portrait-2013-oil-on-panel-35x30cm-400.webp",
+    "bytes": 19110,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 970,
+    "file": "images/figure/self-portrait-2013-oil-on-panel-35x30cm-800.webp",
+    "bytes": 71036,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1455,
+    "file": "images/figure/self-portrait-2013-oil-on-panel-35x30cm-1200.webp",
+    "bytes": 145186,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1940,
+    "file": "images/figure/self-portrait-2013-oil-on-panel-35x30cm-1600.webp",
+    "bytes": 181212,
+    "q": 76
+   }
+  ]
+ },
+ "images/Figure/Andre Bowen_Velazquez Study III_2009_oil on linen_32x26cm.webp": {
+  "slug": "velazquez-study-iii-2009-oil-on-linen-32x26cm",
+  "cat": "figure",
+  "source": "master",
+  "orig_bytes": 353092,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 533,
+    "file": "images/figure/velazquez-study-iii-2009-oil-on-linen-32x26cm-400.webp",
+    "bytes": 30316,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1067,
+    "file": "images/figure/velazquez-study-iii-2009-oil-on-linen-32x26cm-800.webp",
+    "bytes": 118198,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1600,
+    "file": "images/figure/velazquez-study-iii-2009-oil-on-linen-32x26cm-1200.webp",
+    "bytes": 320900,
+    "q": 80
+   }
+  ]
+ },
+ "images/Figure/Andre Bowen_Velazquez Study II_2009_oil on linen_32x26cm.webp": {
+  "slug": "velazquez-study-ii-2009-oil-on-linen-32x26cm",
+  "cat": "figure",
+  "source": "master",
+  "orig_bytes": 205634,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 520,
+    "file": "images/figure/velazquez-study-ii-2009-oil-on-linen-32x26cm-400.webp",
+    "bytes": 18368,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1041,
+    "file": "images/figure/velazquez-study-ii-2009-oil-on-linen-32x26cm-800.webp",
+    "bytes": 68492,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1561,
+    "file": "images/figure/velazquez-study-ii-2009-oil-on-linen-32x26cm-1200.webp",
+    "bytes": 164058,
+    "q": 80
+   }
+  ]
+ },
+ "images/Figure/Andre Bowen_Velazquez Study IV_2009_oil on linen_32x26cm.webp": {
+  "slug": "velazquez-study-iv-2009-oil-on-linen-32x26cm",
+  "cat": "figure",
+  "source": "master",
+  "orig_bytes": 347728,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 533,
+    "file": "images/figure/velazquez-study-iv-2009-oil-on-linen-32x26cm-400.webp",
+    "bytes": 34806,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1067,
+    "file": "images/figure/velazquez-study-iv-2009-oil-on-linen-32x26cm-800.webp",
+    "bytes": 129526,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1600,
+    "file": "images/figure/velazquez-study-iv-2009-oil-on-linen-32x26cm-1200.webp",
+    "bytes": 319114,
+    "q": 80
+   }
+  ]
+ },
+ "images/Figure/Andre Bowen_Velazquez Study I_2009_oil on linen_32x26cm.webp": {
+  "slug": "velazquez-study-i-2009-oil-on-linen-32x26cm",
+  "cat": "figure",
+  "source": "master",
+  "orig_bytes": 225142,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 533,
+    "file": "images/figure/velazquez-study-i-2009-oil-on-linen-32x26cm-400.webp",
+    "bytes": 18878,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1067,
+    "file": "images/figure/velazquez-study-i-2009-oil-on-linen-32x26cm-800.webp",
+    "bytes": 76982,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1600,
+    "file": "images/figure/velazquez-study-i-2009-oil-on-linen-32x26cm-1200.webp",
+    "bytes": 192076,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Beach House_2005_oil on panel_26x30cm.webp": {
+  "slug": "beach-house-2005-oil-on-panel-26x30cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 132668,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 297,
+    "file": "images/landscape/beach-house-2005-oil-on-panel-26x30cm-400.webp",
+    "bytes": 12050,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 595,
+    "file": "images/landscape/beach-house-2005-oil-on-panel-26x30cm-800.webp",
+    "bytes": 39964,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 892,
+    "file": "images/landscape/beach-house-2005-oil-on-panel-26x30cm-1200.webp",
+    "bytes": 77192,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1189,
+    "file": "images/landscape/beach-house-2005-oil-on-panel-26x30cm-1600.webp",
+    "bytes": 118668,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Landwehrcanal Rosa Luxemburg_2017_oil on panel_40x30cm.webp": {
+  "slug": "landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 164450,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 316,
+    "file": "images/landscape/landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm-400.webp",
+    "bytes": 14992,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 632,
+    "file": "images/landscape/landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm-800.webp",
+    "bytes": 46296,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 949,
+    "file": "images/landscape/landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm-1200.webp",
+    "bytes": 91604,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1265,
+    "file": "images/landscape/landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm-1600.webp",
+    "bytes": 147494,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Landwehrcanal_2017_oil on panel_40x30cm.webp": {
+  "slug": "landwehrcanal-2017-oil-on-panel-40x30cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 110576,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 308,
+    "file": "images/landscape/landwehrcanal-2017-oil-on-panel-40x30cm-400.webp",
+    "bytes": 10492,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 616,
+    "file": "images/landscape/landwehrcanal-2017-oil-on-panel-40x30cm-800.webp",
+    "bytes": 31522,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 925,
+    "file": "images/landscape/landwehrcanal-2017-oil-on-panel-40x30cm-1200.webp",
+    "bytes": 61760,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1233,
+    "file": "images/landscape/landwehrcanal-2017-oil-on-panel-40x30cm-1600.webp",
+    "bytes": 98090,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Lawlers Lane Nightscape II_2019_oil on panel_122x122cm.webp": {
+  "slug": "lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 64612,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 400,
+    "file": "images/landscape/lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm-400.webp",
+    "bytes": 5332,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 800,
+    "file": "images/landscape/lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm-800.webp",
+    "bytes": 16446,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1200,
+    "file": "images/landscape/lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm-1200.webp",
+    "bytes": 33582,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1599,
+    "file": "images/landscape/lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm-1600.webp",
+    "bytes": 56636,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Little Wategos_2019_oil on panel_13x36cm.webp": {
+  "slug": "little-wategos-2019-oil-on-panel-13x36cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 193390,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 144,
+    "file": "images/landscape/little-wategos-2019-oil-on-panel-13x36cm-400.webp",
+    "bytes": 6344,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 288,
+    "file": "images/landscape/little-wategos-2019-oil-on-panel-13x36cm-800.webp",
+    "bytes": 32586,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 432,
+    "file": "images/landscape/little-wategos-2019-oil-on-panel-13x36cm-1200.webp",
+    "bytes": 91732,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 575,
+    "file": "images/landscape/little-wategos-2019-oil-on-panel-13x36cm-1600.webp",
+    "bytes": 177952,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Orchard Study I_2019_oil on panel_20x35.5cm.webp": {
+  "slug": "orchard-study-i-2019-oil-on-panel-20x35-5cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 178396,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 224,
+    "file": "images/landscape/orchard-study-i-2019-oil-on-panel-20x35-5cm-400.webp",
+    "bytes": 8870,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 447,
+    "file": "images/landscape/orchard-study-i-2019-oil-on-panel-20x35-5cm-800.webp",
+    "bytes": 36338,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 671,
+    "file": "images/landscape/orchard-study-i-2019-oil-on-panel-20x35-5cm-1200.webp",
+    "bytes": 87572,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 895,
+    "file": "images/landscape/orchard-study-i-2019-oil-on-panel-20x35-5cm-1600.webp",
+    "bytes": 158420,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Queenstown Lake III_2019_oil on panel_30.5x30.5cm.webp": {
+  "slug": "queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 334998,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 402,
+    "file": "images/landscape/queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm-400.webp",
+    "bytes": 11714,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 804,
+    "file": "images/landscape/queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm-800.webp",
+    "bytes": 58166,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1206,
+    "file": "images/landscape/queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm-1200.webp",
+    "bytes": 154938,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1607,
+    "file": "images/landscape/queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm-1600.webp",
+    "bytes": 194350,
+    "q": 68
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Queenstown Lake II_2019_oil on panel_30.5x30.5cm.webp": {
+  "slug": "queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 482860,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 400,
+    "file": "images/landscape/queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm-400.webp",
+    "bytes": 15512,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 799,
+    "file": "images/landscape/queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm-800.webp",
+    "bytes": 84294,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1199,
+    "file": "images/landscape/queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm-1200.webp",
+    "bytes": 232608,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1599,
+    "file": "images/landscape/queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm-1600.webp",
+    "bytes": 265400,
+    "q": 60
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Queenstown Lake IV_2019_oil on panel_30.5x30.5cm.webp": {
+  "slug": "queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 262964,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 402,
+    "file": "images/landscape/queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm-400.webp",
+    "bytes": 10308,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 804,
+    "file": "images/landscape/queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm-800.webp",
+    "bytes": 47240,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1206,
+    "file": "images/landscape/queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm-1200.webp",
+    "bytes": 122442,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1607,
+    "file": "images/landscape/queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm-1600.webp",
+    "bytes": 187402,
+    "q": 76
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Queenstown Lake I_2019_oil on panel_30.5x30.5cm.webp": {
+  "slug": "queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 332688,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 401,
+    "file": "images/landscape/queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm-400.webp",
+    "bytes": 10726,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 801,
+    "file": "images/landscape/queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm-800.webp",
+    "bytes": 48642,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1202,
+    "file": "images/landscape/queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm-1200.webp",
+    "bytes": 141328,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1602,
+    "file": "images/landscape/queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm-1600.webp",
+    "bytes": 193042,
+    "q": 72
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Raywards Lane_2017_oil on panel_26x36cm.webp": {
+  "slug": "raywards-lane-2017-oil-on-panel-26x36cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 270920,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 284,
+    "file": "images/landscape/raywards-lane-2017-oil-on-panel-26x36cm-400.webp",
+    "bytes": 6220,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 567,
+    "file": "images/landscape/raywards-lane-2017-oil-on-panel-26x36cm-800.webp",
+    "bytes": 34850,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 851,
+    "file": "images/landscape/raywards-lane-2017-oil-on-panel-26x36cm-1200.webp",
+    "bytes": 110210,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1135,
+    "file": "images/landscape/raywards-lane-2017-oil-on-panel-26x36cm-1600.webp",
+    "bytes": 185124,
+    "q": 76
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Schlesische Strasse_2009_oil on canvas_28x35cm.webp": {
+  "slug": "schlesische-strasse-2009-oil-on-canvas-28x35cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 43060,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 305,
+    "file": "images/landscape/schlesische-strasse-2009-oil-on-canvas-28x35cm-400.webp",
+    "bytes": 11494,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.webp": {
+  "slug": "the-grove-2019-oil-on-linen-101x137cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 152610,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 296,
+    "file": "images/landscape/the-grove-2019-oil-on-linen-101x137cm-400.webp",
+    "bytes": 11156,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 593,
+    "file": "images/landscape/the-grove-2019-oil-on-linen-101x137cm-800.webp",
+    "bytes": 31976,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 889,
+    "file": "images/landscape/the-grove-2019-oil-on-linen-101x137cm-1200.webp",
+    "bytes": 66662,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1185,
+    "file": "images/landscape/the-grove-2019-oil-on-linen-101x137cm-1600.webp",
+    "bytes": 126866,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre Bowen_Two Trees_2005_oil on panel_26x29cm.webp": {
+  "slug": "two-trees-2005-oil-on-panel-26x29cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 297788,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 538,
+    "file": "images/landscape/two-trees-2005-oil-on-panel-26x29cm-400.webp",
+    "bytes": 31806,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1075,
+    "file": "images/landscape/two-trees-2005-oil-on-panel-26x29cm-800.webp",
+    "bytes": 115734,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1613,
+    "file": "images/landscape/two-trees-2005-oil-on-panel-26x29cm-1200.webp",
+    "bytes": 266312,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Andre_Bowen_Lawlers Lane Nightscape I_2019_oil-on-panel_122x122cm.webp": {
+  "slug": "lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 79072,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 398,
+    "file": "images/landscape/lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm-400.webp",
+    "bytes": 7052,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 797,
+    "file": "images/landscape/lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm-800.webp",
+    "bytes": 21134,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1195,
+    "file": "images/landscape/lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm-1200.webp",
+    "bytes": 41720,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1593,
+    "file": "images/landscape/lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm-1600.webp",
+    "bytes": 67694,
+    "q": 80
+   }
+  ]
+ },
+ "images/Landscape/Lawlers Lane (unfinished).webp": {
+  "slug": "lawlers-lane-unfinished",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 256046,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 393,
+    "file": "images/landscape/lawlers-lane-unfinished-400.webp",
+    "bytes": 27784,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 787,
+    "file": "images/landscape/lawlers-lane-unfinished-800.webp",
+    "bytes": 80340,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1180,
+    "file": "images/landscape/lawlers-lane-unfinished-1200.webp",
+    "bytes": 150508,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1573,
+    "file": "images/landscape/lawlers-lane-unfinished-1600.webp",
+    "bytes": 195400,
+    "q": 76
+   }
+  ]
+ },
+ "images/Landscape/Queenstown Lake V.webp": {
+  "slug": "queenstown-lake-v",
+  "cat": "landscape",
+  "source": "master",
+  "orig_bytes": 478856,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 400,
+    "file": "images/landscape/queenstown-lake-v-400.webp",
+    "bytes": 20898,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 800,
+    "file": "images/landscape/queenstown-lake-v-800.webp",
+    "bytes": 114464,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1200,
+    "file": "images/landscape/queenstown-lake-v-1200.webp",
+    "bytes": 269922,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1600,
+    "file": "images/landscape/queenstown-lake-v-1600.webp",
+    "bytes": 288418,
+    "q": 60
+   }
+  ]
+ },
+ "images/Photos/Headshot Andre Bowen.webp": {
+  "slug": "headshot-andre-bowen",
+  "cat": "photos",
+  "source": "master",
+  "orig_bytes": 111116,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 538,
+    "file": "images/photos/headshot-andre-bowen-400.webp",
+    "bytes": 19724,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1075,
+    "file": "images/photos/headshot-andre-bowen-800.webp",
+    "bytes": 59992,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1613,
+    "file": "images/photos/headshot-andre-bowen-1200.webp",
+    "bytes": 101156,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Abyssinian Roses_2016_oil on linen panel_35x28cm.webp": {
+  "slug": "abyssinian-roses-2016-oil-on-linen-panel-35x28cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 343418,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 538,
+    "file": "images/still-life/abyssinian-roses-2016-oil-on-linen-panel-35x28cm-400.webp",
+    "bytes": 44474,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1076,
+    "file": "images/still-life/abyssinian-roses-2016-oil-on-linen-panel-35x28cm-800.webp",
+    "bytes": 182986,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1613,
+    "file": "images/still-life/abyssinian-roses-2016-oil-on-linen-panel-35x28cm-1200.webp",
+    "bytes": 316854,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Chair (Shuttle)_2005_tempera on linen panel_60x75cm.webp": {
+  "slug": "chair-shuttle-2005-tempera-on-linen-panel-60x75cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 20996,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 353,
+    "file": "images/still-life/chair-shuttle-2005-tempera-on-linen-panel-60x75cm-400.webp",
+    "bytes": 9084,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Flowers in Two Bottles_2018_oil on linen_40x50cm.webp": {
+  "slug": "flowers-in-two-bottles-2018-oil-on-linen-40x50cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 354320,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 321,
+    "file": "images/still-life/flowers-in-two-bottles-2018-oil-on-linen-40x50cm-400.webp",
+    "bytes": 6984,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 642,
+    "file": "images/still-life/flowers-in-two-bottles-2018-oil-on-linen-40x50cm-800.webp",
+    "bytes": 58650,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 964,
+    "file": "images/still-life/flowers-in-two-bottles-2018-oil-on-linen-40x50cm-1200.webp",
+    "bytes": 170764,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1285,
+    "file": "images/still-life/flowers-in-two-bottles-2018-oil-on-linen-40x50cm-1600.webp",
+    "bytes": 197754,
+    "q": 64
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Flowers in a Striped Vase_2019_oil on panel_41x50cm.webp": {
+  "slug": "flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 207652,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 324,
+    "file": "images/still-life/flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm-400.webp",
+    "bytes": 11156,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 648,
+    "file": "images/still-life/flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm-800.webp",
+    "bytes": 38146,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 972,
+    "file": "images/still-life/flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm-1200.webp",
+    "bytes": 92890,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1297,
+    "file": "images/still-life/flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm-1600.webp",
+    "bytes": 173398,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Flowers in a mason jar_2016_oil on linen panel_35x28cm.webp": {
+  "slug": "flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 339758,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 501,
+    "file": "images/still-life/flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm-400.webp",
+    "bytes": 38456,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1001,
+    "file": "images/still-life/flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm-800.webp",
+    "bytes": 153962,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1502,
+    "file": "images/still-life/flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm-1200.webp",
+    "bytes": 282574,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2003,
+    "file": "images/still-life/flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm-1600.webp",
+    "bytes": 275396,
+    "q": 60
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Flowers_2009_oil on canvas_35x25cm.webp": {
+  "slug": "flowers-2009-oil-on-canvas-35x25cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 9098,
+  "sizes": [
+   {
+    "w": 242,
+    "h": 313,
+    "file": "images/still-life/flowers-2009-oil-on-canvas-35x25cm-400.webp",
+    "bytes": 8056,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Jar for Joko (Turps)_2016_oil on panel_40x30cm.webp": {
+  "slug": "jar-for-joko-turps-2016-oil-on-panel-40x30cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 132608,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 516,
+    "file": "images/still-life/jar-for-joko-turps-2016-oil-on-panel-40x30cm-400.webp",
+    "bytes": 9452,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1032,
+    "file": "images/still-life/jar-for-joko-turps-2016-oil-on-panel-40x30cm-800.webp",
+    "bytes": 45504,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1549,
+    "file": "images/still-life/jar-for-joko-turps-2016-oil-on-panel-40x30cm-1200.webp",
+    "bytes": 105878,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Jar for Mike (Oil)_2016_oil on panel_40x30cm.webp": {
+  "slug": "jar-for-mike-oil-2016-oil-on-panel-40x30cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 127590,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 505,
+    "file": "images/still-life/jar-for-mike-oil-2016-oil-on-panel-40x30cm-400.webp",
+    "bytes": 7118,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1010,
+    "file": "images/still-life/jar-for-mike-oil-2016-oil-on-panel-40x30cm-800.webp",
+    "bytes": 34902,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1515,
+    "file": "images/still-life/jar-for-mike-oil-2016-oil-on-panel-40x30cm-1200.webp",
+    "bytes": 92226,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2020,
+    "file": "images/still-life/jar-for-mike-oil-2016-oil-on-panel-40x30cm-1600.webp",
+    "bytes": 176064,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Leipzig Studio (Blue Chair)_2009_oil on canvas_35x28cm.webp": {
+  "slug": "leipzig-studio-blue-chair-2009-oil-on-canvas-35x28cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 129124,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 512,
+    "file": "images/still-life/leipzig-studio-blue-chair-2009-oil-on-canvas-35x28cm-400.webp",
+    "bytes": 15064,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1024,
+    "file": "images/still-life/leipzig-studio-blue-chair-2009-oil-on-canvas-35x28cm-800.webp",
+    "bytes": 52822,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1536,
+    "file": "images/still-life/leipzig-studio-blue-chair-2009-oil-on-canvas-35x28cm-1200.webp",
+    "bytes": 106182,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Leipzig Studio_2009_oil on canvas_70x50cm.webp": {
+  "slug": "leipzig-studio-2009-oil-on-canvas-70x50cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 87026,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 490,
+    "file": "images/still-life/leipzig-studio-2009-oil-on-canvas-70x50cm-400.webp",
+    "bytes": 15580,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 979,
+    "file": "images/still-life/leipzig-studio-2009-oil-on-canvas-70x50cm-800.webp",
+    "bytes": 40114,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1469,
+    "file": "images/still-life/leipzig-studio-2009-oil-on-canvas-70x50cm-1200.webp",
+    "bytes": 70360,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Madrid Silver_2017_oil on panel_40x30cm.webp": {
+  "slug": "madrid-silver-2017-oil-on-panel-40x30cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 184318,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 532,
+    "file": "images/still-life/madrid-silver-2017-oil-on-panel-40x30cm-400.webp",
+    "bytes": 8064,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1064,
+    "file": "images/still-life/madrid-silver-2017-oil-on-panel-40x30cm-800.webp",
+    "bytes": 55698,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1596,
+    "file": "images/still-life/madrid-silver-2017-oil-on-panel-40x30cm-1200.webp",
+    "bytes": 156662,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 2127,
+    "file": "images/still-life/madrid-silver-2017-oil-on-panel-40x30cm-1600.webp",
+    "bytes": 198580,
+    "q": 72
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Outdoor Still Life_2016_oil on linen panel_40x30cm.webp": {
+  "slug": "outdoor-still-life-2016-oil-on-linen-panel-40x30cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 398324,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 477,
+    "file": "images/still-life/outdoor-still-life-2016-oil-on-linen-panel-40x30cm-400.webp",
+    "bytes": 25718,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 954,
+    "file": "images/still-life/outdoor-still-life-2016-oil-on-linen-panel-40x30cm-800.webp",
+    "bytes": 140348,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1432,
+    "file": "images/still-life/outdoor-still-life-2016-oil-on-linen-panel-40x30cm-1200.webp",
+    "bytes": 305352,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Queenstown Flowers_2019_oil on panel_30x31cm.webp": {
+  "slug": "queenstown-flowers-2019-oil-on-panel-30x31cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 266162,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 393,
+    "file": "images/still-life/queenstown-flowers-2019-oil-on-panel-30x31cm-400.webp",
+    "bytes": 8760,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 786,
+    "file": "images/still-life/queenstown-flowers-2019-oil-on-panel-30x31cm-800.webp",
+    "bytes": 40466,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1178,
+    "file": "images/still-life/queenstown-flowers-2019-oil-on-panel-30x31cm-1200.webp",
+    "bytes": 113178,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1571,
+    "file": "images/still-life/queenstown-flowers-2019-oil-on-panel-30x31cm-1600.webp",
+    "bytes": 175808,
+    "q": 76
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Roses (Graefestrasse)_2016_oil on panel_40x30cm.webp": {
+  "slug": "roses-graefestrasse-2016-oil-on-panel-40x30cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 75726,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 539,
+    "file": "images/still-life/roses-graefestrasse-2016-oil-on-panel-40x30cm-400.webp",
+    "bytes": 10282,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1078,
+    "file": "images/still-life/roses-graefestrasse-2016-oil-on-panel-40x30cm-800.webp",
+    "bytes": 28714,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1616,
+    "file": "images/still-life/roses-graefestrasse-2016-oil-on-panel-40x30cm-1200.webp",
+    "bytes": 64660,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Roses_2014_oil on canvas_50x40cm.webp": {
+  "slug": "roses-2014-oil-on-canvas-50x40cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 106052,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 476,
+    "file": "images/still-life/roses-2014-oil-on-canvas-50x40cm-400.webp",
+    "bytes": 8072,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 953,
+    "file": "images/still-life/roses-2014-oil-on-canvas-50x40cm-800.webp",
+    "bytes": 33598,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1429,
+    "file": "images/still-life/roses-2014-oil-on-canvas-50x40cm-1200.webp",
+    "bytes": 76068,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Skull and Sketchbooks_2018_oil on panel_30.5x40.5cm.webp": {
+  "slug": "skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 442592,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 300,
+    "file": "images/still-life/skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm-400.webp",
+    "bytes": 10480,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 600,
+    "file": "images/still-life/skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm-800.webp",
+    "bytes": 70926,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 900,
+    "file": "images/still-life/skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm-1200.webp",
+    "bytes": 206568,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1201,
+    "file": "images/still-life/skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm-1600.webp",
+    "bytes": 256008,
+    "q": 60
+   }
+  ]
+ },
+ "images/Still life/Andre Bowen_Sneakers_2019_oil on panel_40x50cm.webp": {
+  "slug": "sneakers-2019-oil-on-panel-40x50cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 391254,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 383,
+    "file": "images/still-life/sneakers-2019-oil-on-panel-40x50cm-400.webp",
+    "bytes": 9426,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 767,
+    "file": "images/still-life/sneakers-2019-oil-on-panel-40x50cm-800.webp",
+    "bytes": 67636,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1150,
+    "file": "images/still-life/sneakers-2019-oil-on-panel-40x50cm-1200.webp",
+    "bytes": 189042,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1533,
+    "file": "images/still-life/sneakers-2019-oil-on-panel-40x50cm-1600.webp",
+    "bytes": 207628,
+    "q": 60
+   }
+  ]
+ },
+ "images/Still life/Queenstown Flowers.webp": {
+  "slug": "queenstown-flowers",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 20974,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 557,
+    "file": "images/still-life/queenstown-flowers-400.webp",
+    "bytes": 9208,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Roses (floating)_2018_oil on panel_31x41cm copy.webp": {
+  "slug": "roses-floating-2018-oil-on-panel-31x41cm",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 342308,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 304,
+    "file": "images/still-life/roses-floating-2018-oil-on-panel-31x41cm-400.webp",
+    "bytes": 9320,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 607,
+    "file": "images/still-life/roses-floating-2018-oil-on-panel-31x41cm-800.webp",
+    "bytes": 52292,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 910,
+    "file": "images/still-life/roses-floating-2018-oil-on-panel-31x41cm-1200.webp",
+    "bytes": 151364,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1214,
+    "file": "images/still-life/roses-floating-2018-oil-on-panel-31x41cm-1600.webp",
+    "bytes": 190798,
+    "q": 64
+   }
+  ]
+ },
+ "images/Still life/Roses.webp": {
+  "slug": "roses",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 443850,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 517,
+    "file": "images/still-life/roses-400.webp",
+    "bytes": 46982,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 1034,
+    "file": "images/still-life/roses-800.webp",
+    "bytes": 198704,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1552,
+    "file": "images/still-life/roses-1200.webp",
+    "bytes": 393596,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Studio Corner IV.webp": {
+  "slug": "studio-corner-iv",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 304668,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 487,
+    "file": "images/still-life/studio-corner-iv-400.webp",
+    "bytes": 22746,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 974,
+    "file": "images/still-life/studio-corner-iv-800.webp",
+    "bytes": 104078,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 1460,
+    "file": "images/still-life/studio-corner-iv-1200.webp",
+    "bytes": 226772,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1947,
+    "file": "images/still-life/studio-corner-iv-1600.webp",
+    "bytes": 215984,
+    "q": 60
+   }
+  ]
+ },
+ "images/Still life/Studio Table (unfinished) .webp": {
+  "slug": "studio-table-unfinished",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 99138,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 297,
+    "file": "images/still-life/studio-table-unfinished-400.webp",
+    "bytes": 9900,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 595,
+    "file": "images/still-life/studio-table-unfinished-800.webp",
+    "bytes": 27936,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 892,
+    "file": "images/still-life/studio-table-unfinished-1200.webp",
+    "bytes": 53784,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1190,
+    "file": "images/still-life/studio-table-unfinished-1600.webp",
+    "bytes": 86124,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Studio Table Leipzig.webp": {
+  "slug": "studio-table-leipzig",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 64686,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 319,
+    "file": "images/still-life/studio-table-leipzig-400.webp",
+    "bytes": 14852,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 639,
+    "file": "images/still-life/studio-table-leipzig-800.webp",
+    "bytes": 43070,
+    "q": 80
+   }
+  ]
+ },
+ "images/Still life/Studio Window.webp": {
+  "slug": "studio-window",
+  "cat": "still-life",
+  "source": "master",
+  "orig_bytes": 228736,
+  "sizes": [
+   {
+    "w": 400,
+    "h": 332,
+    "file": "images/still-life/studio-window-400.webp",
+    "bytes": 8644,
+    "q": 80
+   },
+   {
+    "w": 800,
+    "h": 664,
+    "file": "images/still-life/studio-window-800.webp",
+    "bytes": 26184,
+    "q": 80
+   },
+   {
+    "w": 1200,
+    "h": 996,
+    "file": "images/still-life/studio-window-1200.webp",
+    "bytes": 74460,
+    "q": 80
+   },
+   {
+    "w": 1600,
+    "h": 1327,
+    "file": "images/still-life/studio-window-1600.webp",
+    "bytes": 192184,
+    "q": 80
+   }
+  ]
+ }
+}
