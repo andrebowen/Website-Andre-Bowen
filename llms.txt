@@ -19,7 +19,7 @@ https://andrebowen.com/sitemap.xml
 - [Figure](https://andrebowen.com/figure.html): Oil paintings of the human figure.
 - [Drawings](https://andrebowen.com/drawings.html): Portraits, figure studies, and plein-air sketches.
 - [About](https://andrebowen.com/about.html): Biography, exhibition history, awards, residencies, and collections.
-- [Contact](https://andrebowen.com/contact.html): Enquiries regarding available works, exhibitions, or commissions.
+- [Contact](https://andrebowen.com/about.html#contact): Email andrebowen@me.com; Instagram https://www.instagram.com/andrebowen
 
 ## Selected exhibitions
 

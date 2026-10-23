@@ -1,282 +1,218 @@
-/* ===== MD3 THEME TOGGLE ===== */
+/* André Bowen — v2.0. Gallery markup is static HTML (see _build/build.py);
+   this script only adds theme, drawer, lightbox, carousel controls and archive filtering. */
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const withTransition = fn => (document.startViewTransition && !reduceMotion) ? document.startViewTransition(fn) : (fn(), null);
+const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+/* Theme */
 const THEME_KEY = 'md-theme';
-
-function isDark() {
+const isDark = () => {
   const t = document.documentElement.getAttribute('data-theme');
-  if (t === 'dark')  return true;
-  if (t === 'light') return false;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches;
-}
+  return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+};
+const toggle = $('.theme-toggle');
+const syncToggle = () => toggle && toggle.setAttribute('aria-pressed', String(isDark()));
+toggle?.addEventListener('click', () => {
+  const v = isDark() ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', v);
+  try { localStorage.setItem(THEME_KEY, v); } catch (_) {}
+  syncToggle();
+});
+syncToggle();
 
-function setTheme(dark) {
-  const value = dark ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', value);
-  localStorage.setItem(THEME_KEY, value);
-}
-
-/* ===== MD3 RIPPLE ===== */
-function attachRipple(el) {
-  el.addEventListener('pointerdown', e => {
-    const rect = el.getBoundingClientRect();
-    const ripple = document.createElement('span');
-    ripple.className = 'md-ripple';
-    ripple.style.top  = (e.clientY - rect.top)  + 'px';
-    ripple.style.left = (e.clientX - rect.left) + 'px';
-    el.appendChild(ripple);
-    ripple.addEventListener('animationend', () => ripple.remove());
-  });
-}
-
-/* ===== PAGE TRANSITIONS ===== */
-document.addEventListener('click', e => {
-  const a = e.target.closest('a[href]');
-  if (!a) return;
-  const href = a.getAttribute('href');
-  if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-  if (a.target === '_blank' || a.origin !== location.origin) return;
-  e.preventDefault();
-  document.body.classList.add('page-exit');
-  setTimeout(() => { location.href = a.href; }, 150);
+/* Active nav */
+$$('.nav-links a, .mobile-nav a').forEach(a => {
+  const here = location.pathname.replace(/\/$/, '/index.html');
+  if (a.pathname === here || a.pathname === location.pathname) { a.classList.add('active'); a.setAttribute('aria-current', 'page'); }
 });
 
-/* ===== ACTIVE NAV LINK ===== */
-document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
-  if (a.pathname === location.pathname) a.classList.add('active');
-});
+/* Header tone on scroll */
+const header = $('header');
+if (header) addEventListener('scroll', () => header.classList.toggle('elevated', scrollY > 4), { passive: true });
 
-/* ===== MD3 HEADER ELEVATION (scroll) ===== */
-const headerEl = document.querySelector('header');
-if (headerEl) {
-  window.addEventListener('scroll', () => {
-    headerEl.classList.toggle('elevated', window.scrollY > 4);
-  }, { passive: true });
-}
-
-/* ===== MD3 NAVIGATION DRAWER ===== */
-const hamburger = document.querySelector('.hamburger');
-const mobileNav = document.querySelector('.mobile-nav');
-
-const scrim = document.createElement('div');
-scrim.className = 'nav-drawer-scrim';
-document.body.appendChild(scrim);
-
-function openDrawer() {
-  mobileNav.classList.add('open');
-  scrim.classList.add('open');
-  hamburger.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeDrawer() {
-  mobileNav.classList.remove('open');
-  scrim.classList.remove('open');
-  hamburger.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-if (hamburger) {
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.contains('open') ? closeDrawer() : openDrawer();
-  });
-}
-
-scrim.addEventListener('click', closeDrawer);
-
-if (mobileNav) {
-  mobileNav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', closeDrawer);
-  });
-}
-
-/* ===== DETAIL PANEL ===== */
-const dp = document.getElementById('detail-panel');
-let dpItems = [];
-let dpIndex = 0;
-
-function openDetailPanel(items, idx, sourceImg) {
-  if (!dp) return;
-  dpItems = items;
-  dpIndex = idx;
-  const dpImg = document.getElementById('dp-img');
-
-  const doOpen = () => {
-    renderDetailPanel();
-    dp.classList.add('open');
+/* Drawer */
+const burger = $('.hamburger'), drawer = $('#mobile-nav');
+if (burger && drawer) {
+  const scrim = document.createElement('div');
+  scrim.className = 'nav-drawer-scrim';
+  document.body.appendChild(scrim);
+  const open = () => {
+    drawer.classList.add('open'); scrim.classList.add('open'); burger.classList.add('open');
+    burger.setAttribute('aria-expanded', 'true'); burger.setAttribute('aria-label', 'Close menu');
     document.body.style.overflow = 'hidden';
-    if (dpImg) dpImg.style.viewTransitionName = 'painting';
+    $('a', drawer)?.focus();
   };
-
-  if (document.startViewTransition && sourceImg) {
-    sourceImg.style.viewTransitionName = 'painting';
-    const t = document.startViewTransition(doOpen);
-    t.finished.finally(() => { sourceImg.style.viewTransitionName = ''; });
-  } else {
-    doOpen();
-  }
-}
-
-function renderDetailPanel() {
-  const art = dpItems[dpIndex];
-  document.getElementById('dp-img').src = art.src;
-  document.getElementById('dp-img').alt = art.title;
-  const yearStr = art.year ? `, ${art.year}` : '';
-  document.getElementById('dp-title').textContent = art.title + yearStr;
-  document.getElementById('dp-medium').textContent = art.medium || '';
-  document.getElementById('dp-dims').textContent = art.dims || '';
-  document.getElementById('dp-prev').disabled = dpIndex === 0;
-  document.getElementById('dp-next').disabled = dpIndex === dpItems.length - 1;
-}
-
-function closeDetailPanel() {
-  if (!dp) return;
-  const dpImg = document.getElementById('dp-img');
-
-  const doClose = () => {
-    dp.classList.remove('open');
+  const close = (returnFocus = true) => {
+    if (!drawer.classList.contains('open')) return;
+    drawer.classList.remove('open'); scrim.classList.remove('open'); burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
+    if (returnFocus) burger.focus();
   };
-
-  if (document.startViewTransition) {
-    const t = document.startViewTransition(doClose);
-    t.finished.finally(() => {
-      dpImg.src = '';
-      dpImg.style.viewTransitionName = '';
-    });
-  } else {
-    doClose();
-    dpImg.src = '';
-    dpImg.style.viewTransitionName = '';
-  }
+  burger.addEventListener('click', () => burger.getAttribute('aria-expanded') === 'true' ? close() : open());
+  scrim.addEventListener('click', () => close());
+  $$('a', drawer).forEach(a => a.addEventListener('click', () => close(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 }
 
-window.closeDetailPanel = closeDetailPanel;
-
-/* ===== HORIZONTAL SCROLL GALLERY RENDERER ===== */
-function renderHGallery(containerId, artworks) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  artworks.forEach((art, i) => {
-    const item = document.createElement('div');
-    item.className = 'h-item';
-
-    const yearStr = art.year ? `, ${art.year}` : '';
-
-    item.innerHTML = `
-      <div class="h-item-bg">
-        <img src="${art.src}" alt="${art.title}" loading="lazy">
-      </div>
-      <div class="h-caption">
-        <div class="h-title">${art.title}${yearStr}</div>
-        ${art.medium ? `<div class="h-medium">${art.medium}</div>` : ''}
-        ${art.dims ? `<div class="h-dims">${art.dims}</div>` : ''}
-      </div>`;
-
-    item.addEventListener('click', () => {
-      openDetailPanel(artworks, i, item.querySelector('img'));
-    });
-    container.appendChild(item);
-    attachRipple(item);
-  });
-
-  const wrap = container.closest('.h-gallery-wrap');
-  if (!wrap) return;
-
-  // Dot indicators
-  const dotsEl = document.createElement('div');
-  dotsEl.className = 'h-dots';
-  artworks.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'h-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Go to painting ${i + 1}`);
-    dot.addEventListener('click', () => scrollToItem(i));
-    dotsEl.appendChild(dot);
-  });
-  wrap.appendChild(dotsEl);
-
-  // Arrow buttons
-  const prevBtn = document.createElement('button');
-  prevBtn.className = 'h-prev';
-  prevBtn.setAttribute('aria-label', 'Previous');
-  prevBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
-
-  const nextBtn = document.createElement('button');
-  nextBtn.className = 'h-next';
-  nextBtn.setAttribute('aria-label', 'Next');
-  nextBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
-
-  wrap.appendChild(prevBtn);
-  wrap.appendChild(nextBtn);
-  attachRipple(prevBtn);
-  attachRipple(nextBtn);
-
-  let activeIndex = 0;
-
-  function scrollToItem(idx) {
-    const items = container.querySelectorAll('.h-item');
-    const item = items[idx];
-    if (!item) return;
-    const scrollLeft = item.offsetLeft - (container.offsetWidth - item.offsetWidth) / 2;
-    container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-  }
-
-  function updateNav() {
-    const atStart = container.scrollLeft <= 4;
-    const atEnd = container.scrollLeft + container.offsetWidth >= container.scrollWidth - 4;
-    prevBtn.disabled = atStart;
-    nextBtn.disabled = atEnd;
-
-    const center = container.scrollLeft + container.offsetWidth / 2;
-    let minDist = Infinity;
-    container.querySelectorAll('.h-item').forEach((item, i) => {
-      const dist = Math.abs(item.offsetLeft + item.offsetWidth / 2 - center);
-      if (dist < minDist) { minDist = dist; activeIndex = i; }
-    });
-    dotsEl.querySelectorAll('.h-dot').forEach((d, i) => d.classList.toggle('active', i === activeIndex));
-  }
-
-  prevBtn.addEventListener('click', () => scrollToItem(Math.max(0, activeIndex - 1)));
-  nextBtn.addEventListener('click', () => scrollToItem(Math.min(artworks.length - 1, activeIndex + 1)));
-  container.addEventListener('scroll', updateNav, { passive: true });
-  updateNav();
-}
-
-/* ===== EVENT LISTENERS ===== */
-document.addEventListener('DOMContentLoaded', () => {
-  // Attach ripples to static interactive elements
-  document.querySelectorAll(
-    '.btn-submit, .dp-close, .dp-nav-btn, .hamburger, .theme-toggle'
-  ).forEach(attachRipple);
-
-  // Theme toggle
-  const themeToggle = document.querySelector('.theme-toggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => setTheme(!isDark()));
-  }
-
-  // Detail panel — tap image area to close on mobile
-  document.querySelector('.dp-right')?.addEventListener('click', () => {
-    if (window.matchMedia('(max-width: 600px)').matches) closeDetailPanel();
-  });
-
-  const withTransition = fn => {
-    if (document.startViewTransition) document.startViewTransition(fn);
-    else fn();
+/* Lightbox (dialog) */
+const dp = $('#detail-panel');
+let items = [], idx = 0, opener = null;
+if (dp) {
+  const img = $('#dp-img'), prev = $('#dp-prev'), next = $('#dp-next');
+  dp.hidden = true;
+  const render = () => {
+    const fig = items[idx], d = fig.dataset, src = $('img', fig);
+    img.srcset = src.getAttribute('srcset') || '';
+    img.sizes = '(max-width: 900px) 100vw, 60vw';
+    img.src = src.currentSrc || src.src;
+    img.alt = src.alt;
+    $('#dp-title').textContent = d.title; $('#dp-year').textContent = d.year || '';
+    $('#dp-medium').textContent = d.medium || '';
+    $('#dp-dims').textContent = d.dims || '';
+    prev.disabled = idx === 0;
+    next.disabled = idx === items.length - 1;
   };
+  const openAt = (list, i, trigger) => {
+    items = list; idx = i; opener = trigger;
+    const thumb = $('img', list[i]);
+    const show = () => {
+      render(); dp.hidden = false; dp.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      img.style.viewTransitionName = 'painting'; thumb.style.viewTransitionName = '';
+    };
+    thumb.style.viewTransitionName = 'painting';
+    const t = withTransition(show);
+    if (!t) thumb.style.viewTransitionName = '';
+    $('.dp-close', dp).focus({ preventScroll: true });
+    t?.finished.finally(() => $('.dp-close', dp).focus({ preventScroll: true }));
+  };
+  const closeDp = () => {
+    if (dp.hidden) return;
+    const hide = () => { dp.classList.remove('open'); dp.hidden = true; document.body.style.overflow = ''; img.style.viewTransitionName = ''; };
+    const t = withTransition(hide);
+    const done = () => { img.removeAttribute('src'); img.removeAttribute('srcset'); opener?.focus({ preventScroll: true }); };
+    t ? t.finished.finally(done) : done();
+  };
+  const step = n => { const j = idx + n; if (j >= 0 && j < items.length) withTransition(() => { idx = j; render(); }); };
 
-  document.getElementById('dp-prev')?.addEventListener('click', () => {
-    if (dpIndex > 0) withTransition(() => { dpIndex--; renderDetailPanel(); });
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-lightbox] [data-art] button');
+    if (!btn) return;
+    const fig = btn.closest('[data-art]');
+    const list = $$('[data-art]', fig.closest('[data-lightbox]')).filter(f => !f.hidden);
+    openAt(list, list.indexOf(fig), btn);
   });
-  document.getElementById('dp-next')?.addEventListener('click', () => {
-    if (dpIndex < dpItems.length - 1) withTransition(() => { dpIndex++; renderDetailPanel(); });
-  });
-
-  // Keyboard
+  $('.dp-close', dp).addEventListener('click', closeDp);
+  prev.addEventListener('click', () => step(-1));
+  next.addEventListener('click', () => step(1));
+  $('.dp-right', dp).addEventListener('click', () => { if (matchMedia('(max-width: 600px)').matches) closeDp(); });
   document.addEventListener('keydown', e => {
-    if (dp?.classList.contains('open')) {
-      if (e.key === 'Escape') closeDetailPanel();
-      if (e.key === 'ArrowLeft' && dpIndex > 0) withTransition(() => { dpIndex--; renderDetailPanel(); });
-      if (e.key === 'ArrowRight' && dpIndex < dpItems.length - 1) withTransition(() => { dpIndex++; renderDetailPanel(); });
+    if (dp.hidden) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeDp(); }
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+    else if (e.key === 'Tab') {                       // focus trap
+      const f = $$(FOCUSABLE, dp).filter(el => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === dp)) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
+}
+
+/* Horizontal gallery controls (replaces missing initHGalleryArrows) */
+$$('.h-gallery').forEach(gal => {
+  const wrap = gal.closest('.h-gallery-wrap'), figs = $$('.h-item', gal);
+  if (!wrap || figs.length < 2) return;
+  const mk = (cls, label, pts) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = cls; b.setAttribute('aria-label', label);
+    b.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="${pts}"/></svg>`;
+    wrap.appendChild(b); return b;
+  };
+  const dots = document.createElement('div'); dots.className = 'h-dots'; dots.setAttribute('aria-hidden', 'true');
+  figs.forEach((_, i) => { const d = document.createElement('span'); d.className = 'h-dot' + (i ? '' : ' active'); dots.appendChild(d); });
+  wrap.appendChild(dots);
+  const prev = mk('h-prev', 'Previous painting', '15 18 9 12 15 6');
+  const next = mk('h-next', 'Next painting', '9 18 15 12 9 6');
+  let active = 0;
+  const go = i => { const f = figs[i]; if (f) gal.scrollTo({ left: f.offsetLeft - (gal.offsetWidth - f.offsetWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' }); };
+  const update = () => {
+    prev.disabled = gal.scrollLeft <= 4;
+    next.disabled = gal.scrollLeft + gal.offsetWidth >= gal.scrollWidth - 4;
+    const c = gal.scrollLeft + gal.offsetWidth / 2; let min = Infinity;
+    figs.forEach((f, i) => { const d = Math.abs(f.offsetLeft + f.offsetWidth / 2 - c); if (d < min) { min = d; active = i; } });
+    $$('.h-dot', dots).forEach((d, i) => d.classList.toggle('active', i === active));
+  };
+  prev.addEventListener('click', () => go(Math.max(0, active - 1)));
+  next.addEventListener('click', () => go(Math.min(figs.length - 1, active + 1)));
+  gal.addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  update();
 });
+
+/* Series flow: one work at a time; #all = contact sheet, #work-<slug> = that work */
+const series = $('main.series');
+if (series) {
+  const works = $$('.series-work', series), sheet = $('#all');
+  const T = $('#s-title'), Y = $('#s-year'), M = $('#s-medium'), D = $('#s-dims'), C = $('#s-count'), P = $('#s-prev'), N = $('#s-next');
+  let cur = 0;
+  const show = (i, push) => {
+    cur = Math.max(0, Math.min(works.length - 1, i));
+    works.forEach((w, k) => w.classList.toggle('is-current', k === cur));
+    const d = works[cur].dataset;
+    T.textContent = d.title; Y.textContent = d.year || ''; M.textContent = d.medium || ''; D.textContent = d.dims || '';
+    C.textContent = `${cur + 1} / ${works.length}`;
+    P.disabled = cur === 0; N.disabled = cur === works.length - 1;
+    const n = works[cur + 1]?.querySelector('img'); if (n) n.loading = 'eager';
+    if (push) history.replaceState(null, '', cur === 0 ? location.pathname : `#work-${d.slug}`);
+  };
+  const route = () => {
+    const h = decodeURIComponent(location.hash.slice(1));
+    const all = h === 'all';
+    series.classList.toggle('show-all', all); series.classList.toggle('show-flow', !all);
+    if (all) { scrollTo(0, 0); const t = $(`#all .archive-btn[href="#work-${works[cur].dataset.slug}"]`) || $('#all .archive-btn'); t?.focus({ preventScroll: true }); return; }
+    const i = h.startsWith('work-') ? works.findIndex(w => w.dataset.slug === h.slice(5)) : -1;
+    show(i >= 0 ? i : (h ? cur : 0));
+    if (h.startsWith('work-')) { scrollTo(0, 0); $('.series-all-btn', series)?.focus({ preventScroll: true }); }
+  };
+  P.addEventListener('click', () => show(cur - 1, true));
+  N.addEventListener('click', () => show(cur + 1, true));
+  $('.series-back', series)?.addEventListener('click', e => { e.preventDefault(); history.pushState(null, '', cur === 0 ? location.pathname : `#work-${works[cur].dataset.slug}`); route(); });
+  document.addEventListener('keydown', e => {
+    if (series.classList.contains('show-all') || e.target.closest('input,select,textarea') || $('#mobile-nav.open')) return;
+    if (e.key === 'ArrowLeft') show(cur - 1, true); else if (e.key === 'ArrowRight') show(cur + 1, true);
+  });
+  addEventListener('hashchange', route);
+  route();
+}
+
+/* Archive: filter + sort the static grid */
+const grid = $('#archive-grid');
+if (grid) {
+  const chips = $$('.chip[data-filter]'), sel = $('#sort-select'), count = $('#archive-count');
+  const all = $$('.archive-item', grid);
+  let filter = 'all';
+  const apply = () => {
+    const dir = sel?.value === 'oldest' ? 1 : -1;
+    const yr = f => parseInt(f.dataset.year, 10) || 0;
+    all.slice().sort((a, b) => (yr(a) - yr(b)) * dir || a.dataset.order - b.dataset.order).forEach(f => grid.appendChild(f));
+    let n = 0;
+    all.forEach(f => { f.hidden = !(filter === 'all' || f.dataset.cat === filter); if (!f.hidden) n++; });
+    if (count) count.textContent = `${n} work${n === 1 ? '' : 's'}`;
+  };
+  chips.forEach(c => c.addEventListener('click', () => {
+    filter = c.dataset.filter;
+    chips.forEach(x => { const on = x === c; x.classList.toggle('active', on); x.setAttribute('aria-pressed', String(on)); });
+    apply();
+  }));
+  sel?.addEventListener('change', apply);
+  apply();
+}
+})();

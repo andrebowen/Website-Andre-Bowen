@@ -7,6 +7,12 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
     gtag('js', new Date());
 
     gtag('config', 'G-JE27G4EEVR');
@@ -20,212 +26,70 @@
   <meta property="og:title" content="Archive — André Bowen">
   <meta property="og:description" content="Complete archive of oil paintings and drawings by André Bowen.">
   <meta property="og:url" content="https://andrebowen.com/archive.html">
-  <meta property="og:image" content="https://andrebowen.com/images/Landscape/Andre%20Bowen_The%20Grove_2019_oil%20on%20linen_101x137cm.webp">
+  <!-- build:og -->
+<meta property="og:image" content="https://andrebowen.com/images/og/the-grove-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Grove, 2019, oil on linen, by André Bowen">
+  <meta name="twitter:image" content="https://andrebowen.com/images/og/the-grove-1200x630.jpg">
+<!-- /build:og -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Archive — André Bowen">
   <meta name="twitter:description" content="Complete archive of oil paintings and drawings by André Bowen.">
-  <meta name="twitter:image" content="https://andrebowen.com/images/Landscape/Andre%20Bowen_The%20Grove_2019_oil%20on%20linen_101x137cm.webp">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    /* ===== ARCHIVE PAGE ===== */
-    .archive-page {
-      flex: 1;
-      padding: 40px var(--margin-x) 80px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .archive-header {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    .archive-title {
-      font-size: var(--md-sys-typescale-headline-small-size);
-      font-weight: 500;
-      letter-spacing: -0.3px;
-      color: var(--ink);
-    }
-
-    .archive-count {
-      font-size: var(--md-sys-typescale-body-medium-size);
-      color: var(--ink-3);
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* ===== FILTER CHIPS ===== */
-    .chip-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 32px;
-      overflow-x: auto;
-      padding-bottom: 2px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .chip-row::-webkit-scrollbar { display: none; }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      height: 32px;
-      padding: 0 16px;
-      border-radius: var(--md-sys-shape-corner-full);
-      border: 1px solid var(--sep);
-      background: transparent;
-      color: var(--ink);
-      font-family: var(--font);
-      font-size: var(--md-sys-typescale-label-medium-size);
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      position: relative;
-      overflow: hidden;
-      -webkit-tap-highlight-color: transparent;
-      transition:
-        background var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard),
-        border-color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard),
-        color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
-    }
-
-    .chip::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--md-sys-color-on-surface);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
-    }
-    .chip:hover::before  { opacity: 0.08; }
-    .chip:active::before { opacity: 0.12; }
-
-    .chip.active {
-      background: var(--md-sys-color-primary-container);
-      border-color: transparent;
-      color: var(--md-sys-color-on-primary-container);
-    }
-
-    .chip-check {
-      display: none;
-      flex-shrink: 0;
-    }
-    .chip.active .chip-check { display: block; }
-
-    /* ===== TOOLBAR (chips + sort) ===== */
-    .archive-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .archive-toolbar .chip-row {
-      margin-bottom: 0;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .sort-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .sort-select {
-      appearance: none;
-      -webkit-appearance: none;
-      background: transparent;
-      border: none;
-      font-family: var(--font);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink-3);
-      cursor: pointer;
-      padding: 4px 18px 4px 0;
-      outline: none;
-      transition: color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
-    }
-
-    .sort-select:hover { color: var(--ink); }
-
-    .sort-wrap::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 10px;
-      height: 6px;
-      background: currentColor;
-      color: var(--ink-3);
-      pointer-events: none;
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-    }
-
-    /* ===== GRID ===== */
-    .archive-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 40px 24px;
-    }
-
-    .archive-item {
-      cursor: pointer;
-    }
-
-    .archive-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: opacity 200ms var(--md-sys-motion-easing-standard);
-    }
-
-    .archive-item:hover img {
-      opacity: 0.88;
-    }
-
-    .archive-caption {
-      margin-top: 12px;
-    }
-
-    .archive-caption-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.4;
-    }
-
-    .archive-caption-meta {
-      font-size: 12px;
-      color: var(--ink-3);
-      margin-top: 2px;
-    }
-
-    @media (max-width: 900px) {
-      .archive-grid { grid-template-columns: repeat(4, 1fr); gap: 32px 20px; }
-    }
-
-    @media (max-width: 600px) {
-      .archive-page { padding: 24px 16px 60px; }
-      .archive-grid { grid-template-columns: repeat(3, 1fr); gap: 28px 12px; }
-    }
-  </style>
   <script>(function(){var t=localStorage.getItem('md-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+  <!-- build:jsonld -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Person",
+   "@id": "https://andrebowen.com/#person",
+   "name": "André Bowen",
+   "url": "https://andrebowen.com/",
+   "jobTitle": "Oil Painter",
+   "description": "Australian oil painter working in still life, landscape, and figurative studies. Based in the Northern Rivers, NSW.",
+   "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Northern Rivers, New South Wales",
+    "addressCountry": "AU"
+   },
+   "image": "https://andrebowen.com/images/photos/headshot-andre-bowen-800.webp",
+   "email": "mailto:andrebowen@me.com",
+   "sameAs": [
+    "https://www.instagram.com/andrebowen"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://andrebowen.com/#website",
+   "url": "https://andrebowen.com/",
+   "name": "André Bowen",
+   "publisher": {
+    "@id": "https://andrebowen.com/#person"
+   }
+  }
+ ]
+}
+  </script>
+<!-- /build:jsonld -->
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header>
-  <nav>
+  <nav aria-label="Main">
     <a href="index.html" class="logo">André Bowen</a>
     <ul class="nav-links">
       <li><a href="still-life.html">Still Life</a></li>
@@ -234,53 +98,53 @@
       <li><a href="drawings.html">Drawings</a></li>
       <li><a href="archive.html">Archive</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="hamburger" aria-label="Open menu">
-      <span></span><span></span>
-    </button>
-    <button class="theme-toggle" aria-label="Toggle dark mode">
+    <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
       <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button type="button" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span>
     </button>
   </nav>
 </header>
 
-<div class="mobile-nav">
+<nav id="mobile-nav" class="mobile-nav" aria-label="Menu">
   <a href="still-life.html">Still Life</a>
   <a href="landscape.html">Landscape</a>
   <a href="figure.html">Figure</a>
   <a href="drawings.html">Drawings</a>
   <a href="archive.html">Archive</a>
   <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</div>
+</nav>
 
 <main id="main-content" class="archive-page">
   <div class="archive-header">
     <h1 class="archive-title">Archive</h1>
-    <span class="archive-count" id="archive-count" aria-live="polite"></span>
+    <!-- build:count -->
+<span class="archive-count" id="archive-count" aria-live="polite">70 works</span>
+<!-- /build:count -->
   </div>
 
   <div class="archive-toolbar">
     <div class="chip-row" role="group" aria-label="Filter by category">
-      <button class="chip active" data-filter="all">
+      <button type="button" class="chip active" aria-pressed="true" data-filter="all">
         <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         All
       </button>
-      <button class="chip" data-filter="still-life">
+      <button type="button" class="chip" aria-pressed="false" data-filter="still-life">
         <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         Still Life
       </button>
-      <button class="chip" data-filter="landscape">
+      <button type="button" class="chip" aria-pressed="false" data-filter="landscape">
         <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         Landscape
       </button>
-      <button class="chip" data-filter="figure">
+      <button type="button" class="chip" aria-pressed="false" data-filter="figure">
         <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         Figure
       </button>
-      <button class="chip" data-filter="drawings">
+      <button type="button" class="chip" aria-pressed="false" data-filter="drawings">
         <svg class="chip-check" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         Drawings
       </button>
@@ -293,14 +157,298 @@
     </div>
   </div>
 
-  <div class="archive-grid" id="archive-grid"></div>
+  <div class="archive-grid" id="archive-grid" data-lightbox>
+<!-- build:archive -->
+    <figure class="archive-item" data-cat="still-life" data-order="0" data-art data-title="Abyssinian Roses" data-year="2016" data-medium="Oil on linen panel" data-dims="35 × 28 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Abyssinian Roses, 2016"><img src="images/still-life/abyssinian-roses-2016-oil-on-linen-panel-35x28cm-800.webp" srcset="images/still-life/abyssinian-roses-2016-oil-on-linen-panel-35x28cm-400.webp 400w, images/still-life/abyssinian-roses-2016-oil-on-linen-panel-35x28cm-800.webp 800w, images/still-life/abyssinian-roses-2016-oil-on-linen-panel-35x28cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1613" alt="Abyssinian Roses, 2016. Oil on linen panel, 35 × 28 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Abyssinian Roses, 2016</span><span class="archive-caption-meta">Oil on linen panel</span><span class="archive-caption-meta">35 × 28 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="1" data-art data-title="Flowers in a Striped Vase" data-year="2019" data-medium="Oil on panel" data-dims="41 × 50 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Flowers in a Striped Vase, 2019"><img src="images/still-life/flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm-800.webp" srcset="images/still-life/flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm-400.webp 400w, images/still-life/flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm-800.webp 800w, images/still-life/flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm-1200.webp 1200w, images/still-life/flowers-in-a-striped-vase-2019-oil-on-panel-41x50cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1297" alt="Flowers in a Striped Vase, 2019. Oil on panel, 41 × 50 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Flowers in a Striped Vase, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">41 × 50 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="2" data-art data-title="Flowers in Two Bottles" data-year="2018" data-medium="Oil on linen" data-dims="40 × 50 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Flowers in Two Bottles, 2018"><img src="images/still-life/flowers-in-two-bottles-2018-oil-on-linen-40x50cm-800.webp" srcset="images/still-life/flowers-in-two-bottles-2018-oil-on-linen-40x50cm-400.webp 400w, images/still-life/flowers-in-two-bottles-2018-oil-on-linen-40x50cm-800.webp 800w, images/still-life/flowers-in-two-bottles-2018-oil-on-linen-40x50cm-1200.webp 1200w, images/still-life/flowers-in-two-bottles-2018-oil-on-linen-40x50cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1285" alt="Flowers in Two Bottles, 2018. Oil on linen, 40 × 50 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Flowers in Two Bottles, 2018</span><span class="archive-caption-meta">Oil on linen</span><span class="archive-caption-meta">40 × 50 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="3" data-art data-title="Skull and Sketchbooks" data-year="2018" data-medium="Oil on panel" data-dims="30.5 × 40.5 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Skull and Sketchbooks, 2018"><img src="images/still-life/skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm-800.webp" srcset="images/still-life/skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm-400.webp 400w, images/still-life/skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm-800.webp 800w, images/still-life/skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm-1200.webp 1200w, images/still-life/skull-and-sketchbooks-2018-oil-on-panel-30-5x40-5cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1201" alt="Skull and Sketchbooks, 2018. Oil on panel, 30.5 × 40.5 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Skull and Sketchbooks, 2018</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">30.5 × 40.5 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="4" data-art data-title="Sneakers" data-year="2019" data-medium="Oil on panel" data-dims="40 × 50 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Sneakers, 2019"><img src="images/still-life/sneakers-2019-oil-on-panel-40x50cm-800.webp" srcset="images/still-life/sneakers-2019-oil-on-panel-40x50cm-400.webp 400w, images/still-life/sneakers-2019-oil-on-panel-40x50cm-800.webp 800w, images/still-life/sneakers-2019-oil-on-panel-40x50cm-1200.webp 1200w, images/still-life/sneakers-2019-oil-on-panel-40x50cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1533" alt="Sneakers, 2019. Oil on panel, 40 × 50 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Sneakers, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">40 × 50 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="5" data-art data-title="Queenstown Flowers" data-year="2019" data-medium="Oil on panel" data-dims="30 × 31 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Queenstown Flowers, 2019"><img src="images/still-life/queenstown-flowers-2019-oil-on-panel-30x31cm-800.webp" srcset="images/still-life/queenstown-flowers-2019-oil-on-panel-30x31cm-400.webp 400w, images/still-life/queenstown-flowers-2019-oil-on-panel-30x31cm-800.webp 800w, images/still-life/queenstown-flowers-2019-oil-on-panel-30x31cm-1200.webp 1200w, images/still-life/queenstown-flowers-2019-oil-on-panel-30x31cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1571" alt="Queenstown Flowers, 2019. Oil on panel, 30 × 31 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Queenstown Flowers, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">30 × 31 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="6" data-art data-title="Roses (Graefestrasse)" data-year="2016" data-medium="Oil on panel" data-dims="40 × 30 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Roses (Graefestrasse), 2016"><img src="images/still-life/roses-graefestrasse-2016-oil-on-panel-40x30cm-800.webp" srcset="images/still-life/roses-graefestrasse-2016-oil-on-panel-40x30cm-400.webp 400w, images/still-life/roses-graefestrasse-2016-oil-on-panel-40x30cm-800.webp 800w, images/still-life/roses-graefestrasse-2016-oil-on-panel-40x30cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1616" alt="Roses (Graefestrasse), 2016. Oil on panel, 40 × 30 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Roses (Graefestrasse), 2016</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">40 × 30 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="7" data-art data-title="Roses" data-year="2014" data-medium="Oil on canvas" data-dims="50 × 40 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Roses, 2014"><img src="images/still-life/roses-2014-oil-on-canvas-50x40cm-800.webp" srcset="images/still-life/roses-2014-oil-on-canvas-50x40cm-400.webp 400w, images/still-life/roses-2014-oil-on-canvas-50x40cm-800.webp 800w, images/still-life/roses-2014-oil-on-canvas-50x40cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1429" alt="Roses, 2014. Oil on canvas, 50 × 40 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Roses, 2014</span><span class="archive-caption-meta">Oil on canvas</span><span class="archive-caption-meta">50 × 40 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="8" data-art data-title="Roses (Floating)" data-year="2018" data-medium="Oil on panel" data-dims="31 × 41 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Roses (Floating), 2018"><img src="images/still-life/roses-floating-2018-oil-on-panel-31x41cm-800.webp" srcset="images/still-life/roses-floating-2018-oil-on-panel-31x41cm-400.webp 400w, images/still-life/roses-floating-2018-oil-on-panel-31x41cm-800.webp 800w, images/still-life/roses-floating-2018-oil-on-panel-31x41cm-1200.webp 1200w, images/still-life/roses-floating-2018-oil-on-panel-31x41cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1214" alt="Roses (Floating), 2018. Oil on panel, 31 × 41 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Roses (Floating), 2018</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">31 × 41 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="9" data-art data-title="Madrid Silver" data-year="2017" data-medium="Oil on panel" data-dims="40 × 30 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Madrid Silver, 2017"><img src="images/still-life/madrid-silver-2017-oil-on-panel-40x30cm-800.webp" srcset="images/still-life/madrid-silver-2017-oil-on-panel-40x30cm-400.webp 400w, images/still-life/madrid-silver-2017-oil-on-panel-40x30cm-800.webp 800w, images/still-life/madrid-silver-2017-oil-on-panel-40x30cm-1200.webp 1200w, images/still-life/madrid-silver-2017-oil-on-panel-40x30cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2127" alt="Madrid Silver, 2017. Oil on panel, 40 × 30 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Madrid Silver, 2017</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">40 × 30 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="10" data-art data-title="Flowers in a Mason Jar" data-year="2016" data-medium="Oil on linen panel" data-dims="35 × 28 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Flowers in a Mason Jar, 2016"><img src="images/still-life/flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm-800.webp" srcset="images/still-life/flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm-400.webp 400w, images/still-life/flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm-800.webp 800w, images/still-life/flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm-1200.webp 1200w, images/still-life/flowers-in-a-mason-jar-2016-oil-on-linen-panel-35x28cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2003" alt="Flowers in a Mason Jar, 2016. Oil on linen panel, 35 × 28 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Flowers in a Mason Jar, 2016</span><span class="archive-caption-meta">Oil on linen panel</span><span class="archive-caption-meta">35 × 28 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="11" data-art data-title="Jar for Joko (Turps)" data-year="2016" data-medium="Oil on panel" data-dims="40 × 30 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Jar for Joko (Turps), 2016"><img src="images/still-life/jar-for-joko-turps-2016-oil-on-panel-40x30cm-800.webp" srcset="images/still-life/jar-for-joko-turps-2016-oil-on-panel-40x30cm-400.webp 400w, images/still-life/jar-for-joko-turps-2016-oil-on-panel-40x30cm-800.webp 800w, images/still-life/jar-for-joko-turps-2016-oil-on-panel-40x30cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1549" alt="Jar for Joko (Turps), 2016. Oil on panel, 40 × 30 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Jar for Joko (Turps), 2016</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">40 × 30 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="12" data-art data-title="Jar for Mike (Oil)" data-year="2016" data-medium="Oil on panel" data-dims="40 × 30 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Jar for Mike (Oil), 2016"><img src="images/still-life/jar-for-mike-oil-2016-oil-on-panel-40x30cm-800.webp" srcset="images/still-life/jar-for-mike-oil-2016-oil-on-panel-40x30cm-400.webp 400w, images/still-life/jar-for-mike-oil-2016-oil-on-panel-40x30cm-800.webp 800w, images/still-life/jar-for-mike-oil-2016-oil-on-panel-40x30cm-1200.webp 1200w, images/still-life/jar-for-mike-oil-2016-oil-on-panel-40x30cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2020" alt="Jar for Mike (Oil), 2016. Oil on panel, 40 × 30 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Jar for Mike (Oil), 2016</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">40 × 30 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="13" data-art data-title="Outdoor Still Life" data-year="2016" data-medium="Oil on linen panel" data-dims="40 × 30 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Outdoor Still Life, 2016"><img src="images/still-life/outdoor-still-life-2016-oil-on-linen-panel-40x30cm-800.webp" srcset="images/still-life/outdoor-still-life-2016-oil-on-linen-panel-40x30cm-400.webp 400w, images/still-life/outdoor-still-life-2016-oil-on-linen-panel-40x30cm-800.webp 800w, images/still-life/outdoor-still-life-2016-oil-on-linen-panel-40x30cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1432" alt="Outdoor Still Life, 2016. Oil on linen panel, 40 × 30 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Outdoor Still Life, 2016</span><span class="archive-caption-meta">Oil on linen panel</span><span class="archive-caption-meta">40 × 30 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="14" data-art data-title="Leipzig Studio" data-year="2009" data-medium="Oil on canvas" data-dims="70 × 50 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Leipzig Studio, 2009"><img src="images/still-life/leipzig-studio-2009-oil-on-canvas-70x50cm-800.webp" srcset="images/still-life/leipzig-studio-2009-oil-on-canvas-70x50cm-400.webp 400w, images/still-life/leipzig-studio-2009-oil-on-canvas-70x50cm-800.webp 800w, images/still-life/leipzig-studio-2009-oil-on-canvas-70x50cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1469" alt="Leipzig Studio, 2009. Oil on canvas, 70 × 50 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Leipzig Studio, 2009</span><span class="archive-caption-meta">Oil on canvas</span><span class="archive-caption-meta">70 × 50 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="15" data-art data-title="Leipzig Studio (Blue Chair)" data-year="2009" data-medium="Oil on canvas" data-dims="35 × 28 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Leipzig Studio (Blue Chair), 2009"><img src="images/still-life/leipzig-studio-blue-chair-2009-oil-on-canvas-35x28cm-800.webp" srcset="images/still-life/leipzig-studio-blue-chair-2009-oil-on-canvas-35x28cm-400.webp 400w, images/still-life/leipzig-studio-blue-chair-2009-oil-on-canvas-35x28cm-800.webp 800w, images/still-life/leipzig-studio-blue-chair-2009-oil-on-canvas-35x28cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1536" alt="Leipzig Studio (Blue Chair), 2009. Oil on canvas, 35 × 28 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Leipzig Studio (Blue Chair), 2009</span><span class="archive-caption-meta">Oil on canvas</span><span class="archive-caption-meta">35 × 28 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="16" data-art data-title="Flowers" data-year="2009" data-medium="Oil on canvas" data-dims="35 × 25 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Flowers, 2009"><img src="images/still-life/flowers-2009-oil-on-canvas-35x25cm-400.webp" srcset="images/still-life/flowers-2009-oil-on-canvas-35x25cm-400.webp 242w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="242" height="313" alt="Flowers, 2009. Oil on canvas, 35 × 25 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Flowers, 2009</span><span class="archive-caption-meta">Oil on canvas</span><span class="archive-caption-meta">35 × 25 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="17" data-art data-title="Chair (Shuttle)" data-year="2005" data-medium="Tempera on linen panel" data-dims="60 × 75 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Chair (Shuttle), 2005"><img src="images/still-life/chair-shuttle-2005-tempera-on-linen-panel-60x75cm-400.webp" srcset="images/still-life/chair-shuttle-2005-tempera-on-linen-panel-60x75cm-400.webp 400w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="400" height="353" alt="Chair (Shuttle), 2005. Tempera on linen panel, 60 × 75 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Chair (Shuttle), 2005</span><span class="archive-caption-meta">Tempera on linen panel</span><span class="archive-caption-meta">60 × 75 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="18" data-art data-title="Studio Corner IV" data-year="2025" data-medium="Oil on canvas" data-dims="70 × 50 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Studio Corner IV, 2025"><img src="images/still-life/studio-corner-iv-800.webp" srcset="images/still-life/studio-corner-iv-400.webp 400w, images/still-life/studio-corner-iv-800.webp 800w, images/still-life/studio-corner-iv-1200.webp 1200w, images/still-life/studio-corner-iv-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1947" alt="Studio Corner IV, 2025. Oil on canvas, 70 × 50 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Studio Corner IV, 2025</span><span class="archive-caption-meta">Oil on canvas</span><span class="archive-caption-meta">70 × 50 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="19" data-art data-title="Studio Window" data-year="2025" data-medium="Oil on panel" data-dims="50 × 70 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Studio Window, 2025"><img src="images/still-life/studio-window-800.webp" srcset="images/still-life/studio-window-400.webp 400w, images/still-life/studio-window-800.webp 800w, images/still-life/studio-window-1200.webp 1200w, images/still-life/studio-window-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1327" alt="Studio Window, 2025. Oil on panel, 50 × 70 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Studio Window, 2025</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">50 × 70 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="20" data-art data-title="Studio Table Leipzig" data-year="2010" data-medium="Oil on canvas" data-dims="50 × 75 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Studio Table Leipzig, 2010"><img src="images/still-life/studio-table-leipzig-800.webp" srcset="images/still-life/studio-table-leipzig-400.webp 400w, images/still-life/studio-table-leipzig-800.webp 800w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="800" height="639" alt="Studio Table Leipzig, 2010. Oil on canvas, 50 × 75 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Studio Table Leipzig, 2010</span><span class="archive-caption-meta">Oil on canvas</span><span class="archive-caption-meta">50 × 75 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="still-life" data-order="21" data-art data-title="Studio Table (Unfinished)" data-year="2019" data-medium="Oil on canvas" data-dims="70 × 90 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Studio Table (Unfinished), 2019"><img src="images/still-life/studio-table-unfinished-800.webp" srcset="images/still-life/studio-table-unfinished-400.webp 400w, images/still-life/studio-table-unfinished-800.webp 800w, images/still-life/studio-table-unfinished-1200.webp 1200w, images/still-life/studio-table-unfinished-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1190" alt="Studio Table (Unfinished), 2019. Oil on canvas, 70 × 90 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Studio Table (Unfinished), 2019</span><span class="archive-caption-meta">Oil on canvas</span><span class="archive-caption-meta">70 × 90 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="22" data-art data-title="The Grove" data-year="2019" data-medium="Oil on linen" data-dims="101 × 137 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: The Grove, 2019"><img src="images/landscape/the-grove-2019-oil-on-linen-101x137cm-800.webp" srcset="images/landscape/the-grove-2019-oil-on-linen-101x137cm-400.webp 400w, images/landscape/the-grove-2019-oil-on-linen-101x137cm-800.webp 800w, images/landscape/the-grove-2019-oil-on-linen-101x137cm-1200.webp 1200w, images/landscape/the-grove-2019-oil-on-linen-101x137cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1185" alt="The Grove, 2019. Oil on linen, 101 × 137 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">The Grove, 2019</span><span class="archive-caption-meta">Oil on linen</span><span class="archive-caption-meta">101 × 137 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="23" data-art data-title="Lawlers Lane Nightscape I" data-year="2019" data-medium="Oil on panel" data-dims="122 × 122 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Lawlers Lane Nightscape I, 2019"><img src="images/landscape/lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm-800.webp" srcset="images/landscape/lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm-400.webp 400w, images/landscape/lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm-800.webp 800w, images/landscape/lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm-1200.webp 1200w, images/landscape/lawlers-lane-nightscape-i-2019-oil-on-panel-122x122cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1593" alt="Lawlers Lane Nightscape I, 2019. Oil on panel, 122 × 122 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Lawlers Lane Nightscape I, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">122 × 122 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="24" data-art data-title="Lawlers Lane Nightscape II" data-year="2019" data-medium="Oil on panel" data-dims="122 × 122 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Lawlers Lane Nightscape II, 2019"><img src="images/landscape/lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm-800.webp" srcset="images/landscape/lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm-400.webp 400w, images/landscape/lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm-800.webp 800w, images/landscape/lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm-1200.webp 1200w, images/landscape/lawlers-lane-nightscape-ii-2019-oil-on-panel-122x122cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1599" alt="Lawlers Lane Nightscape II, 2019. Oil on panel, 122 × 122 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Lawlers Lane Nightscape II, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">122 × 122 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="25" data-art data-title="Orchard Study I" data-year="2019" data-medium="Oil on panel" data-dims="20 × 35.5 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Orchard Study I, 2019"><img src="images/landscape/orchard-study-i-2019-oil-on-panel-20x35-5cm-800.webp" srcset="images/landscape/orchard-study-i-2019-oil-on-panel-20x35-5cm-400.webp 400w, images/landscape/orchard-study-i-2019-oil-on-panel-20x35-5cm-800.webp 800w, images/landscape/orchard-study-i-2019-oil-on-panel-20x35-5cm-1200.webp 1200w, images/landscape/orchard-study-i-2019-oil-on-panel-20x35-5cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="895" alt="Orchard Study I, 2019. Oil on panel, 20 × 35.5 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Orchard Study I, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">20 × 35.5 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="26" data-art data-title="Little Wategos" data-year="2019" data-medium="Oil on panel" data-dims="13 × 36 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Little Wategos, 2019"><img src="images/landscape/little-wategos-2019-oil-on-panel-13x36cm-800.webp" srcset="images/landscape/little-wategos-2019-oil-on-panel-13x36cm-400.webp 400w, images/landscape/little-wategos-2019-oil-on-panel-13x36cm-800.webp 800w, images/landscape/little-wategos-2019-oil-on-panel-13x36cm-1200.webp 1200w, images/landscape/little-wategos-2019-oil-on-panel-13x36cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="575" alt="Little Wategos, 2019. Oil on panel, 13 × 36 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Little Wategos, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">13 × 36 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="27" data-art data-title="Queenstown Lake I" data-year="2019" data-medium="Oil on panel" data-dims="30.5 × 30.5 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Queenstown Lake I, 2019"><img src="images/landscape/queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm-800.webp" srcset="images/landscape/queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm-400.webp 400w, images/landscape/queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm-800.webp 800w, images/landscape/queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm-1200.webp 1200w, images/landscape/queenstown-lake-i-2019-oil-on-panel-30-5x30-5cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1602" alt="Queenstown Lake I, 2019. Oil on panel, 30.5 × 30.5 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Queenstown Lake I, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">30.5 × 30.5 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="28" data-art data-title="Queenstown Lake II" data-year="2019" data-medium="Oil on panel" data-dims="30.5 × 30.5 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Queenstown Lake II, 2019"><img src="images/landscape/queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm-800.webp" srcset="images/landscape/queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm-400.webp 400w, images/landscape/queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm-800.webp 800w, images/landscape/queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm-1200.webp 1200w, images/landscape/queenstown-lake-ii-2019-oil-on-panel-30-5x30-5cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1599" alt="Queenstown Lake II, 2019. Oil on panel, 30.5 × 30.5 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Queenstown Lake II, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">30.5 × 30.5 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="29" data-art data-title="Queenstown Lake III" data-year="2019" data-medium="Oil on panel" data-dims="30.5 × 30.5 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Queenstown Lake III, 2019"><img src="images/landscape/queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm-800.webp" srcset="images/landscape/queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm-400.webp 400w, images/landscape/queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm-800.webp 800w, images/landscape/queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm-1200.webp 1200w, images/landscape/queenstown-lake-iii-2019-oil-on-panel-30-5x30-5cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1607" alt="Queenstown Lake III, 2019. Oil on panel, 30.5 × 30.5 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Queenstown Lake III, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">30.5 × 30.5 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="30" data-art data-title="Queenstown Lake IV" data-year="2019" data-medium="Oil on panel" data-dims="30.5 × 30.5 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Queenstown Lake IV, 2019"><img src="images/landscape/queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm-800.webp" srcset="images/landscape/queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm-400.webp 400w, images/landscape/queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm-800.webp 800w, images/landscape/queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm-1200.webp 1200w, images/landscape/queenstown-lake-iv-2019-oil-on-panel-30-5x30-5cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1607" alt="Queenstown Lake IV, 2019. Oil on panel, 30.5 × 30.5 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Queenstown Lake IV, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">30.5 × 30.5 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="31" data-art data-title="Queenstown Lake V" data-year="2019" data-medium="Oil on panel" data-dims="30.5 × 30.5 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Queenstown Lake V, 2019"><img src="images/landscape/queenstown-lake-v-800.webp" srcset="images/landscape/queenstown-lake-v-400.webp 400w, images/landscape/queenstown-lake-v-800.webp 800w, images/landscape/queenstown-lake-v-1200.webp 1200w, images/landscape/queenstown-lake-v-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1600" alt="Queenstown Lake V, 2019. Oil on panel, 30.5 × 30.5 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Queenstown Lake V, 2019</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">30.5 × 30.5 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="32" data-art data-title="Landwehrcanal Rosa Luxemburg" data-year="2017" data-medium="Oil on panel" data-dims="40 × 30 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Landwehrcanal Rosa Luxemburg, 2017"><img src="images/landscape/landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm-800.webp" srcset="images/landscape/landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm-400.webp 400w, images/landscape/landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm-800.webp 800w, images/landscape/landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm-1200.webp 1200w, images/landscape/landwehrcanal-rosa-luxemburg-2017-oil-on-panel-40x30cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1265" alt="Landwehrcanal Rosa Luxemburg, 2017. Oil on panel, 40 × 30 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Landwehrcanal Rosa Luxemburg, 2017</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">40 × 30 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="33" data-art data-title="Landwehrcanal" data-year="2017" data-medium="Oil on panel" data-dims="40 × 30 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Landwehrcanal, 2017"><img src="images/landscape/landwehrcanal-2017-oil-on-panel-40x30cm-800.webp" srcset="images/landscape/landwehrcanal-2017-oil-on-panel-40x30cm-400.webp 400w, images/landscape/landwehrcanal-2017-oil-on-panel-40x30cm-800.webp 800w, images/landscape/landwehrcanal-2017-oil-on-panel-40x30cm-1200.webp 1200w, images/landscape/landwehrcanal-2017-oil-on-panel-40x30cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1233" alt="Landwehrcanal, 2017. Oil on panel, 40 × 30 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Landwehrcanal, 2017</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">40 × 30 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="34" data-art data-title="Raywards Lane" data-year="2017" data-medium="Oil on panel" data-dims="26 × 36 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Raywards Lane, 2017"><img src="images/landscape/raywards-lane-2017-oil-on-panel-26x36cm-800.webp" srcset="images/landscape/raywards-lane-2017-oil-on-panel-26x36cm-400.webp 400w, images/landscape/raywards-lane-2017-oil-on-panel-26x36cm-800.webp 800w, images/landscape/raywards-lane-2017-oil-on-panel-26x36cm-1200.webp 1200w, images/landscape/raywards-lane-2017-oil-on-panel-26x36cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1135" alt="Raywards Lane, 2017. Oil on panel, 26 × 36 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Raywards Lane, 2017</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">26 × 36 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="35" data-art data-title="Schlesische Strasse" data-year="2009" data-medium="Oil on canvas" data-dims="28 × 35 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Schlesische Strasse, 2009"><img src="images/landscape/schlesische-strasse-2009-oil-on-canvas-28x35cm-400.webp" srcset="images/landscape/schlesische-strasse-2009-oil-on-canvas-28x35cm-400.webp 400w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="400" height="305" alt="Schlesische Strasse, 2009. Oil on canvas, 28 × 35 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Schlesische Strasse, 2009</span><span class="archive-caption-meta">Oil on canvas</span><span class="archive-caption-meta">28 × 35 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="36" data-art data-title="Beach House" data-year="2005" data-medium="Oil on panel" data-dims="26 × 30 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Beach House, 2005"><img src="images/landscape/beach-house-2005-oil-on-panel-26x30cm-800.webp" srcset="images/landscape/beach-house-2005-oil-on-panel-26x30cm-400.webp 400w, images/landscape/beach-house-2005-oil-on-panel-26x30cm-800.webp 800w, images/landscape/beach-house-2005-oil-on-panel-26x30cm-1200.webp 1200w, images/landscape/beach-house-2005-oil-on-panel-26x30cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1189" alt="Beach House, 2005. Oil on panel, 26 × 30 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Beach House, 2005</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">26 × 30 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="37" data-art data-title="Two Trees" data-year="2005" data-medium="Oil on panel" data-dims="26 × 29 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Two Trees, 2005"><img src="images/landscape/two-trees-2005-oil-on-panel-26x29cm-800.webp" srcset="images/landscape/two-trees-2005-oil-on-panel-26x29cm-400.webp 400w, images/landscape/two-trees-2005-oil-on-panel-26x29cm-800.webp 800w, images/landscape/two-trees-2005-oil-on-panel-26x29cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1613" alt="Two Trees, 2005. Oil on panel, 26 × 29 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Two Trees, 2005</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">26 × 29 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="landscape" data-order="38" data-art data-title="Lawlers Lane (Unfinished)" data-year="2019" data-medium="Oil on canvas" data-dims="120 × 120 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Lawlers Lane (Unfinished), 2019"><img src="images/landscape/lawlers-lane-unfinished-800.webp" srcset="images/landscape/lawlers-lane-unfinished-400.webp 400w, images/landscape/lawlers-lane-unfinished-800.webp 800w, images/landscape/lawlers-lane-unfinished-1200.webp 1200w, images/landscape/lawlers-lane-unfinished-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1573" alt="Lawlers Lane (Unfinished), 2019. Oil on canvas, 120 × 120 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Lawlers Lane (Unfinished), 2019</span><span class="archive-caption-meta">Oil on canvas</span><span class="archive-caption-meta">120 × 120 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="figure" data-order="39" data-art data-title="Self Portrait" data-year="2013" data-medium="Oil on panel" data-dims="35 × 30 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Self Portrait, 2013"><img src="images/figure/self-portrait-2013-oil-on-panel-35x30cm-800.webp" srcset="images/figure/self-portrait-2013-oil-on-panel-35x30cm-400.webp 400w, images/figure/self-portrait-2013-oil-on-panel-35x30cm-800.webp 800w, images/figure/self-portrait-2013-oil-on-panel-35x30cm-1200.webp 1200w, images/figure/self-portrait-2013-oil-on-panel-35x30cm-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1940" alt="Self Portrait, 2013. Oil on panel, 35 × 30 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Self Portrait, 2013</span><span class="archive-caption-meta">Oil on panel</span><span class="archive-caption-meta">35 × 30 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="figure" data-order="40" data-art data-title="Velázquez Study I" data-year="2009" data-medium="Oil on linen" data-dims="32 × 26 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Velázquez Study I, 2009"><img src="images/figure/velazquez-study-i-2009-oil-on-linen-32x26cm-800.webp" srcset="images/figure/velazquez-study-i-2009-oil-on-linen-32x26cm-400.webp 400w, images/figure/velazquez-study-i-2009-oil-on-linen-32x26cm-800.webp 800w, images/figure/velazquez-study-i-2009-oil-on-linen-32x26cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1600" alt="Velázquez Study I, 2009. Oil on linen, 32 × 26 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Velázquez Study I, 2009</span><span class="archive-caption-meta">Oil on linen</span><span class="archive-caption-meta">32 × 26 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="figure" data-order="41" data-art data-title="Velázquez Study II" data-year="2009" data-medium="Oil on linen" data-dims="32 × 26 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Velázquez Study II, 2009"><img src="images/figure/velazquez-study-ii-2009-oil-on-linen-32x26cm-800.webp" srcset="images/figure/velazquez-study-ii-2009-oil-on-linen-32x26cm-400.webp 400w, images/figure/velazquez-study-ii-2009-oil-on-linen-32x26cm-800.webp 800w, images/figure/velazquez-study-ii-2009-oil-on-linen-32x26cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1561" alt="Velázquez Study II, 2009. Oil on linen, 32 × 26 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Velázquez Study II, 2009</span><span class="archive-caption-meta">Oil on linen</span><span class="archive-caption-meta">32 × 26 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="figure" data-order="42" data-art data-title="Velázquez Study III" data-year="2009" data-medium="Oil on linen" data-dims="32 × 26 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Velázquez Study III, 2009"><img src="images/figure/velazquez-study-iii-2009-oil-on-linen-32x26cm-800.webp" srcset="images/figure/velazquez-study-iii-2009-oil-on-linen-32x26cm-400.webp 400w, images/figure/velazquez-study-iii-2009-oil-on-linen-32x26cm-800.webp 800w, images/figure/velazquez-study-iii-2009-oil-on-linen-32x26cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1600" alt="Velázquez Study III, 2009. Oil on linen, 32 × 26 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Velázquez Study III, 2009</span><span class="archive-caption-meta">Oil on linen</span><span class="archive-caption-meta">32 × 26 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="figure" data-order="43" data-art data-title="Velázquez Study IV" data-year="2009" data-medium="Oil on linen" data-dims="32 × 26 cm">
+      <button type="button" class="archive-btn" aria-label="View larger: Velázquez Study IV, 2009"><img src="images/figure/velazquez-study-iv-2009-oil-on-linen-32x26cm-800.webp" srcset="images/figure/velazquez-study-iv-2009-oil-on-linen-32x26cm-400.webp 400w, images/figure/velazquez-study-iv-2009-oil-on-linen-32x26cm-800.webp 800w, images/figure/velazquez-study-iv-2009-oil-on-linen-32x26cm-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1600" alt="Velázquez Study IV, 2009. Oil on linen, 32 × 26 cm." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Velázquez Study IV, 2009</span><span class="archive-caption-meta">Oil on linen</span><span class="archive-caption-meta">32 × 26 cm</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="44" data-art data-title="Nathalie" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Nathalie"><img src="images/drawings/nathalie-800.webp" srcset="images/drawings/nathalie-400.webp 400w, images/drawings/nathalie-800.webp 800w, images/drawings/nathalie-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1200" alt="Nathalie. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Nathalie</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="45" data-art data-title="Frankie" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Frankie"><img src="images/drawings/frankie-800.webp" srcset="images/drawings/frankie-400.webp 400w, images/drawings/frankie-800.webp 800w, images/drawings/frankie-1200.webp 1200w, images/drawings/frankie-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1600" alt="Frankie. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Frankie</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="46" data-art data-title="Luca after the Snow" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Luca after the Snow"><img src="images/drawings/luca-after-the-snow-800.webp" srcset="images/drawings/luca-after-the-snow-400.webp 400w, images/drawings/luca-after-the-snow-800.webp 800w, images/drawings/luca-after-the-snow-1200.webp 1200w, images/drawings/luca-after-the-snow-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1216" alt="Luca after the Snow. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Luca after the Snow</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="47" data-art data-title="Dei Kopf" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Dei Kopf"><img src="images/drawings/dei-kopf-400.webp" srcset="images/drawings/dei-kopf-400.webp 400w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="400" height="463" alt="Dei Kopf. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Dei Kopf</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="48" data-art data-title="Dei Eating an Apple" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Dei Eating an Apple"><img src="images/drawings/dei-eating-an-apple-800.webp" srcset="images/drawings/dei-eating-an-apple-400.webp 400w, images/drawings/dei-eating-an-apple-800.webp 800w, images/drawings/dei-eating-an-apple-1200.webp 1200w, images/drawings/dei-eating-an-apple-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2133" alt="Dei Eating an Apple. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Dei Eating an Apple</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="49" data-art data-title="Landwehrkanal" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Landwehrkanal"><img src="images/drawings/landwehrkanal-800.webp" srcset="images/drawings/landwehrkanal-400.webp 400w, images/drawings/landwehrkanal-800.webp 800w, images/drawings/landwehrkanal-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1500" alt="Landwehrkanal. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Landwehrkanal</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="50" data-art data-title="Figure Study 1" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 1"><img src="images/drawings/figure-1-800.webp" srcset="images/drawings/figure-1-400.webp 400w, images/drawings/figure-1-800.webp 800w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="800" height="999" alt="Figure Study 1. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 1</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="51" data-art data-title="Figure Study 2" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 2"><img src="images/drawings/figure-2-800.webp" srcset="images/drawings/figure-2-400.webp 400w, images/drawings/figure-2-800.webp 800w, images/drawings/figure-2-1200.webp 1200w, images/drawings/figure-2-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1155" alt="Figure Study 2. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 2</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="52" data-art data-title="Figure Study 3" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 3"><img src="images/drawings/figure-3-800.webp" srcset="images/drawings/figure-3-400.webp 400w, images/drawings/figure-3-800.webp 800w, images/drawings/figure-3-1200.webp 1200w, images/drawings/figure-3-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1307" alt="Figure Study 3. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 3</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="53" data-art data-title="Figure Study 4" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 4"><img src="images/drawings/figure-4-800.webp" srcset="images/drawings/figure-4-400.webp 400w, images/drawings/figure-4-800.webp 800w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="800" height="1000" alt="Figure Study 4. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 4</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="54" data-art data-title="Figure Study 5" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 5"><img src="images/drawings/figure-5-800.webp" srcset="images/drawings/figure-5-400.webp 400w, images/drawings/figure-5-800.webp 800w, images/drawings/figure-5-1200.webp 1200w, images/drawings/figure-5-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2133" alt="Figure Study 5. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 5</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="55" data-art data-title="Figure Study 6" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 6"><img src="images/drawings/figure-6-800.webp" srcset="images/drawings/figure-6-400.webp 400w, images/drawings/figure-6-800.webp 800w, images/drawings/figure-6-1200.webp 1200w, images/drawings/figure-6-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1298" alt="Figure Study 6. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 6</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="56" data-art data-title="Figure Study 7" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 7"><img src="images/drawings/figure-7-800.webp" srcset="images/drawings/figure-7-400.webp 400w, images/drawings/figure-7-800.webp 800w, images/drawings/figure-7-1200.webp 1200w, images/drawings/figure-7-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2000" alt="Figure Study 7. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 7</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="57" data-art data-title="Figure Study 8" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 8"><img src="images/drawings/figure-8-800.webp" srcset="images/drawings/figure-8-400.webp 400w, images/drawings/figure-8-800.webp 800w, images/drawings/figure-8-1200.webp 1200w, images/drawings/figure-8-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1600" alt="Figure Study 8. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 8</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="58" data-art data-title="Figure Study 9" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 9"><img src="images/drawings/figure-9-800.webp" srcset="images/drawings/figure-9-400.webp 400w, images/drawings/figure-9-800.webp 800w, images/drawings/figure-9-1200.webp 1200w, images/drawings/figure-9-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2178" alt="Figure Study 9. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 9</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="59" data-art data-title="Figure Study 10" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 10"><img src="images/drawings/figure-10-800.webp" srcset="images/drawings/figure-10-400.webp 400w, images/drawings/figure-10-800.webp 800w, images/drawings/figure-10-1200.webp 1200w, images/drawings/figure-10-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2133" alt="Figure Study 10. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 10</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="60" data-art data-title="Figure Study 11" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 11"><img src="images/drawings/figure-11-800.webp" srcset="images/drawings/figure-11-400.webp 400w, images/drawings/figure-11-800.webp 800w, images/drawings/figure-11-1200.webp 1200w, images/drawings/figure-11-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2188" alt="Figure Study 11. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 11</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="61" data-art data-title="Figure Study 12" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 12"><img src="images/drawings/figure-12-800.webp" srcset="images/drawings/figure-12-400.webp 400w, images/drawings/figure-12-800.webp 800w, images/drawings/figure-12-1200.webp 1200w, images/drawings/figure-12-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1600" alt="Figure Study 12. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 12</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="62" data-art data-title="Figure Study 13" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 13"><img src="images/drawings/figure-13-800.webp" srcset="images/drawings/figure-13-400.webp 400w, images/drawings/figure-13-800.webp 800w, images/drawings/figure-13-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1198" alt="Figure Study 13. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 13</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="63" data-art data-title="Figure Study 14" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 14"><img src="images/drawings/figure-14-800.webp" srcset="images/drawings/figure-14-400.webp 400w, images/drawings/figure-14-800.webp 800w, images/drawings/figure-14-1200.webp 1200w, images/drawings/figure-14-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1209" alt="Figure Study 14. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 14</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="64" data-art data-title="Figure Study 15" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 15"><img src="images/drawings/figure-15-800.webp" srcset="images/drawings/figure-15-400.webp 400w, images/drawings/figure-15-800.webp 800w, images/drawings/figure-15-1200.webp 1200w, images/drawings/figure-15-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1965" alt="Figure Study 15. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 15</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="65" data-art data-title="Figure Study 16" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 16"><img src="images/drawings/figure-16-800.webp" srcset="images/drawings/figure-16-400.webp 400w, images/drawings/figure-16-800.webp 800w, images/drawings/figure-16-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1238" alt="Figure Study 16. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 16</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="66" data-art data-title="Figure Study 17" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 17"><img src="images/drawings/figure-17-800.webp" srcset="images/drawings/figure-17-400.webp 400w, images/drawings/figure-17-800.webp 800w, images/drawings/figure-17-1200.webp 1200w, images/drawings/figure-17-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2133" alt="Figure Study 17. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 17</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="67" data-art data-title="Figure Study 18" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 18"><img src="images/drawings/figure-18-800.webp" srcset="images/drawings/figure-18-400.webp 400w, images/drawings/figure-18-800.webp 800w, images/drawings/figure-18-1200.webp 1200w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1200" height="1200" alt="Figure Study 18. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 18</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="68" data-art data-title="Figure Study 19" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 19"><img src="images/drawings/figure-19-800.webp" srcset="images/drawings/figure-19-400.webp 400w, images/drawings/figure-19-800.webp 800w, images/drawings/figure-19-1200.webp 1200w, images/drawings/figure-19-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="2133" alt="Figure Study 19. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 19</span></figcaption>
+    </figure>
+    <figure class="archive-item" data-cat="drawings" data-order="69" data-art data-title="Figure Study 20" data-year="" data-medium="" data-dims="">
+      <button type="button" class="archive-btn" aria-label="View larger: Figure Study 20"><img src="images/drawings/figure-20-800.webp" srcset="images/drawings/figure-20-400.webp 400w, images/drawings/figure-20-800.webp 800w, images/drawings/figure-20-1200.webp 1200w, images/drawings/figure-20-1600.webp 1600w" sizes="(max-width: 400px) 45vw, (max-width: 600px) 30vw, 200px" width="1600" height="1200" alt="Figure Study 20. Drawing." loading="lazy" decoding="async"></button>
+      <figcaption class="archive-caption"><span class="archive-caption-title">Figure Study 20</span></figcaption>
+    </figure>
+<!-- /build:archive -->
+  </div>
 </main>
 
 <footer>
   <div class="footer-inner">
     <span>© André Bowen</span>
-    <a href="https://www.instagram.com/andrebowen" target="_blank" rel="noopener" class="footer-instagram" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <a href="mailto:andrebowen@me.com" class="footer-email">andrebowen@me.com</a>
+    <a href="https://www.instagram.com/andrebowen" target="_blank" rel="noopener" class="footer-instagram" aria-label="Instagram (opens in a new tab)" title="Instagram (opens in a new tab)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
         <circle cx="12" cy="12" r="4.5"/>
         <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
@@ -309,163 +457,23 @@
   </div>
 </footer>
 
-<div id="detail-panel">
+<!-- build:dialog -->
+<div id="detail-panel" role="dialog" aria-modal="true" aria-labelledby="dp-title" tabindex="-1">
   <div class="dp-left">
-    <button class="dp-close" onclick="closeDetailPanel()">Back</button>
-    <div class="dp-title" id="dp-title"></div>
-    <div class="dp-medium" id="dp-medium"></div>
-    <div class="dp-dims" id="dp-dims"></div>
+    <button type="button" class="dp-close">Back</button>
+    <h2 class="dp-title" id="dp-title"></h2>
+    <p class="dp-year" id="dp-year"></p>
+    <p class="dp-medium" id="dp-medium"></p>
+    <p class="dp-dims" id="dp-dims"></p>
     <div class="dp-nav">
-      <button class="dp-nav-btn" id="dp-prev">Prev</button>
-      <button class="dp-nav-btn" id="dp-next">Next</button>
+      <button type="button" class="dp-nav-btn" id="dp-prev" aria-label="Previous work">Prev</button>
+      <button type="button" class="dp-nav-btn" id="dp-next" aria-label="Next work">Next</button>
     </div>
   </div>
-  <div class="dp-right">
-    <img id="dp-img" src="" alt="">
-  </div>
+  <div class="dp-right"><img id="dp-img" alt=""></div>
 </div>
+<!-- /build:dialog -->
 
 <script src="js/main.js"></script>
-<script>
-const ALL_WORKS = [
-  // Still Life
-  { cat: 'still-life', title: 'Abyssinian Roses',            year: '2016', medium: 'Oil on linen panel',      dims: '35 × 28 cm',    src: 'images/Still life/Andre Bowen_Abyssinian Roses_2016_oil on linen panel_35x28cm.webp' },
-  { cat: 'still-life', title: 'Flowers in a Striped Vase',   year: '2019', medium: 'Oil on panel',            dims: '41 × 50 cm',    src: 'images/Still life/Andre Bowen_Flowers in a Striped Vase_2019_oil on panel_41x50cm.webp' },
-  { cat: 'still-life', title: 'Flowers in Two Bottles',       year: '2018', medium: 'Oil on linen',            dims: '40 × 50 cm',    src: 'images/Still life/Andre Bowen_Flowers in Two Bottles_2018_oil on linen_40x50cm.webp' },
-  { cat: 'still-life', title: 'Skull and Sketchbooks',        year: '2018', medium: 'Oil on panel',            dims: '30.5 × 40.5 cm',src: 'images/Still life/Andre Bowen_Skull and Sketchbooks_2018_oil on panel_30.5x40.5cm.webp' },
-  { cat: 'still-life', title: 'Sneakers',                     year: '2019', medium: 'Oil on panel',            dims: '40 × 50 cm',    src: 'images/Still life/Andre Bowen_Sneakers_2019_oil on panel_40x50cm.webp' },
-  { cat: 'still-life', title: 'Queenstown Flowers',           year: '2019', medium: 'Oil on panel',            dims: '30 × 31 cm',    src: 'images/Still life/Andre Bowen_Queenstown Flowers_2019_oil on panel_30x31cm.webp' },
-  { cat: 'still-life', title: 'Roses (Graefestrasse)',        year: '2016', medium: 'Oil on panel',            dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Roses (Graefestrasse)_2016_oil on panel_40x30cm.webp' },
-  { cat: 'still-life', title: 'Roses',                        year: '2014', medium: 'Oil on canvas',           dims: '50 × 40 cm',    src: 'images/Still life/Andre Bowen_Roses_2014_oil on canvas_50x40cm.webp' },
-  { cat: 'still-life', title: 'Roses (Floating)',             year: '2018', medium: 'Oil on panel',            dims: '31 × 41 cm',    src: 'images/Still life/Roses (floating)_2018_oil on panel_31x41cm copy.webp' },
-  { cat: 'still-life', title: 'Madrid Silver',                year: '2017', medium: 'Oil on panel',            dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Madrid Silver_2017_oil on panel_40x30cm.webp' },
-  { cat: 'still-life', title: 'Flowers in a Mason Jar',       year: '2016', medium: 'Oil on linen panel',      dims: '35 × 28 cm',    src: 'images/Still life/Andre Bowen_Flowers in a mason jar_2016_oil on linen panel_35x28cm.webp' },
-  { cat: 'still-life', title: 'Jar for Joko (Turps)',         year: '2016', medium: 'Oil on panel',            dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Jar for Joko (Turps)_2016_oil on panel_40x30cm.webp' },
-  { cat: 'still-life', title: 'Jar for Mike (Oil)',           year: '2016', medium: 'Oil on panel',            dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Jar for Mike (Oil)_2016_oil on panel_40x30cm.webp' },
-  { cat: 'still-life', title: 'Outdoor Still Life',           year: '2016', medium: 'Oil on linen panel',      dims: '40 × 30 cm',    src: 'images/Still life/Andre Bowen_Outdoor Still Life_2016_oil on linen panel_40x30cm.webp' },
-  { cat: 'still-life', title: 'Leipzig Studio',               year: '2009', medium: 'Oil on canvas',           dims: '70 × 50 cm',    src: 'images/Still life/Andre Bowen_Leipzig Studio_2009_oil on canvas_70x50cm.webp' },
-  { cat: 'still-life', title: 'Leipzig Studio (Blue Chair)',  year: '2009', medium: 'Oil on canvas',           dims: '35 × 28 cm',    src: 'images/Still life/Andre Bowen_Leipzig Studio (Blue Chair)_2009_oil on canvas_35x28cm.webp' },
-  { cat: 'still-life', title: 'Flowers',                      year: '2009', medium: 'Oil on canvas',           dims: '35 × 25 cm',    src: 'images/Still life/Andre Bowen_Flowers_2009_oil on canvas_35x25cm.webp' },
-  { cat: 'still-life', title: 'Chair (Shuttle)',              year: '2005', medium: 'Tempera on linen panel',  dims: '60 × 75 cm',    src: 'images/Still life/Andre Bowen_Chair (Shuttle)_2005_tempera on linen panel_60x75cm.webp' },
-  { cat: 'still-life', title: 'Studio Corner IV',             year: '2025', medium: 'Oil on canvas',           dims: '70 × 50 cm',    src: 'images/Still life/Studio Corner IV.webp' },
-  { cat: 'still-life', title: 'Studio Window',                year: '2025', medium: 'Oil on panel',            dims: '50 × 70 cm',    src: 'images/Still life/Studio Window.webp' },
-  { cat: 'still-life', title: 'Studio Table Leipzig',         year: '2010', medium: 'Oil on canvas',           dims: '50 × 75 cm',    src: 'images/Still life/Studio Table Leipzig.webp' },
-  { cat: 'still-life', title: 'Studio Table (Unfinished)',    year: '2019', medium: 'Oil on canvas',           dims: '70 × 90 cm',    src: 'images/Still life/Studio Table (unfinished) .webp' },
-
-  // Landscape
-  { cat: 'landscape', title: 'The Grove',                      year: '2019', medium: 'Oil on linen',  dims: '101 × 137 cm',     src: 'images/Landscape/Andre Bowen_The Grove_2019_oil on linen_101x137cm.webp' },
-  { cat: 'landscape', title: 'Lawlers Lane Nightscape I',      year: '2019', medium: 'Oil on panel',  dims: '122 × 122 cm',     src: 'images/Landscape/Andre_Bowen_Lawlers Lane Nightscape I_2019_oil-on-panel_122x122cm.webp' },
-  { cat: 'landscape', title: 'Lawlers Lane Nightscape II',     year: '2019', medium: 'Oil on panel',  dims: '122 × 122 cm',     src: 'images/Landscape/Andre Bowen_Lawlers Lane Nightscape II_2019_oil on panel_122x122cm.webp' },
-  { cat: 'landscape', title: 'Orchard Study I',               year: '2019', medium: 'Oil on panel',  dims: '20 × 35.5 cm',     src: 'images/Landscape/Andre Bowen_Orchard Study I_2019_oil on panel_20x35.5cm.webp' },
-  { cat: 'landscape', title: 'Little Wategos',                year: '2019', medium: 'Oil on panel',  dims: '13 × 36 cm',       src: 'images/Landscape/Andre Bowen_Little Wategos_2019_oil on panel_13x36cm.webp' },
-  { cat: 'landscape', title: 'Queenstown Lake I',             year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Andre Bowen_Queenstown Lake I_2019_oil on panel_30.5x30.5cm.webp' },
-  { cat: 'landscape', title: 'Queenstown Lake II',            year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Andre Bowen_Queenstown Lake II_2019_oil on panel_30.5x30.5cm.webp' },
-  { cat: 'landscape', title: 'Queenstown Lake III',           year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Andre Bowen_Queenstown Lake III_2019_oil on panel_30.5x30.5cm.webp' },
-  { cat: 'landscape', title: 'Queenstown Lake IV',            year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Andre Bowen_Queenstown Lake IV_2019_oil on panel_30.5x30.5cm.webp' },
-  { cat: 'landscape', title: 'Queenstown Lake V',             year: '2019', medium: 'Oil on panel',  dims: '30.5 × 30.5 cm',   src: 'images/Landscape/Queenstown Lake V.webp' },
-  { cat: 'landscape', title: 'Landwehrcanal Rosa Luxemburg',  year: '2017', medium: 'Oil on panel',  dims: '40 × 30 cm',       src: 'images/Landscape/Andre Bowen_Landwehrcanal Rosa Luxemburg_2017_oil on panel_40x30cm.webp' },
-  { cat: 'landscape', title: 'Landwehrcanal',                 year: '2017', medium: 'Oil on panel',  dims: '40 × 30 cm',       src: 'images/Landscape/Andre Bowen_Landwehrcanal_2017_oil on panel_40x30cm.webp' },
-  { cat: 'landscape', title: 'Raywards Lane',                 year: '2017', medium: 'Oil on panel',  dims: '26 × 36 cm',       src: 'images/Landscape/Andre Bowen_Raywards Lane_2017_oil on panel_26x36cm.webp' },
-  { cat: 'landscape', title: 'Schlesische Strasse',           year: '2009', medium: 'Oil on canvas', dims: '28 × 35 cm',       src: 'images/Landscape/Andre Bowen_Schlesische Strasse_2009_oil on canvas_28x35cm.webp' },
-  { cat: 'landscape', title: 'Beach House',                   year: '2005', medium: 'Oil on panel',  dims: '26 × 30 cm',       src: 'images/Landscape/Andre Bowen_Beach House_2005_oil on panel_26x30cm.webp' },
-  { cat: 'landscape', title: 'Two Trees',                     year: '2005', medium: 'Oil on panel',  dims: '26 × 29 cm',       src: 'images/Landscape/Andre Bowen_Two Trees_2005_oil on panel_26x29cm.webp' },
-  { cat: 'landscape', title: 'Lawlers Lane (Unfinished)',     year: '2019', medium: 'Oil on canvas', dims: '120 × 120 cm',     src: 'images/Landscape/Lawlers Lane (unfinished).webp' },
-
-  // Figure
-  { cat: 'figure', title: 'Self Portrait',       year: '2013', medium: 'Oil on panel', dims: '35 × 30 cm', src: 'images/Figure/Andre Bowen_Self Portrait_2013_oil on panel_35x30cm.webp' },
-  { cat: 'figure', title: 'Velázquez Study I',   year: '2009', medium: 'Oil on linen', dims: '32 × 26 cm', src: 'images/Figure/Andre Bowen_Velazquez Study I_2009_oil on linen_32x26cm.webp' },
-  { cat: 'figure', title: 'Velázquez Study II',  year: '2009', medium: 'Oil on linen', dims: '32 × 26 cm', src: 'images/Figure/Andre Bowen_Velazquez Study II_2009_oil on linen_32x26cm.webp' },
-  { cat: 'figure', title: 'Velázquez Study III', year: '2009', medium: 'Oil on linen', dims: '32 × 26 cm', src: 'images/Figure/Andre Bowen_Velazquez Study III_2009_oil on linen_32x26cm.webp' },
-  { cat: 'figure', title: 'Velázquez Study IV',  year: '2009', medium: 'Oil on linen', dims: '32 × 26 cm', src: 'images/Figure/Andre Bowen_Velazquez Study IV_2009_oil on linen_32x26cm.webp' },
-
-  // Drawings
-  { cat: 'drawings', title: 'Nathalie',           year: '', medium: '', dims: '', src: 'images/Drawings/Nathalie.webp' },
-  { cat: 'drawings', title: 'Frankie',            year: '', medium: '', dims: '', src: 'images/Drawings/Frankie.webp' },
-  { cat: 'drawings', title: 'Luca after the Snow',year: '', medium: '', dims: '', src: 'images/Drawings/Luca after the snow.webp' },
-  { cat: 'drawings', title: 'Dei Kopf',           year: '', medium: '', dims: '', src: 'images/Drawings/Dei Kopf.webp' },
-  { cat: 'drawings', title: 'Dei Eating an Apple',year: '', medium: '', dims: '', src: 'images/Drawings/Dei eating an apple.webp' },
-  { cat: 'drawings', title: 'Landwehrkanal',      year: '', medium: '', dims: '', src: 'images/Drawings/Landwehrkanal.webp' },
-  { cat: 'drawings', title: 'Figure Study 1',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 1.webp' },
-  { cat: 'drawings', title: 'Figure Study 2',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 2.webp' },
-  { cat: 'drawings', title: 'Figure Study 3',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 3.webp' },
-  { cat: 'drawings', title: 'Figure Study 4',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 4.webp' },
-  { cat: 'drawings', title: 'Figure Study 5',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 5.webp' },
-  { cat: 'drawings', title: 'Figure Study 6',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 6.webp' },
-  { cat: 'drawings', title: 'Figure Study 7',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 7.webp' },
-  { cat: 'drawings', title: 'Figure Study 8',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 8.webp' },
-  { cat: 'drawings', title: 'Figure Study 9',     year: '', medium: '', dims: '', src: 'images/Drawings/Figure 9.webp' },
-  { cat: 'drawings', title: 'Figure Study 10',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 10.webp' },
-  { cat: 'drawings', title: 'Figure Study 11',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 11.webp' },
-  { cat: 'drawings', title: 'Figure Study 12',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 12.webp' },
-  { cat: 'drawings', title: 'Figure Study 13',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 13.webp' },
-  { cat: 'drawings', title: 'Figure Study 14',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 14.webp' },
-  { cat: 'drawings', title: 'Figure Study 15',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 15.webp' },
-  { cat: 'drawings', title: 'Figure Study 16',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 16.webp' },
-  { cat: 'drawings', title: 'Figure Study 17',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 17.webp' },
-  { cat: 'drawings', title: 'Figure Study 18',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 18.webp' },
-  { cat: 'drawings', title: 'Figure Study 19',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 19.webp' },
-  { cat: 'drawings', title: 'Figure Study 20',    year: '', medium: '', dims: '', src: 'images/Drawings/Figure 20.webp' },
-];
-
-let activeFilter = 'all';
-let activeSort = 'newest';
-
-function sortedWorks(works) {
-  return [...works].sort((a, b) => {
-    const ya = parseInt(a.year) || (activeSort === 'newest' ? 0 : 9999);
-    const yb = parseInt(b.year) || (activeSort === 'newest' ? 0 : 9999);
-    return activeSort === 'newest' ? yb - ya : ya - yb;
-  });
-}
-
-function renderArchive() {
-  const grid = document.getElementById('archive-grid');
-  const countEl = document.getElementById('archive-count');
-  const filtered = activeFilter === 'all' ? ALL_WORKS : ALL_WORKS.filter(w => w.cat === activeFilter);
-  const works = sortedWorks(filtered);
-
-  grid.innerHTML = '';
-
-  works.forEach((art, i) => {
-    const item = document.createElement('div');
-    item.className = 'archive-item';
-    const yearStr = art.year ? `, ${art.year}` : '';
-    const metaParts = [art.medium, art.dims].filter(Boolean).join(' · ');
-    item.innerHTML = `
-      <img src="${art.src}" alt="${art.title}${yearStr}" loading="lazy">
-      <div class="archive-caption">
-        <div class="archive-caption-title">${art.title}${yearStr}</div>
-        ${metaParts ? `<div class="archive-caption-meta">${metaParts}</div>` : ''}
-      </div>`;
-    item.addEventListener('click', () => {
-      openDetailPanel(works, i, item.querySelector('img'));
-    });
-    grid.appendChild(item);
-  });
-
-  const n = works.length;
-  countEl.textContent = `${n} work${n !== 1 ? 's' : ''}`;
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderArchive();
-
-  document.querySelectorAll('.chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const filter = chip.dataset.filter;
-      if (filter === activeFilter) return;
-      activeFilter = filter;
-      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      renderArchive();
-    });
-  });
-
-  document.getElementById('sort-select').addEventListener('change', e => {
-    activeSort = e.target.value;
-    renderArchive();
-  });
-});
-</script>
 </body>
 </html>
