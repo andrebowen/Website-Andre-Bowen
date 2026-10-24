@@ -171,6 +171,7 @@ if (series) {
     C.textContent = `${cur + 1} / ${works.length}`;
     P.disabled = cur === 0; N.disabled = cur === works.length - 1;
     const n = works[cur + 1]?.querySelector('img'); if (n) n.loading = 'eager';
+    const B = $('.series-back', series); if (B) B.href = `#work-${d.slug}`;
     if (push) history.replaceState(null, '', cur === 0 ? location.pathname : `#work-${d.slug}`);
   };
   const route = () => {
@@ -184,7 +185,8 @@ if (series) {
   };
   P.addEventListener('click', () => show(cur - 1, true));
   N.addEventListener('click', () => show(cur + 1, true));
-  $('.series-back', series)?.addEventListener('click', e => { e.preventDefault(); history.pushState(null, '', cur === 0 ? location.pathname : `#work-${works[cur].dataset.slug}`); route(); });
+  // Native hash navigation (no preventDefault): pushState would not update CSS :target, leaving #all's :target rule hiding the flow.
+  $('.series-back', series)?.addEventListener('click', e => { e.currentTarget.href = `#work-${works[cur].dataset.slug}`; });
   document.addEventListener('keydown', e => {
     if (series.classList.contains('show-all') || e.target.closest('input,select,textarea') || $('#mobile-nav.open')) return;
     if (e.key === 'ArrowLeft') show(cur - 1, true); else if (e.key === 'ArrowRight') show(cur + 1, true);
@@ -196,6 +198,11 @@ if (series) {
 /* Archive: filter + sort the static grid */
 const grid = $('#archive-grid');
 if (grid) {
+  const row = $('.chip-row');
+  if (row) {
+    const fade = () => row.classList.toggle('has-more', row.scrollWidth - row.clientWidth - row.scrollLeft > 2);
+    row.addEventListener('scroll', fade, { passive: true }); addEventListener('resize', fade); fade();
+  }
   const chips = $$('.chip[data-filter]'), sel = $('#sort-select'), count = $('#archive-count');
   const all = $$('.archive-item', grid);
   let filter = 'all';
